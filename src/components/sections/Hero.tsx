@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import { Container } from "@/components/common/Container"
 
@@ -12,20 +13,26 @@ export function Hero({ onContactClick }: HeroProps) {
   return (
     <section className="relative overflow-hidden">
       {/* Background Image - Mobile */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
-        style={{
-          backgroundImage: `url('/images/hero-mobile.jpg')`
-        }}
-      />
+      <div className="absolute inset-0 lg:hidden">
+        <Image
+          src="/images/hero-mobile.jpg"
+          alt="Hero background mobile"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
       
       {/* Background Image - Desktop */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden lg:block"
-        style={{
-          backgroundImage: `url('/images/hero-desktop.jpg')`
-        }}
-      />
+      <div className="absolute inset-0 hidden lg:block">
+        <Image
+          src="/images/hero-desktop.jpg"
+          alt="Hero background desktop"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
       
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/60" />

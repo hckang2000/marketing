@@ -21,7 +21,7 @@ export default function TermsPage() {
                     제1조 (목적)
                   </h2>
                   <p className="text-gray-700">
-                    이 약관은 클리닉브릿지(이하 "회사")가 제공하는 일본 대상 병원 마케팅 서비스의 
+                    이 약관은 클리닉브릿지(이하 &ldquo;회사&rdquo;)가 제공하는 일본 대상 병원 마케팅 서비스의 
                     이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 
                     규정함을 목적으로 합니다.
                   </p>
@@ -33,13 +33,13 @@ export default function TermsPage() {
                   </h2>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-gray-700 font-medium mb-2">1. "서비스"란</p>
+                      <p className="text-gray-700 font-medium mb-2">1. &ldquo;서비스&rdquo;란</p>
                       <p className="text-gray-700">
                         회사가 제공하는 일본 대상 병원 마케팅 서비스를 의미합니다.
                       </p>
                     </div>
                     <div>
-                      <p className="text-gray-700 font-medium mb-2">2. "이용자"란</p>
+                      <p className="text-gray-700 font-medium mb-2">2. &ldquo;이용자&rdquo;란</p>
                       <p className="text-gray-700">
                         이 약관에 따라 회사와 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는 
                         고객을 의미합니다.

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
+import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
 
@@ -103,16 +104,18 @@ export function SocialProof() {
                     <CardContent className="p-6">
                       <div className="aspect-[9/16] lg:aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden">
                         {/* Mobile Image */}
-                        <img
+                        <Image
                           src={testimonial.mobileImage}
                           alt={`후기 이미지 ${index + 1}`}
-                          className="w-full h-full object-cover lg:hidden"
+                          fill
+                          className="object-cover lg:hidden"
                         />
                         {/* Desktop Image */}
-                        <img
+                        <Image
                           src={testimonial.desktopImage}
                           alt={`후기 이미지 ${index + 1}`}
-                          className="w-full h-full object-cover hidden lg:block"
+                          fill
+                          className="object-cover hidden lg:block"
                         />
                       </div>
                       <p className="text-gray-700 text-sm leading-relaxed">
