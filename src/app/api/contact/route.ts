@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Check if Resend API key is available
+const resendApiKey = process.env.RESEND_API_KEY
+const resend = resendApiKey ? new Resend(resendApiKey) : null
 
 export async function POST(req: Request) {
   try {
@@ -39,6 +41,13 @@ export async function POST(req: Request) {
     }
 
     // Send email
+    if (!resend) {
+      console.log("Resend API key not configured. Skipping email send.")
+      // In development or when API key is not set, just log the data
+      console.log("Contact form data:", { name, phone, email, message })
+      return NextResponse.json({ ok: true })
+    }
+
     await resend.emails.send({
       from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
       to: process.env.TO_EMAIL || "hckang2000@naver.com",
