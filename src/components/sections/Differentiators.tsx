@@ -1,0 +1,168 @@
+"use client"
+
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { ChevronDown, ChevronUp, GraduationCap, Target, Heart } from "lucide-react"
+import { Container } from "@/components/common/Container"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
+import { Button } from "@/components/common/Button"
+
+const differentiators = [
+  {
+    id: 1,
+    icon: GraduationCap,
+    title: "서울대 출신 마케터가 업계 최저 단가로 진행",
+    description: "서울대학교 마케팅 전공 대표가 직접 진행하는 전문적인 서비스",
+    details: [
+      "서울대학교 경영학과 졸업",
+      "10년 이상 마케팅 경력",
+      "업계 최저 단가 보장",
+      "1:1 맞춤형 전략 수립"
+    ],
+    profile: {
+      name: "김대표",
+      education: "서울대학교 경영학과",
+      experience: "10년+ 마케팅 경력",
+      image: "/api/placeholder/100/100"
+    }
+  },
+  {
+    id: 2,
+    icon: Target,
+    title: "광고비의 10배 이상을 벌 수 있는 마케팅만 제안",
+    description: "실제 성과가 검증된 마케팅 전략만 선별하여 제공",
+    details: [
+      "인플루언서 협찬이 핵심",
+      "일본 고객은 SNS 실제 후기 중시",
+      "실시간 상담 동행",
+      "ROAS 1000% 이상 달성"
+    ]
+  },
+  {
+    id: 3,
+    icon: Heart,
+    title: "원장님과 투명/진실 소통",
+    description: "모든 과정을 투명하게 공유하고 진실된 소통을 약속합니다",
+    details: [
+      "모집-방문-콘텐츠-성과 리포트 전체 공유",
+      "주간 진행상황 리포트",
+      "실시간 피드백 시스템",
+      "성과 미달 시 보상 정책"
+    ]
+  }
+]
+
+export function Differentiators() {
+  const [openItem, setOpenItem] = useState<number | null>(1)
+
+  return (
+    <section className="section-padding bg-gray-50">
+      <Container>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            클리닉브릿지가 타 업체와 다른 이유?
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            단순한 광고 대행이 아닌, 실제 성과를 만들어내는 차별화된 서비스
+          </p>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto space-y-4">
+          {differentiators.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="overflow-hidden">
+                <CardHeader
+                  className="cursor-pointer hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenItem(openItem === item.id ? null : item.id)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <item.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl font-semibold text-gray-900">
+                          {item.title}
+                        </CardTitle>
+                        <p className="text-gray-600 mt-1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-gray-400">
+                      {openItem === item.id ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </div>
+                  </div>
+                </CardHeader>
+
+                {openItem === item.id && (
+                  <CardContent className="pt-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-3">주요 특징</h4>
+                        <ul className="space-y-2">
+                          {item.details.map((detail, detailIndex) => (
+                            <li key={detailIndex} className="flex items-start space-x-2">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                              <span className="text-gray-700">{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {item.profile && (
+                        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
+                          <h4 className="font-semibold text-gray-900 mb-3">대표 프로필</h4>
+                          <div className="flex items-center space-x-3">
+                            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                              <span className="text-white font-semibold text-lg">
+                                {item.profile.name.charAt(0)}
+                              </span>
+                            </div>
+                            <div>
+                              <p className="font-semibold text-gray-900">{item.profile.name}</p>
+                              <p className="text-sm text-gray-600">{item.profile.education}</p>
+                              <p className="text-sm text-gray-600">{item.profile.experience}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <Button variant="outline" size="lg" asChild>
+            <a href="/about#story">창업 스토리 보기</a>
+          </Button>
+        </motion.div>
+      </Container>
+    </section>
+  )
+}
