@@ -10,7 +10,25 @@ interface HeroProps {
 
 export function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="relative overflow-hidden">
+      {/* Background Image - Mobile */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
+        style={{
+          backgroundImage: `url('/images/hero-mobile.jpg')`
+        }}
+      />
+      
+      {/* Background Image - Desktop */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden lg:block"
+        style={{
+          backgroundImage: `url('/images/hero-desktop.jpg')`
+        }}
+      />
+      
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60" />
       <Container>
         <div className="relative z-10 py-20 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
@@ -19,12 +37,11 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              <span className="block">일본 대상 마케팅만으로</span>
-              <span className="block text-gradient">광고비의 10배를 더 벌어준</span>
-              <span className="block">병원 전문 마케팅 회사가 있다면</span>
-              <span className="block">믿어지시나요?</span>
+              <span className="block">일본 환자 유치로</span>
+              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출을</span>
+              <span className="block">만드는 병원 마케팅</span>
             </motion.h1>
 
             {/* Subcopy */}
@@ -32,7 +49,7 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
+              className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto"
             >
               딱 1분만 읽어보시고 무료로 병원마케팅 진단을 받아보세요.
             </motion.p>
@@ -67,8 +84,8 @@ export function Hero({ onContactClick }: HeroProps) {
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-3xl" />
+        <div className="absolute -top-40 right-0 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-3xl" />
       </div>
     </section>
   )

@@ -9,39 +9,39 @@ import { Card, CardContent } from "@/components/common/Card"
 const testimonials = [
   {
     id: 1,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-1-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-1-mobile.jpg",
     caption: "홍대 OOO의원 원장님: 일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 4.5억으로 올랐습니다.",
-    blur: true,
   },
   {
     id: 2,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-2-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-2-mobile.jpg",
     caption: "강남 XXX의원 원장님: 클리닉브릿지 덕분에 일본 환자 예약이 300% 증가했습니다.",
-    blur: true,
   },
   {
     id: 3,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-3-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-3-mobile.jpg",
     caption: "서초 YYY의원 원장님: 광고비 대비 15배 수익을 올렸어요. 정말 만족합니다.",
-    blur: true,
   },
   {
     id: 4,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-4-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-4-mobile.jpg",
     caption: "마포 ZZZ의원 원장님: 투명한 소통과 체계적인 마케팅으로 성과가 좋았습니다.",
-    blur: true,
   },
   {
     id: 5,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-5-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-5-mobile.jpg",
     caption: "송파 AAA의원 원장님: 일본 고객 유치가 생각보다 쉬웠어요.",
-    blur: true,
   },
   {
     id: 6,
-    image: "/api/placeholder/300/200",
+    desktopImage: "/images/testimonials/testimonial-6-desktop.jpg",
+    mobileImage: "/images/testimonials/testimonial-6-mobile.jpg",
     caption: "종로 BBB의원 원장님: 전문적인 서비스에 감동받았습니다.",
-    blur: true,
   },
 ]
 
@@ -87,7 +87,7 @@ export function SocialProof() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Carousel */}
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-none lg:rounded-2xl">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -99,19 +99,21 @@ export function SocialProof() {
                   key={testimonial.id}
                   className="w-full flex-shrink-0"
                 >
-                  <Card className="mx-4">
+                  <Card className="mx-0 lg:mx-4 rounded-none lg:rounded-2xl">
                     <CardContent className="p-6">
-                      <div className="aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden">
-                        <div
-                          className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center"
-                          style={{
-                            filter: testimonial.blur ? "blur(4px)" : "none",
-                          }}
-                        >
-                          <span className="text-gray-600 font-medium">
-                            후기 이미지 {index + 1}
-                          </span>
-                        </div>
+                      <div className="aspect-[9/16] lg:aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden">
+                        {/* Mobile Image */}
+                        <img
+                          src={testimonial.mobileImage}
+                          alt={`후기 이미지 ${index + 1}`}
+                          className="w-full h-full object-cover lg:hidden"
+                        />
+                        {/* Desktop Image */}
+                        <img
+                          src={testimonial.desktopImage}
+                          alt={`후기 이미지 ${index + 1}`}
+                          className="w-full h-full object-cover hidden lg:block"
+                        />
                       </div>
                       <p className="text-gray-700 text-sm leading-relaxed">
                         {testimonial.caption}

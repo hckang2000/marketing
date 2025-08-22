@@ -1,9 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { InquiryDialog } from "@/components/forms/InquiryDialog"
-import { ContactProvider } from "@/components/providers/ContactProvider"
+import { ClientProviders } from "@/components/providers/ClientProviders"
 
 export const metadata: Metadata = {
   title: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
@@ -67,12 +64,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
-        <ContactProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <InquiryDialog />
-        </ContactProvider>
+        <ClientProviders>
+          {children}
+        </ClientProviders>
       </body>
     </html>
   )
