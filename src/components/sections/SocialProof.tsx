@@ -12,37 +12,19 @@ const testimonials = [
     id: 1,
     desktopImage: "/images/testimonials/testimonial-1-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-1-mobile.jpg",
-    caption: "홍대 OOO의원 원장님: 일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 4.5억으로 올랐습니다.",
+    caption: "홍대 OOO의원 원장님: 일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
   },
   {
     id: 2,
     desktopImage: "/images/testimonials/testimonial-2-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-2-mobile.jpg",
-    caption: "강남 XXX의원 원장님: 클리닉브릿지 덕분에 일본 환자 예약이 300% 증가했습니다.",
+    caption: "강남 XXX의원 원장님: 광고비 대비 15배 매출이면 광고비가 거의 안 든거네요",
   },
   {
     id: 3,
     desktopImage: "/images/testimonials/testimonial-3-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-3-mobile.jpg",
-    caption: "서초 YYY의원 원장님: 광고비 대비 15배 수익을 올렸어요. 정말 만족합니다.",
-  },
-  {
-    id: 4,
-    desktopImage: "/images/testimonials/testimonial-4-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-4-mobile.jpg",
-    caption: "마포 ZZZ의원 원장님: 투명한 소통과 체계적인 마케팅으로 성과가 좋았습니다.",
-  },
-  {
-    id: 5,
-    desktopImage: "/images/testimonials/testimonial-5-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-5-mobile.jpg",
-    caption: "송파 AAA의원 원장님: 일본 고객 유치가 생각보다 쉬웠어요.",
-  },
-  {
-    id: 6,
-    desktopImage: "/images/testimonials/testimonial-6-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-6-mobile.jpg",
-    caption: "종로 BBB의원 원장님: 전문적인 서비스에 감동받았습니다.",
+    caption: "신논현 YYY의원 원장님: 주말에 일본 환자가 40명까지 오네요",
   },
 ]
 
@@ -98,29 +80,36 @@ export function SocialProof() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
-                  className="w-full flex-shrink-0"
+                  className="w-full flex-shrink-0 px-4"
                 >
-                  <Card className="mx-0 lg:mx-4 rounded-none lg:rounded-2xl">
+                  <Card className="rounded-none lg:rounded-2xl">
                     <CardContent className="p-6">
-                      <div className="aspect-[9/16] lg:aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden">
-                        {/* Mobile Image */}
+                      {/* Mobile Image Container - 9:16 비율 (450x800) */}
+                      <div className="relative w-full aspect-[9/16] lg:hidden mb-4 overflow-hidden rounded-lg">
                         <Image
                           src={testimonial.mobileImage}
                           alt={`후기 이미지 ${index + 1}`}
                           fill
-                          className="object-cover lg:hidden"
+                          className="object-cover"
                         />
-                        {/* Desktop Image */}
+                      </div>
+                      
+                      {/* Desktop Image Container - 16:9 비율 (800x450) */}
+                      <div className="relative w-full aspect-video hidden lg:block mb-4 overflow-hidden rounded-lg">
                         <Image
                           src={testimonial.desktopImage}
                           alt={`후기 이미지 ${index + 1}`}
                           fill
-                          className="object-cover hidden lg:block"
+                          className="object-cover"
                         />
                       </div>
-                      <p className="text-gray-700 text-sm leading-relaxed">
-                        {testimonial.caption}
-                      </p>
+                      
+                      {/* Caption */}
+                      <div className="text-center">
+                        <p className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium">
+                          {testimonial.caption}
+                        </p>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
