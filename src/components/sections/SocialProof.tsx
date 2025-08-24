@@ -1,11 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
+
+const AUTOPLAY_MS = 8000
+const DRAG_THRESHOLD = 40
 
 const testimonials = [
   {
@@ -31,23 +34,154 @@ const testimonials = [
 export function SocialProof() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [isDragging, setIsDragging] = useState(false)
+  
+  const timerRef = useRef<number | null>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const isDraggingRef = useRef(false)
+  const startXRef = useRef(0)
+  const deltaXRef = useRef(0)
+
+  const startAutoPlay = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+    }
+    timerRef.current = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, AUTOPLAY_MS)
+  }
+
+  const stopAutoPlay = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+      timerRef.current = null
+    }
+  }
+
+  const resetAutoPlay = () => {
+    if (isPlaying) {
+      startAutoPlay()
+    }
+  }
 
   useEffect(() => {
-    if (!isPlaying) return
+    if (isPlaying) {
+      startAutoPlay()
+    } else {
+      stopAutoPlay()
+    }
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [isPlaying])
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+    }
+  }, [isPlaying, currentIndex])
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    resetAutoPlay()
   }
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    resetAutoPlay()
+  }
+
+  const handleCardClick = () => {
+    if (!isDraggingRef.current) {
+      nextSlide()
+    }
+  }
+
+  const handleDragStart = (clientX: number) => {
+    isDraggingRef.current = true
+    setIsDragging(true)
+    startXRef.current = clientX
+    deltaXRef.current = 0
+    stopAutoPlay()
+  }
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDraggingRef.current) return
+    
+    deltaXRef.current = clientX - startXRef.current
+    
+    if (trackRef.current) {
+      const translateX = -(currentIndex * 100) + (deltaXRef.current / trackRef.current.offsetWidth * 100)
+      trackRef.current.style.transform = `translateX(${translateX}%)`
+      trackRef.current.style.transition = 'none'
+    }
+  }
+
+  const handleDragEnd = () => {
+    if (!isDraggingRef.current) return
+    
+    const deltaX = deltaXRef.current
+    const threshold = DRAG_THRESHOLD
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        prevSlide()
+      } else {
+        nextSlide()
+      }
+    }
+
+    // Reset transform
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${currentIndex * 100}%)`
+      trackRef.current.style.transition = 'transform 500ms ease-in-out'
+    }
+
+    isDraggingRef.current = false
+    setIsDragging(false)
+    deltaXRef.current = 0
+    resetAutoPlay()
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
+    handleDragStart(e.clientX)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current) return
+    handleDragMove(e.clientX)
+  }
+
+  const handleMouseUp = () => {
+    handleDragEnd()
+  }
+
+  const handleMouseLeave = () => {
+    if (isDraggingRef.current) {
+      handleDragEnd()
+    }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    handleDragStart(touch.clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDraggingRef.current) return
+    const touch = e.touches[0]
+    handleDragMove(touch.clientX)
+  }
+
+  const handleTouchEnd = () => {
+    handleDragEnd()
+  }
+
+  const handleTouchCancel = () => {
+    handleDragEnd()
+  }
+
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index)
+    resetAutoPlay()
   }
 
   return (
@@ -72,17 +206,31 @@ export function SocialProof() {
           {/* Carousel */}
           <div className="relative overflow-hidden rounded-none lg:rounded-2xl">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              ref={trackRef}
+              className={`flex transition-transform duration-500 ease-in-out ${
+                isDragging ? 'select-none cursor-grabbing' : 'cursor-grab'
+              }`}
               style={{
                 transform: `translateX(-${currentIndex * 100}%)`,
               }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchCancel}
             >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
                   className="w-full flex-shrink-0 px-4"
                 >
-                  <Card className="rounded-none lg:rounded-2xl">
+                  <Card 
+                    className="rounded-none lg:rounded-2xl cursor-pointer"
+                    onClick={handleCardClick}
+                  >
                     <CardContent className="p-6">
                       {/* Mobile Image Container - 9:16 비율 (450x800) */}
                       <div className="relative w-full aspect-[9/16] lg:hidden mb-4 overflow-hidden rounded-lg">
@@ -91,6 +239,7 @@ export function SocialProof() {
                           alt={`후기 이미지 ${index + 1}`}
                           fill
                           className="object-cover"
+                          draggable={false}
                         />
                       </div>
                       
@@ -101,6 +250,7 @@ export function SocialProof() {
                           alt={`후기 이미지 ${index + 1}`}
                           fill
                           className="object-cover"
+                          draggable={false}
                         />
                       </div>
                       
@@ -122,6 +272,7 @@ export function SocialProof() {
             <button
               onClick={prevSlide}
               className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              aria-label="이전 슬라이드"
             >
               <ChevronLeft className="h-5 w-5 text-gray-600" />
             </button>
@@ -129,6 +280,7 @@ export function SocialProof() {
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              aria-label={isPlaying ? "자동 재생 일시정지" : "자동 재생 시작"}
             >
               {isPlaying ? (
                 <Pause className="h-5 w-5 text-gray-600" />
@@ -140,6 +292,7 @@ export function SocialProof() {
             <button
               onClick={nextSlide}
               className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              aria-label="다음 슬라이드"
             >
               <ChevronRight className="h-5 w-5 text-gray-600" />
             </button>
@@ -150,10 +303,11 @@ export function SocialProof() {
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => handleDotClick(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
                   index === currentIndex ? "bg-primary" : "bg-gray-300"
                 }`}
+                aria-label={`슬라이드 ${index + 1}로 이동`}
               />
             ))}
           </div>
