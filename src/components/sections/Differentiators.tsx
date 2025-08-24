@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ChevronDown, ChevronUp, GraduationCap, Target, Heart } from "lucide-react"
+import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
@@ -14,16 +15,16 @@ const differentiators = [
     title: "서울대 출신 마케터가 업계 최저 단가로 진행",
     description: "서울대학교 마케팅 전공 대표가 직접 진행하는 전문적인 서비스",
     details: [
-      "서울대학교 경영학과 졸업",
+      "대표 포함 전원 서울대학교 출신",
       "10년 이상 마케팅 경력",
       "업계 최저 단가 보장",
       "1:1 맞춤형 전략 수립"
     ],
     profile: {
-      name: "김대표",
-      education: "서울대학교 경영학과",
+      name: "이은석 대표표",
+      education: "서울대학교 XX학학과",
       experience: "10년+ 마케팅 경력",
-      image: "/api/placeholder/100/100"
+      image: "/images/profiles/ceo-profile.jpg"
     }
   },
   {
@@ -32,10 +33,10 @@ const differentiators = [
     title: "광고비의 10배 이상을 벌 수 있는 마케팅만 제안",
     description: "실제 성과가 검증된 마케팅 전략만 선별하여 제공",
     details: [
-      "인플루언서 협찬이 핵심",
+      "마이크로 인플루언서 협찬에 집중",
       "일본 고객은 SNS 실제 후기 중시",
-      "실시간 상담 동행",
-      "ROAS 1000% 이상 달성"
+      "실시간 LINE 응대서비스",
+      "ROAS 1500% 이상 달성"
     ]
   },
   {
@@ -130,10 +131,22 @@ export function Differentiators() {
                         <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
                           <h4 className="font-semibold text-gray-900 mb-3">대표 프로필</h4>
                           <div className="flex items-center space-x-3">
-                            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                              <span className="text-white font-semibold text-lg">
-                                {item.profile.name.charAt(0)}
-                              </span>
+                            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
+                              {item.profile.image ? (
+                                <Image
+                                  src={item.profile.image}
+                                  alt={`${item.profile.name} 프로필 사진`}
+                                  fill
+                                  className="object-cover"
+                                  sizes="64px"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center">
+                                  <span className="text-white font-semibold text-lg">
+                                    {item.profile.name.charAt(0)}
+                                  </span>
+                                </div>
+                              )}
                             </div>
                             <div>
                               <p className="font-semibold text-gray-900">{item.profile.name}</p>

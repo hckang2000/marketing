@@ -7,7 +7,7 @@ import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
 
-const AUTOPLAY_MS = 8000
+const AUTOPLAY_MS = 10000
 const DRAG_THRESHOLD = 40
 
 const testimonials = [
@@ -41,6 +41,20 @@ export function SocialProof() {
   const isDraggingRef = useRef(false)
   const startXRef = useRef(0)
   const deltaXRef = useRef(0)
+  const unlockRef = useRef<null | (() => void)>(null)
+
+  function lockBodyScroll() {
+    if (typeof window === "undefined") return
+    const { body } = document
+    const prev = body.style.overflow
+    body.style.overflow = "hidden"
+    unlockRef.current = () => { body.style.overflow = prev }
+  }
+
+  function unlockBodyScroll() {
+    unlockRef.current?.()
+    unlockRef.current = null
+  }
 
   const startAutoPlay = () => {
     if (timerRef.current) {
@@ -75,6 +89,7 @@ export function SocialProof() {
       if (timerRef.current) {
         clearInterval(timerRef.current)
       }
+      unlockBodyScroll()
     }
   }, [isPlaying, currentIndex])
 
@@ -100,6 +115,7 @@ export function SocialProof() {
     startXRef.current = clientX
     deltaXRef.current = 0
     stopAutoPlay()
+    lockBodyScroll()
   }
 
   const handleDragMove = (clientX: number) => {
@@ -115,6 +131,8 @@ export function SocialProof() {
   }
 
   const handleDragEnd = () => {
+    unlockBodyScroll()
+    
     if (!isDraggingRef.current) return
     
     const deltaX = deltaXRef.current
@@ -167,6 +185,7 @@ export function SocialProof() {
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDraggingRef.current) return
+    e.preventDefault() // block vertical scroll during swipe
     const touch = e.touches[0]
     handleDragMove(touch.clientX)
   }
@@ -207,7 +226,7 @@ export function SocialProof() {
           <div className="relative overflow-hidden rounded-none lg:rounded-2xl">
             <div
               ref={trackRef}
-              className={`flex transition-transform duration-500 ease-in-out ${
+              className={`flex transition-transform duration-500 ease-in-out [touch-action:pan-x] overscroll-contain ${
                 isDragging ? 'select-none cursor-grabbing' : 'cursor-grab'
               }`}
               style={{

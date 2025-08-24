@@ -24,10 +24,10 @@ export function TestimonialQuote() {
             {/* Quote Text */}
             <blockquote className="text-white">
               <p className="text-2xl lg:text-3xl font-medium leading-relaxed mb-6">
-                &ldquo;일본 인플루언서 협찬 마케팅 시작하고 월 매출 2억에서 6개월만에 4.5억으로 올랐습니다.&rdquo;
+                &ldquo;일본 인플루언서 협찬 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.&rdquo;
               </p>
               <footer className="text-lg text-white/80">
-                - 홍대 OOO의원님
+                - 홍대 OOO의원 원장장님
               </footer>
             </blockquote>
           </div>

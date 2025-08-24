@@ -17,7 +17,7 @@ const results = [
   {
     icon: Users,
     title: "리드 전환율",
-    value: "85%",
+    value: ">60%",
     description: "일본 환자 예약 전환율",
     color: "text-blue-600",
     bgColor: "bg-blue-50",
@@ -89,17 +89,6 @@ export function HighlightResult() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              광고비 대비 매출 상승분 자료
-            </h3>
-            <p className="text-gray-600 mb-6">
-              실제 클라이언트들의 성과 데이터를 바탕으로 한 투명한 결과입니다.
-            </p>
-            <div className="text-sm text-gray-500">
-              * 나중에 추가 예정
-            </div>
-          </div>
         </motion.div>
       </Container>
     </section>
