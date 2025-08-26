@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ContentGate } from "@/components/columns/ContentGate"
 
 export default function DataPage() {
   return (
@@ -174,276 +175,278 @@ export default function DataPage() {
             </div>
           </div>
 
-          <div className="journey-stage stage-3">
-            <h4>📅 예약 및 방문 경험 단계 (Conversion & Experience)</h4>
-            <p><strong>❓ Q. 불편했던 점은 무엇일까?</strong></p>
+          <ContentGate articleSlug="data">
+            <div className="journey-stage stage-3">
+              <h4>📅 예약 및 방문 경험 단계 (Conversion & Experience)</h4>
+              <p><strong>❓ Q. 불편했던 점은 무엇일까?</strong></p>
 
-            <ul>
-              <li><strong>예약·대기 문제 17%</strong> &gt; 언어 장벽 9% &gt; 결제·환전 4% &gt; 사후케어 4%</li>
-              <li>예약앱보다는 DM, 메일, 전화 등 병원 개별 예약 비중 높음</li>
-            </ul>
-
-            <div className="insight-box">
-              <h5>💡 인사이트</h5>
               <ul>
-                <li>언어 지원보다 예약 확정 프로세스의 불투명성이 불만의 핵심</li>
-                <li>&ldquo;당일 몇 시에 시술 시작, 소요 시간, 세안·메이크업 가능 여부&rdquo; 같은 디테일 선호</li>
+                <li><strong>예약·대기 문제 17%</strong> &gt; 언어 장벽 9% &gt; 결제·환전 4% &gt; 사후케어 4%</li>
+                <li>예약앱보다는 DM, 메일, 전화 등 병원 개별 예약 비중 높음</li>
               </ul>
-            </div>
 
-            <div className="strategy-box">
-              <h5>🎯 전략 제안</h5>
-              <ul>
-                <li>일본어 카카오톡 채널 or LINE 자동 알림 구축</li>
-                <li><strong>&ldquo;예약 확정 → 시술 루틴 → 회복 가이드&rdquo;</strong>까지 한 번에 전달하는 체크리스트 발송</li>
-                <li>지불 수단 다양화(엔화 결제 가이드 + 면세 안내 + 환율 계산기 제공)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="journey-stage stage-4">
-            <h4>🎯 체류 목적과 병원 수요 (Needs)</h4>
-            <p><strong>❓ Q. 일본인들은 왜 한국에서 시술을 선택할까?</strong></p>
-
-            <ul>
-              <li>한국 여행 겸 시술(38%) &lt; <strong>시술 자체가 메인 목적(62%)</strong></li>
-              <li>가격보다 단기간 집중 관리 가능성이 주요 이유 중 하나</li>
-            </ul>
-
-            <div className="insight-box">
-              <h5>💡 인사이트</h5>
-              <ul>
-                <li>일본인 상당수가 &ldquo;관광 보조&rdquo;가 아니라 시술 중심으로 한국을 방문</li>
-                <li>회복 + 시술 패키지 일정 제안 시 만족도 극대화 가능</li>
-              </ul>
-            </div>
-
-            <div className="strategy-box">
-              <h5>🎯 전략 제안</h5>
-              <ul>
-                <li>오전 시술 → 오후 쇼핑 코스 → 호텔 회복 루틴 등 1일 플랜 콘텐츠 제작</li>
-                <li>&ldquo;2박3일 피부 리프레시 패키지&rdquo; → 항공권 시간대와 회복기간을 반영한 제안 필요</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="journey-stage stage-5">
-            <h4>🔄 재방문 & 추천 단계 (Retention & Advocacy)</h4>
-            <p><strong>❓ Q. 일본 환자들의 재방문 의향은?</strong></p>
-
-            <ul>
-              <li><strong>친구 추천 의향 74%, 재방문 의향 58%</strong></li>
-              <li>단순 체험형보다 장기 관리 목적의 수요가 많음</li>
-            </ul>
-
-            <div className="insight-box">
-              <h5>💡 인사이트</h5>
-              <ul>
-                <li>일본 환자 LTV(평생가치) 높음 → 한 번 온 고객을 붙잡는 전략 필요</li>
-                <li>기존 고객을 통한 바이럴 효과 극대화 가능</li>
-              </ul>
-            </div>
-
-            <div className="strategy-box">
-              <h5>🎯 전략 제안</h5>
-              <ul>
-                <li>&ldquo;재방문 시 10% 할인 + 홈케어 제품 제공&rdquo; 리콜 마케팅</li>
-                <li>친구 추천 시 아마존 기프트카드 지급 → 자연스러운 일본 커뮤니티 내 입소문</li>
-              </ul>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* 가격 민감도 & 티어별 상품 전략 */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="section"
-        >
-          <h2>💰 가격 민감도 & 티어별 상품 전략</h2>
-
-          <h3>❓ Q. 일본인 고객의 지불 금액대는?</h3>
-
-          <div className="key-point">
-            <ul>
-              <li><strong>엔화 환산 중앙값 약 3만 엔</strong></li>
-              <li>분포: 1만 엔 이하 20%, 3~10만 엔 50%, 15만 엔 이상 15%, 최고 250만 엔</li>
-            </ul>
-          </div>
-
-          <div className="insight-box">
-            <h5>💡 인사이트</h5>
-            <ul>
-              <li>저가 일괄 전략보다 프리미엄·중저가 티어 동시 운영이 유리</li>
-              <li>상위 10% 고가 시술 수요도 놓치지 말아야 함</li>
-            </ul>
-          </div>
-
-          <table className="tier-table">
-            <thead>
-              <tr>
-                <th>티어</th>
-                <th>가격대</th>
-                <th>서비스 내용</th>
-                <th>타겟</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Entry</strong></td>
-                <td>2~3만 엔</td>
-                <td>기본 관리 (피코토닝, 기본 보톡스)</td>
-                <td>첫 방문 고객, 체험형</td>
-              </tr>
-              <tr>
-                <td><strong>Middle</strong></td>
-                <td>5~10만 엔</td>
-                <td>리프팅+피부재생 (리쥬란, 실리프팅)</td>
-                <td>재방문 고객, 집중 케어</td>
-              </tr>
-              <tr>
-                <td><strong>Premium</strong></td>
-                <td>15만 엔 이상</td>
-                <td>줄기세포+고주파 복합 (종합 안티에이징)</td>
-                <td>VIP 고객, 장기 관리</td>
-              </tr>
-            </tbody>
-          </table>
-        </motion.section>
-
-        {/* 타겟 페르소나 */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="section"
-        >
-          <h2>👤 타겟 페르소나: &ldquo;뷰티 오타쿠 여행자&rdquo;</h2>
-
-          <div className="persona-card">
-            <div className="persona-header">
-              <div className="persona-title">🌸 뷰티 오타쿠 여행자</div>
-              <p>한국 미용 시술을 위해 적극적으로 여행하는 일본인 여성</p>
-            </div>
-
-            <div className="persona-grid">
-              <div className="persona-item">
-                <h5>📊 기본 정보</h5>
+              <div className="insight-box">
+                <h5>💡 인사이트</h5>
                 <ul>
-                  <li><strong>나이:</strong> 20대 후반 ~ 30대 중반</li>
-                  <li><strong>직업:</strong> 회사원, 프리랜서</li>
-                  <li><strong>소득:</strong> 안정적인 자기투자 가능</li>
+                  <li>언어 지원보다 예약 확정 프로세스의 불투명성이 불만의 핵심</li>
+                  <li>&ldquo;당일 몇 시에 시술 시작, 소요 시간, 세안·메이크업 가능 여부&rdquo; 같은 디테일 선호</li>
                 </ul>
               </div>
 
-              <div className="persona-item">
-                <h5>🎯 라이프스타일</h5>
+              <div className="strategy-box">
+                <h5>🎯 전략 제안</h5>
                 <ul>
-                  <li>평일 규칙적 근무, 주말 취미 활동</li>
-                  <li><strong>&lsquo;미용 여행&rsquo;</strong> 목적으로 한국 방문</li>
-                  <li>최신 유행에 민감</li>
-                  <li>자기 투자에 적극적</li>
-                </ul>
-              </div>
-
-              <div className="persona-item">
-                <h5>💫 관심사</h5>
-                <ul>
-                  <li><strong>뷰티:</strong> 한국 코스메틱, 미용 의료</li>
-                  <li><strong>여행:</strong> 한국 여행 전문</li>
-                  <li><strong>문화:</strong> K-POP, 한국 드라마</li>
-                  <li><strong>SNS:</strong> X, 인스타그램 적극 활용</li>
-                </ul>
-              </div>
-
-              <div className="persona-item">
-                <h5>🔍 특징</h5>
-                <ul>
-                  <li>한국 미용 의료의 장점을 이미 인지</li>
-                  <li>SNS 정보 → 직접 경험 → 후기 공유</li>
-                  <li>&lsquo;즐거운 경험&rsquo;으로 미용을 인식</li>
-                  <li>단순 가격보다 품질과 경험 중시</li>
+                  <li>일본어 카카오톡 채널 or LINE 자동 알림 구축</li>
+                  <li><strong>&ldquo;예약 확정 → 시술 루틴 → 회복 가이드&rdquo;</strong>까지 한 번에 전달하는 체크리스트 발송</li>
+                  <li>지불 수단 다양화(엔화 결제 가이드 + 면세 안내 + 환율 계산기 제공)</li>
                 </ul>
               </div>
             </div>
-          </div>
-        </motion.section>
 
-        {/* 결론 */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="conclusion"
-          style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white',
-            padding: '40px',
-            borderRadius: '15px',
-            textAlign: 'center',
-            margin: '40px 0',
-            boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          <h2 style={{
-            fontSize: '2rem',
-            marginBottom: '20px',
-            border: 'none',
-            padding: '0',
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-            fontWeight: '700'
-          }}>
-            🎯 결론 및 제언
-          </h2>
-          <p style={{
-            color: 'white',
-            fontSize: '1.2rem',
-            lineHeight: '1.8',
-            maxWidth: '900px',
-            margin: '0 auto',
-            textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
-          }}>
-            일본인 고객은 단순한 관광객이 아닌 <strong style={{
-              color: '#ffffff',
-              fontWeight: 'bold',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-              background: 'rgba(255, 255, 255, 0.1)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              margin: '0 2px'
-            }}>&lsquo;전문 미용 의료 소비자&rsquo;</strong>입니다. 
-            가격 경쟁보다는 <strong style={{
-              color: '#ffffff',
-              fontWeight: 'bold',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-              background: 'rgba(255, 255, 255, 0.1)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              margin: '0 2px'
-            }}>신뢰할 수 있는 증례와 체계적인 고객 경험</strong>을 제공하는 것이 
-            장기적인 성공의 핵심입니다. <strong style={{
-              color: '#ffffff',
-              fontWeight: 'bold',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-              background: 'rgba(255, 255, 255, 0.1)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              margin: '0 2px'
-            }}>X(트위터)와 LINE을 활용한 디지털 마케팅</strong>과 
-            <strong style={{
-              color: '#ffffff',
-              fontWeight: 'bold',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-              background: 'rgba(255, 255, 255, 0.1)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              margin: '0 2px'
-            }}>티어별 맞춤 서비스</strong>를 통해 높은 LTV를 가진 일본인 고객을 확보할 수 있습니다.
-          </p>
+            <div className="journey-stage stage-4">
+              <h4>🎯 체류 목적과 병원 수요 (Needs)</h4>
+              <p><strong>❓ Q. 일본인들은 왜 한국에서 시술을 선택할까?</strong></p>
+
+              <ul>
+                <li>한국 여행 겸 시술(38%) &lt; <strong>시술 자체가 메인 목적(62%)</strong></li>
+                <li>가격보다 단기간 집중 관리 가능성이 주요 이유 중 하나</li>
+              </ul>
+
+              <div className="insight-box">
+                <h5>💡 인사이트</h5>
+                <ul>
+                  <li>일본인 상당수가 &ldquo;관광 보조&rdquo;가 아니라 시술 중심으로 한국을 방문</li>
+                  <li>회복 + 시술 패키지 일정 제안 시 만족도 극대화 가능</li>
+                </ul>
+              </div>
+
+              <div className="strategy-box">
+                <h5>🎯 전략 제안</h5>
+                <ul>
+                  <li>오전 시술 → 오후 쇼핑 코스 → 호텔 회복 루틴 등 1일 플랜 콘텐츠 제작</li>
+                  <li>&ldquo;2박3일 피부 리프레시 패키지&rdquo; → 항공권 시간대와 회복기간을 반영한 제안 필요</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="journey-stage stage-5">
+              <h4>🔄 재방문 & 추천 단계 (Retention & Advocacy)</h4>
+              <p><strong>❓ Q. 일본 환자들의 재방문 의향은?</strong></p>
+
+              <ul>
+                <li><strong>친구 추천 의향 74%, 재방문 의향 58%</strong></li>
+                <li>단순 체험형보다 장기 관리 목적의 수요가 많음</li>
+              </ul>
+
+              <div className="insight-box">
+                <h5>💡 인사이트</h5>
+                <ul>
+                  <li>일본 환자 LTV(평생가치) 높음 → 한 번 온 고객을 붙잡는 전략 필요</li>
+                  <li>기존 고객을 통한 바이럴 효과 극대화 가능</li>
+                </ul>
+              </div>
+
+              <div className="strategy-box">
+                <h5>🎯 전략 제안</h5>
+                <ul>
+                  <li>&ldquo;재방문 시 10% 할인 + 홈케어 제품 제공&rdquo; 리콜 마케팅</li>
+                  <li>친구 추천 시 아마존 기프트카드 지급 → 자연스러운 일본 커뮤니티 내 입소문</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 가격 민감도 & 티어별 상품 전략 */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="section"
+            >
+              <h2>💰 가격 민감도 & 티어별 상품 전략</h2>
+
+              <h3>❓ Q. 일본인 고객의 지불 금액대는?</h3>
+
+              <div className="key-point">
+                <ul>
+                  <li><strong>엔화 환산 중앙값 약 3만 엔</strong></li>
+                  <li>분포: 1만 엔 이하 20%, 3~10만 엔 50%, 15만 엔 이상 15%, 최고 250만 엔</li>
+                </ul>
+              </div>
+
+              <div className="insight-box">
+                <h5>💡 인사이트</h5>
+                <ul>
+                  <li>저가 일괄 전략보다 프리미엄·중저가 티어 동시 운영이 유리</li>
+                  <li>상위 10% 고가 시술 수요도 놓치지 말아야 함</li>
+                </ul>
+              </div>
+
+              <table className="tier-table">
+                <thead>
+                  <tr>
+                    <th>티어</th>
+                    <th>가격대</th>
+                    <th>서비스 내용</th>
+                    <th>타겟</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Entry</strong></td>
+                    <td>2~3만 엔</td>
+                    <td>기본 관리 (피코토닝, 기본 보톡스)</td>
+                    <td>첫 방문 고객, 체험형</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Middle</strong></td>
+                    <td>5~10만 엔</td>
+                    <td>리프팅+피부재생 (리쥬란, 실리프팅)</td>
+                    <td>재방문 고객, 집중 케어</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Premium</strong></td>
+                    <td>15만 엔 이상</td>
+                    <td>줄기세포+고주파 복합 (종합 안티에이징)</td>
+                    <td>VIP 고객, 장기 관리</td>
+                  </tr>
+                </tbody>
+              </table>
+            </motion.section>
+
+            {/* 타겟 페르소나 */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="section"
+            >
+              <h2>👤 타겟 페르소나: &ldquo;뷰티 오타쿠 여행자&rdquo;</h2>
+
+              <div className="persona-card">
+                <div className="persona-header">
+                  <div className="persona-title">🌸 뷰티 오타쿠 여행자</div>
+                  <p>한국 미용 시술을 위해 적극적으로 여행하는 일본인 여성</p>
+                </div>
+
+                <div className="persona-grid">
+                  <div className="persona-item">
+                    <h5>📊 기본 정보</h5>
+                    <ul>
+                      <li><strong>나이:</strong> 20대 후반 ~ 30대 중반</li>
+                      <li><strong>직업:</strong> 회사원, 프리랜서</li>
+                      <li><strong>소득:</strong> 안정적인 자기투자 가능</li>
+                    </ul>
+                  </div>
+
+                  <div className="persona-item">
+                    <h5>🎯 라이프스타일</h5>
+                    <ul>
+                      <li>평일 규칙적 근무, 주말 취미 활동</li>
+                      <li><strong>&lsquo;미용 여행&rsquo;</strong> 목적으로 한국 방문</li>
+                      <li>최신 유행에 민감</li>
+                      <li>자기 투자에 적극적</li>
+                    </ul>
+                  </div>
+
+                  <div className="persona-item">
+                    <h5>💫 관심사</h5>
+                    <ul>
+                      <li><strong>뷰티:</strong> 한국 코스메틱, 미용 의료</li>
+                      <li><strong>여행:</strong> 한국 여행 전문</li>
+                      <li><strong>문화:</strong> K-POP, 한국 드라마</li>
+                      <li><strong>SNS:</strong> X, 인스타그램 적극 활용</li>
+                    </ul>
+                  </div>
+
+                  <div className="persona-item">
+                    <h5>🔍 특징</h5>
+                    <ul>
+                      <li>한국 미용 의료의 장점을 이미 인지</li>
+                      <li>SNS 정보 → 직접 경험 → 후기 공유</li>
+                      <li>&lsquo;즐거운 경험&rsquo;으로 미용을 인식</li>
+                      <li>단순 가격보다 품질과 경험 중시</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+
+            {/* 결론 */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="conclusion"
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                padding: '40px',
+                borderRadius: '15px',
+                textAlign: 'center',
+                margin: '40px 0',
+                boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+            >
+              <h2 style={{
+                fontSize: '2rem',
+                marginBottom: '20px',
+                border: 'none',
+                padding: '0',
+                color: 'white',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                fontWeight: '700'
+              }}>
+                🎯 결론 및 제언
+              </h2>
+              <p style={{
+                color: 'white',
+                fontSize: '1.2rem',
+                lineHeight: '1.8',
+                maxWidth: '900px',
+                margin: '0 auto',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
+              }}>
+                일본인 고객은 단순한 관광객이 아닌 <strong style={{
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  margin: '0 2px'
+                }}>&lsquo;전문 미용 의료 소비자&rsquo;</strong>입니다. 
+                가격 경쟁보다는 <strong style={{
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  margin: '0 2px'
+                }}>신뢰할 수 있는 증례와 체계적인 고객 경험</strong>을 제공하는 것이 
+                장기적인 성공의 핵심입니다. <strong style={{
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  margin: '0 2px'
+                }}>X(트위터)와 LINE을 활용한 디지털 마케팅</strong>과 
+                <strong style={{
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  margin: '0 2px'
+                }}>티어별 맞춤 서비스</strong>를 통해 높은 LTV를 가진 일본인 고객을 확보할 수 있습니다.
+              </p>
+            </motion.section>
+          </ContentGate>
         </motion.section>
       </div>
 

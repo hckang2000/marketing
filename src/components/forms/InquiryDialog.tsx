@@ -41,6 +41,8 @@ export function InquiryDialog() {
       if (response.ok) {
         setSubmitStatus("success")
         reset()
+        // inquiry-success 이벤트 디스패치
+        window.dispatchEvent(new CustomEvent("inquiry-success"))
         setTimeout(() => {
           closeContact()
           setSubmitStatus("idle")
