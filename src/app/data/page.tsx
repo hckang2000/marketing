@@ -24,24 +24,27 @@ export default function DataPage() {
         }}
       >
         <div className="container">
-          <h1 style={{
-            fontSize: '3rem',
-            fontWeight: '700',
-            marginBottom: '20px',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-            color: 'white',
-            lineHeight: '1.2'
-          }}>
-            🇯🇵 한국 피부과 클리닉<br/>일본인 고객 심층 분석 보고서
+          {/* Mobile Title */}
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight lg:hidden" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+            한국 미용 클리닉<br/>
+            일본인 고객<br/>
+            심층 분석 보고서
           </h1>
-          <p style={{
-            fontSize: '1.3rem',
-            opacity: '0.95',
-            maxWidth: '800px',
-            margin: '0 auto',
-            lineHeight: '1.6',
-            color: 'white'
-          }}>
+          
+          {/* Desktop Title */}
+          <h1 className="hidden lg:block text-5xl font-bold text-white mb-6 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+            한국 미용 클리닉<br/>
+            일본인 고객 심층 분석 보고서
+          </h1>
+          
+          {/* Mobile Description */}
+          <p className="text-base md:text-lg lg:text-xl text-white mb-4 md:mb-6 max-w-2xl mx-auto leading-relaxed lg:hidden" style={{ opacity: '0.95' }}>
+            일본인 환자의 5단계 고객 여정을<br/>
+            기반으로 한 마케팅 전략 가이드
+          </p>
+          
+          {/* Desktop Description */}
+          <p className="hidden lg:block text-xl text-white mb-6 max-w-3xl mx-auto leading-relaxed" style={{ opacity: '0.95' }}>
             일본인 환자의 5단계 고객 여정을 기반으로 한 마케팅 전략 가이드
           </p>
         </div>
