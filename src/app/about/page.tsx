@@ -15,14 +15,15 @@ const timeline = [
   },
   {
     year: "2024",
+    title: "일본 현지 파트너십",
+    description: "일본 현지 인플루언서 네트워크 300명 구축 완료",
+  },
+  {
+    year: "2025",
     title: "첫 번째 성공 사례",
     description: "홍대 OOO의원과 함께 월 매출 2억에서 3.5억으로 성장",
   },
-  {
-    year: "2024",
-    title: "일본 현지 파트너십",
-    description: "일본 현지 인플루언서 네트워크 구축 완료",
-  },
+
 ]
 
 const values = [
