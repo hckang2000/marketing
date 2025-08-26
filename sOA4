@@ -1,0 +1,71 @@
+[33mcommit 18c93713fa62ceec8bb7d4e9e80b1f6b0afa6d91[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrestore-report-design[m[33m)[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Tue Aug 26 14:48:34 2025 +0900
+
+    데이터 랜딩페이지
+
+[33mcommit bb96806f3b75226c4e57a21a4e56892cefc715ca[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Tue Aug 26 11:16:38 2025 +0900
+
+    blog posting
+
+[33mcommit 1888c0a51d8ab996983b25a07e667fafa6a499a8[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Tue Aug 26 10:26:45 2025 +0900
+
+    모바일 디자인 세부 수정
+
+[33mcommit 232c3d5edf7d387deed3fe8ddca2a98b524e6213[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Sun Aug 24 17:51:21 2025 +0900
+
+    swipe기능 수정
+
+[33mcommit 24b4e753e40b44486a16eca3dd09e3374cc2f720[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Sun Aug 24 17:40:15 2025 +0900
+
+    carousel 수정
+
+[33mcommit a7e7488ada2e40505c56ff58583dfa1559078372[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Sun Aug 24 17:27:49 2025 +0900
+
+    의사후기 이미지 추가
+
+[33mcommit 29f1f08698fe8e38ebf7c07850c8fb7efc602ba3[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 22:58:29 2025 +0900
+
+    Fix Resend API key error for Vercel deployment - add fallback handling
+
+[33mcommit 4b3a0c6e70768b9d90194856dfdd1f84025ca0b1[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 22:50:01 2025 +0900
+
+    Fix TypeScript JSX namespace error for Vercel deployment
+
+[33mcommit 3ff99355010b6317c51e57b21448a227a750f592[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 22:46:15 2025 +0900
+
+    배포오류수정
+
+[33mcommit ad86acb63725d36d7ca1dbf2c6bd8a1636799e82[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 22:37:35 2025 +0900
+
+    이미지수정
+
+[33mcommit 49ac33ca1b702fff305d94977e2a43d51c25f79d[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 21:33:24 2025 +0900
+
+    Initial commit: Complete marketing landing page with Next.js, Tailwind CSS, and shadcn/ui
+
+[33mcommit be1e8fcd1601ab7d75a9bd92b8815fae1bb003e8[m
+Author: hckang2000 <hckang2000@naver.com>
+Date:   Fri Aug 22 17:50:45 2025 +0900
+
+    Initial commit from Create Next App
