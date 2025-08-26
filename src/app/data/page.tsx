@@ -12,11 +12,11 @@ export default function DataPage() {
         transition={{ duration: 0.6 }}
         className="report-header"
         style={{
-          background: 'linear-gradient(135deg, #DF6134 0%, #F39C12 100%)',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           color: 'white',
           padding: '60px 0',
           textAlign: 'center',
-          boxShadow: '0 4px 20px rgba(223, 97, 52, 0.3)',
+          boxShadow: '0 4px 20px rgba(102, 126, 234, 0.3)',
           marginBottom: '40px',
           width: '100%',
           position: 'relative'
@@ -31,7 +31,7 @@ export default function DataPage() {
             color: 'white',
             lineHeight: '1.2'
           }}>
-            🇯🇵 한국 피부과 클리닉 일본인 고객 심층 분석 보고서
+            🇯🇵 한국 피부과 클리닉<br/>일본인 고객 심층 분석 보고서
           </h1>
           <p style={{
             fontSize: '1.3rem',
@@ -377,13 +377,13 @@ export default function DataPage() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="conclusion"
           style={{
-            background: 'linear-gradient(135deg, #DF6134 0%, #F39C12 100%)',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             color: 'white',
             padding: '40px',
             borderRadius: '15px',
             textAlign: 'center',
             margin: '40px 0',
-            boxShadow: '0 8px 25px rgba(223, 97, 52, 0.3)',
+            boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
             position: 'relative',
             overflow: 'hidden'
           }}
@@ -450,10 +450,10 @@ export default function DataPage() {
       <style jsx>{`
         .data-page {
           min-height: 100vh;
-          background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+          background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
           font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
           line-height: 1.7;
-          color: #2c3e50;
+          color: #0f172a;
         }
 
         .container {
@@ -468,11 +468,11 @@ export default function DataPage() {
           margin: 40px 0;
           border-radius: 15px;
           box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-          border-left: 5px solid #DF6134;
+          border-left: 5px solid #667eea;
         }
 
         .meta-info h2 {
-          color: #DF6134;
+          color: #667eea;
           margin-bottom: 20px;
           font-size: 1.5rem;
         }
@@ -492,7 +492,7 @@ export default function DataPage() {
         }
 
         .meta-item strong {
-          color: #DF6134;
+          color: #667eea;
           font-size: 1.1rem;
         }
 
@@ -505,10 +505,10 @@ export default function DataPage() {
         }
 
         .section h2 {
-          color: #DF6134;
+          color: #667eea;
           font-size: 2.2rem;
           margin-bottom: 25px;
-          border-bottom: 3px solid #DF6134;
+          border-bottom: 3px solid #667eea;
           padding-bottom: 15px;
           position: relative;
         }
@@ -529,13 +529,13 @@ export default function DataPage() {
           transform: translateY(-50%);
           width: 4px;
           height: 100%;
-          background: #DF6134;
+          background: #667eea;
           border-radius: 2px;
         }
 
         .journey-stage {
-          background: linear-gradient(135deg, #fff5f2 0%, #ffffff 100%);
-          border: 2px solid #DF6134;
+          background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+          border: 2px solid #667eea;
           border-radius: 15px;
           padding: 30px;
           margin: 30px 0;
@@ -547,7 +547,7 @@ export default function DataPage() {
           position: absolute;
           top: -10px;
           left: 30px;
-          background: #DF6134;
+          background: #667eea;
           color: white;
           padding: 5px 15px;
           border-radius: 20px;
@@ -562,7 +562,7 @@ export default function DataPage() {
         .stage-5::before { content: '5단계'; }
 
         .journey-stage h4 {
-          color: #DF6134;
+          color: #667eea;
           font-size: 1.4rem;
           margin-bottom: 15px;
           margin-top: 10px;
@@ -585,8 +585,8 @@ export default function DataPage() {
         }
 
         .persona-card {
-          background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-          border: 2px solid #DF6134;
+          background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+          border: 2px solid #667eea;
           border-radius: 15px;
           padding: 30px;
           margin: 30px 0;
@@ -598,7 +598,7 @@ export default function DataPage() {
         }
 
         .persona-title {
-          background: #DF6134;
+          background: #667eea;
           color: white;
           font-size: 1.8rem;
           font-weight: bold;
@@ -623,7 +623,7 @@ export default function DataPage() {
         }
 
         .persona-item h5 {
-          color: #DF6134;
+          color: #667eea;
           font-size: 1.2rem;
           margin-bottom: 10px;
         }
@@ -641,7 +641,7 @@ export default function DataPage() {
           border-radius: 12px;
           text-align: center;
           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          border-top: 4px solid #DF6134;
+          border-top: 4px solid #667eea;
           transition: transform 0.3s ease;
         }
 
@@ -652,7 +652,7 @@ export default function DataPage() {
         .stat-number {
           font-size: 2.5rem;
           font-weight: bold;
-          color: #DF6134;
+          color: #667eea;
           margin-bottom: 10px;
         }
 
@@ -662,7 +662,7 @@ export default function DataPage() {
         }
 
         .highlight {
-          background: linear-gradient(135deg, #DF6134 0%, #F39C12 100%);
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           padding: 3px 8px;
           border-radius: 5px;
@@ -670,8 +670,8 @@ export default function DataPage() {
         }
 
         .key-point {
-          background: #fff8f0;
-          border-left: 5px solid #DF6134;
+          background: #f0f4ff;
+          border-left: 5px solid #667eea;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
@@ -687,7 +687,7 @@ export default function DataPage() {
         }
 
         .tier-table th {
-          background: #DF6134;
+          background: #667eea;
           color: white;
           padding: 15px;
           text-align: center;
@@ -715,7 +715,7 @@ export default function DataPage() {
         }
 
         strong {
-          color: #DF6134;
+          color: #667eea;
         }
 
         @media (max-width: 768px) {
