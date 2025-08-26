@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
@@ -15,12 +16,7 @@ const timeline = [
   {
     year: "2024",
     title: "첫 번째 성공 사례",
-    description: "홍대 OOO의원과 함께 월 매출 2억에서 4.5억으로 성장",
-  },
-  {
-    year: "2024",
-    title: "서비스 확장",
-    description: "피부과, 성형외과, 치과 등 다양한 분야로 서비스 확장",
+    description: "홍대 OOO의원과 함께 월 매출 2억에서 3.5억으로 성장",
   },
   {
     year: "2024",
@@ -83,18 +79,24 @@ export default function AboutPage() {
           >
             <Card className="max-w-4xl mx-auto">
               <CardHeader className="text-center">
-                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-white font-bold text-3xl">김</span>
+                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 mb-6">
+                  <Image
+                    src="/images/profiles/ceo_profile.jpg"
+                    alt="이은석 대표 프로필 사진"
+                    fill
+                    className="object-cover"
+                    sizes="128px"
+                  />
                 </div>
                 <CardTitle className="text-2xl font-bold text-gray-900">
-                  김대표
+                  이은석 대표
                 </CardTitle>
                 <p className="text-gray-600">클리닉브릿지 대표</p>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="max-w-2xl mx-auto space-y-4">
                   <p className="text-gray-700 leading-relaxed">
-                    안녕하세요. 클리닉브릿지 대표 김OO입니다.
+                    안녕하세요. 클리닉브릿지 대표 이은석입니다.
                   </p>
                   <p className="text-gray-700 leading-relaxed">
                     서울대학교 경영학과를 졸업하고 10년 이상의 마케팅 경험을 바탕으로, 

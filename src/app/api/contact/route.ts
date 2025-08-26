@@ -48,9 +48,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true })
     }
 
-    await resend.emails.send({
-      from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
-      to: process.env.TO_EMAIL || "hckang2000@naver.com",
+         await resend.emails.send({
+       from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
+       to: process.env.TO_EMAIL || "clinicbridge.kr@gmail.com",
       subject: "클리닉브릿지 1분 문의 도착",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
