@@ -67,7 +67,7 @@ export default function AboutPage() {
               회사 소개
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              클리닉브릿지는 일본 대상 병원 마케팅 전문 회사입니다
+              클리닉브릿지는 일본 대상<br className="sm:hidden" /> 병원 마케팅 전문 회사입니다
             </p>
           </motion.div>
 
@@ -97,15 +97,27 @@ export default function AboutPage() {
               <CardContent className="text-center">
                 <div className="max-w-2xl mx-auto space-y-4">
                   <p className="text-gray-700 leading-relaxed">
-                    안녕하세요. 클리닉브릿지 대표 이은석입니다.
+                    근거 기반 마케팅으로 매출을 올려드리는 클리닉브릿지 대표 이은석입니다.
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    서울대학교 경영학과를 졸업하고 10년 이상의 마케팅 경험을 바탕으로, 
+                    서울대학교 경영대학을 졸업하고 10년 이상의 마케팅 경험을 바탕으로,<br className="hidden sm:inline" />
                     병원들이 일본 시장에서 성공할 수 있도록 도와드리고 있습니다.
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    우리는 단순한 광고 대행이 아닌, 실제 성과를 만들어내는 마케팅만 제안합니다. 
-                    광고비의 10배 이상을 벌 수 있는 전략으로 원장님들의 성공을 이끌어가겠습니다.
+                    마케팅은 소비가 아니라 투자가 되어야 합니다.<br className="hidden sm:inline" />
+                    광고비의 10배 이상을 벌 수 있는 전략으로 원장님들의 성공을 보장하겠습니다.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    항상 폭발적인 매출을 만들었던 실력을 바탕으로<br className="hidden sm:inline" />
+                    병원들의 해외 환자 마케팅을 책임지겠습니다.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    저희는 소개로 찾아주시는 분들이 많습니다.<br className="hidden sm:inline" />
+                    일을 맡겨보신 분들은 다르다는 것을 느끼시기 때문입니다.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    가볍게 문의해주세요.<br className="hidden sm:inline" />
+                    15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
                   </p>
                   <Button onClick={openContact} variant="gradient" className="mt-6">
                     1분 문의하기

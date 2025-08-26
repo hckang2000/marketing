@@ -25,15 +25,15 @@ export function Footer() {
               <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>서울특별시 강남구 테헤란로 123</span>
+                  <span>서울특별시 관악구 낙성대로 2 벤처창업센터</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
-                  <span>02-1234-5678</span>
+                  <span>010-2082-3825</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <span>contact@clinicbridge.co.kr</span>
+                  <span>clinicbridge.kr@gmail.com</span>
                 </div>
               </div>
             </div>
