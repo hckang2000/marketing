@@ -9,30 +9,35 @@ const steps = [
     number: "01",
     title: "제공 시술 확인",
     description: "병원의 주요 시술과 특화 분야를 파악하여 타겟 고객층을 분석합니다.",
+    descriptionMobile: "병원의 주요 시술과 특화 분야를<br />파악하여 타겟 고객층을 분석합니다.",
     icon: "🔍"
   },
   {
     number: "02",
     title: "인플루언서 모집/선정",
     description: "일본 현지 인플루언서를 모집하고 병원에 적합한 인플루언서를 선정합니다.",
+    descriptionMobile: "일본 현지 인플루언서를 모집하고<br />병원에 적합한 인플루언서를 선정합니다.",
     icon: "👥"
   },
   {
     number: "03",
     title: "일정 조율/체험",
     description: "선정된 인플루언서와 일정을 조율하고 실제 시술 체험을 진행합니다.",
+    descriptionMobile: "선정된 인플루언서와 일정을 조율하고<br />실제 시술 체험을 진행합니다.",
     icon: "📅"
   },
   {
     number: "04",
     title: "해외 환자 유치",
     description: "인플루언서 콘텐츠를 통해 일본 고객을 유치하고 예약을 관리합니다.",
+    descriptionMobile: "인플루언서 콘텐츠를 통해 일본 고객을<br />유치하고 예약을 관리합니다.",
     icon: "🌏"
   },
   {
     number: "05",
     title: "병원 방문(통역)",
     description: "일본 환자의 병원 방문 시 통역 서비스를 제공하여 원활한 소통을 돕습니다.",
+    descriptionMobile: "일본 환자의 병원 방문 시 통역 서비스를<br />제공하여 원활한 소통을 돕습니다.",
     icon: "🏥"
   }
 ]
@@ -48,10 +53,24 @@ export function Process() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          {/* Title - Mobile */}
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
             클리닉브릿지의 5단계 프로세스
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+
+          {/* Title - Desktop */}
+          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
+            클리닉브릿지의 5단계 프로세스
+          </h2>
+
+          {/* Description - Mobile */}
+          <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
+            전문적인 일본 마케팅 프로세스로<br />
+            성공적인 결과를 만들어냅니다
+          </p>
+
+          {/* Description - Desktop */}
+          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
             체계적이고 전문적인 일본 마케팅 프로세스로 성공적인 결과를 만들어냅니다
           </p>
         </motion.div>
@@ -83,7 +102,14 @@ export function Process() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    {/* Description - Mobile */}
+                    <p
+                      className="text-gray-600 text-sm leading-relaxed lg:hidden"
+                      dangerouslySetInnerHTML={{ __html: step.descriptionMobile }}
+                    />
+
+                    {/* Description - Desktop */}
+                    <p className="hidden lg:block text-gray-600 text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </CardContent>

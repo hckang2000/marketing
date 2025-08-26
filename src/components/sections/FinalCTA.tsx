@@ -19,13 +19,27 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
           viewport={{ once: true }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          {/* Title - Mobile */}
+          <h2 className="text-2xl font-bold text-white mb-6 lg:hidden">
             1분만 투자해서 문의해주시면
           </h2>
-          <p className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
+
+          {/* Title - Desktop */}
+          <h2 className="hidden lg:block text-4xl font-bold text-white mb-6">
+            1분만 투자해서 문의해주시면
+          </h2>
+
+          {/* Description - Mobile */}
+          <p className="text-lg text-white/90 mb-8 leading-relaxed lg:hidden">
+            직접 찾아뵙고 무료로<br />
+            병원 해외마케팅을 진단해드립니다.
+          </p>
+
+          {/* Description - Desktop */}
+          <p className="hidden lg:block text-2xl text-white/90 mb-8 leading-relaxed">
             직접 찾아뵙고 무료로 병원 해외마케팅을 진단해드립니다.
           </p>
-          
+
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
             <h3 className="text-xl font-semibold text-white mb-4">
               무료 진단 포함 사항

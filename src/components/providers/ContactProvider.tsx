@@ -11,7 +11,7 @@ interface ContactContextType {
 const ContactContext = createContext<ContactContextType | undefined>(undefined)
 
 export function ContactProvider({ children }: { children: ReactNode }) {
-  const [isContactOpen, setIsContactOpen] = useState(false)
+  const [isContactOpen, setIsContactOpen] = useState<boolean>(false)
 
   const openContact = () => setIsContactOpen(true)
   const closeContact = () => setIsContactOpen(false)

@@ -43,11 +43,6 @@ export function Footer() {
               <h3 className="font-semibold mb-4">바로가기</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/case-studies" className="text-gray-300 hover:text-white transition-colors">
-                    후기
-                  </Link>
-                </li>
-                <li>
                   <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
                     회사 소개
                   </Link>

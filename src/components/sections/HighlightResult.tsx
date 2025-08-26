@@ -43,10 +43,24 @@ export function HighlightResult() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          {/* Title - Mobile */}
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
             클리닉브릿지의 핵심 성과
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          
+          {/* Title - Desktop */}
+          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
+            클리닉브릿지의 핵심 성과
+          </h2>
+          
+          {/* Description - Mobile */}
+          <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
+            클리닉브릿지는 광고비의<br />
+            최소 10배 이상을 벌 수 있는 마케팅만 제안합니다.
+          </p>
+          
+          {/* Description - Desktop */}
+          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
             클리닉브릿지는 광고비의 최소 10배 이상을 벌 수 있는 일본 마케팅만 제안합니다.
           </p>
         </motion.div>

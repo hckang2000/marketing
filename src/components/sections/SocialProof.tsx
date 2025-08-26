@@ -216,7 +216,14 @@ export function SocialProof() {
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             원장님들 실제 후기
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          {/* Description - Mobile */}
+          <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
+            클리닉브릿지와 함께한 원장님들의<br />
+            생생한 후기를 확인해보세요
+          </p>
+          
+          {/* Description - Desktop */}
+          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
             클리닉브릿지와 함께한 원장님들의 생생한 후기를 확인해보세요
           </p>
         </motion.div>

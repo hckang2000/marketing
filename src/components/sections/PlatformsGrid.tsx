@@ -5,14 +5,12 @@ import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
 
 const platforms = [
-  { name: "일본", icon: "🇯🇵", description: "타겟 시장" },
   { name: "Instagram", icon: "📸", description: "주요 플랫폼" },
+  { name: "X(트위터)", icon: "🐦", description: "실시간 소통" },
   { name: "YouTube", icon: "📺", description: "비디오 콘텐츠" },
-  { name: "Twitter", icon: "🐦", description: "실시간 소통" },
-  { name: "TikTok", icon: "🎵", description: "트렌디 콘텐츠" },
   { name: "LINE", icon: "💬", description: "일본 메신저" },
-  { name: "Facebook", icon: "📘", description: "소셜 네트워킹" },
-  { name: "Blog", icon: "📝", description: "상세 후기" }
+  { name: "GOOGLE", icon: "🌐", description: "검색 최적화" },
+  { name: "NEWS", icon: "📝", description: "관련 기사 송출" }
 ]
 
 export function PlatformsGrid() {
@@ -27,10 +25,10 @@ export function PlatformsGrid() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            일본 고객이 주로 사용하는 플랫폼
+            마케팅 대상 플랫폼
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            일본 고객은 SNS 실제 후기 기반 의사결정 비중이 높습니다
+            일본에서 효과를 내는 SNS는 정해져 있습니다
           </p>
         </motion.div>
 

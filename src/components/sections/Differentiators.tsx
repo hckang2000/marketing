@@ -12,31 +12,31 @@ const differentiators = [
   {
     id: 1,
     icon: GraduationCap,
-    title: "서울대 출신 마케터가 업계 최저 단가로 진행",
-    description: "서울대학교 마케팅 전공 대표가 직접 진행하는 전문적인 서비스",
+    title: "서울대 출신 마케팅 팀",
+    description: "서울대학교 마케팅 전공 대표가 직접 소통하고 컨설팅 해드립니다.",
     details: [
       "대표 포함 전원 서울대학교 출신",
       "10년 이상 마케팅 경력",
-      "업계 최저 단가 보장",
       "1:1 맞춤형 전략 수립"
     ],
     profile: {
-      name: "이은석 대표표",
-      education: "서울대학교 XX학학과",
+      name: "이은석 대표",
+      education: "서울대학교 벤처경영학과 졸",
       experience: "10년+ 마케팅 경력",
-      image: "/images/profiles/ceo-profile.jpg"
+      image: "/images/profiles/ceo_profile.jpg"
     }
+    
   },
   {
     id: 2,
     icon: Target,
-    title: "광고비의 10배 이상을 벌 수 있는 마케팅만 제안",
-    description: "실제 성과가 검증된 마케팅 전략만 선별하여 제공",
+    title: "광고비의 10배 이상 매출",
+    description: "실제 성과가 검증된 마케팅 전략만 선별하여 제공해 드립니다.",
     details: [
       "마이크로 인플루언서 협찬에 집중",
       "일본 고객은 SNS 실제 후기 중시",
       "실시간 LINE 응대서비스",
-      "ROAS 1500% 이상 달성"
+      "ROAS 1500% 이상 달성 이력"
     ]
   },
   {
@@ -66,11 +66,26 @@ export function Differentiators() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          {/* Title - Mobile */}
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
+            클리닉브릿지가<br />
+            타 업체와 다른 이유?
+          </h2>
+          
+          {/* Title - Desktop */}
+          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
             클리닉브릿지가 타 업체와 다른 이유?
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            단순한 광고 대행이 아닌, 실제 성과를 만들어내는 차별화된 서비스
+          
+          {/* Description - Mobile */}
+          <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
+            단순한 광고 대행이 아닌 실제 매출을<br />
+            만들어내는 차별화된 서비스
+          </p>
+          
+          {/* Description - Desktop */}
+          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
+            단순한 광고 대행이 아닌, 실제 매출을 만들어내는 차별화된 서비스
           </p>
         </motion.div>
 
@@ -127,35 +142,60 @@ export function Differentiators() {
                         </ul>
                       </div>
 
-                      {item.profile && (
-                        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-gray-900 mb-3">대표 프로필</h4>
-                          <div className="flex items-center space-x-3">
-                            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
-                              {item.profile.image ? (
+                      <div className="space-y-4">
+                        {item.profile && (
+                          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
+                            <h4 className="font-semibold text-gray-900 mb-3">대표</h4>
+                            <div className="flex items-center space-x-3">
+                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
+                                {item.profile.image ? (
+                                  <Image
+                                    src={item.profile.image}
+                                    alt={`${item.profile.name} 프로필 사진`}
+                                    fill
+                                    className="object-cover"
+                                    sizes="64px"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center">
+                                    <span className="text-white font-semibold text-lg">
+                                      {item.profile.name.charAt(0)}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                              <div>
+                                <p className="font-semibold text-gray-900">{item.profile.name}</p>
+                                <p className="text-sm text-gray-600">{item.profile.education}</p>
+                                <p className="text-sm text-gray-600">{item.profile.experience}</p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {item.id === 1 && (
+                          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
+                            <h4 className="font-semibold text-gray-900 mb-3">자문의</h4>
+                            <div className="flex items-center space-x-3">
+                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
                                 <Image
-                                  src={item.profile.image}
-                                  alt={`${item.profile.name} 프로필 사진`}
+                                  src="/images/profiles/doctor_profile.jpg"
+                                  alt="자문의 프로필 사진"
                                   fill
                                   className="object-cover"
                                   sizes="64px"
                                 />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center">
-                                  <span className="text-white font-semibold text-lg">
-                                    {item.profile.name.charAt(0)}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                            <div>
-                              <p className="font-semibold text-gray-900">{item.profile.name}</p>
-                              <p className="text-sm text-gray-600">{item.profile.education}</p>
-                              <p className="text-sm text-gray-600">{item.profile.experience}</p>
+                              </div>
+                              <div>
+                                <p className="font-semibold text-gray-900">강OO 자문의</p>
+                                <p className="text-sm text-gray-600">서울대학교 의과대학 졸업</p>
+                                <p className="text-sm text-gray-600">서울대학교 병원 수련</p>
+                                <p className="text-sm text-gray-600">의료 마케팅 5년+ 경력</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 )}
