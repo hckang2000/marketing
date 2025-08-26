@@ -160,7 +160,7 @@ export default function DataPage() {
               <ul>
                 <li>가격 경쟁보다 증례 신뢰도 확보가 중요</li>
                 <li>일본어 사례집 + 환자 후기 영상 노출 필요</li>
-                <li>의사 실력 강조보다는 <strong>"이 시술을 받은 고객의 전후 비교"</strong>가 전환율에 결정적</li>
+                <li>의사 실력 강조보다는 <strong>&ldquo;이 시술을 받은 고객의 전후 비교&rdquo;</strong>가 전환율에 결정적</li>
               </ul>
             </div>
 
@@ -187,7 +187,7 @@ export default function DataPage() {
               <h5>💡 인사이트</h5>
               <ul>
                 <li>언어 지원보다 예약 확정 프로세스의 불투명성이 불만의 핵심</li>
-                <li>"당일 몇 시에 시술 시작, 소요 시간, 세안·메이크업 가능 여부" 같은 디테일 선호</li>
+                <li>&ldquo;당일 몇 시에 시술 시작, 소요 시간, 세안·메이크업 가능 여부&rdquo; 같은 디테일 선호</li>
               </ul>
             </div>
 
@@ -195,7 +195,7 @@ export default function DataPage() {
               <h5>🎯 전략 제안</h5>
               <ul>
                 <li>일본어 카카오톡 채널 or LINE 자동 알림 구축</li>
-                <li><strong>"예약 확정 → 시술 루틴 → 회복 가이드"</strong>까지 한 번에 전달하는 체크리스트 발송</li>
+                <li><strong>&ldquo;예약 확정 → 시술 루틴 → 회복 가이드&rdquo;</strong>까지 한 번에 전달하는 체크리스트 발송</li>
                 <li>지불 수단 다양화(엔화 결제 가이드 + 면세 안내 + 환율 계산기 제공)</li>
               </ul>
             </div>
@@ -213,7 +213,7 @@ export default function DataPage() {
             <div className="insight-box">
               <h5>💡 인사이트</h5>
               <ul>
-                <li>일본인 상당수가 "관광 보조"가 아니라 시술 중심으로 한국을 방문</li>
+                <li>일본인 상당수가 &ldquo;관광 보조&rdquo;가 아니라 시술 중심으로 한국을 방문</li>
                 <li>회복 + 시술 패키지 일정 제안 시 만족도 극대화 가능</li>
               </ul>
             </div>
@@ -222,7 +222,7 @@ export default function DataPage() {
               <h5>🎯 전략 제안</h5>
               <ul>
                 <li>오전 시술 → 오후 쇼핑 코스 → 호텔 회복 루틴 등 1일 플랜 콘텐츠 제작</li>
-                <li>"2박3일 피부 리프레시 패키지" → 항공권 시간대와 회복기간을 반영한 제안 필요</li>
+                <li>&ldquo;2박3일 피부 리프레시 패키지&rdquo; → 항공권 시간대와 회복기간을 반영한 제안 필요</li>
               </ul>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function DataPage() {
             <div className="strategy-box">
               <h5>🎯 전략 제안</h5>
               <ul>
-                <li>"재방문 시 10% 할인 + 홈케어 제품 제공" 리콜 마케팅</li>
+                <li>&ldquo;재방문 시 10% 할인 + 홈케어 제품 제공&rdquo; 리콜 마케팅</li>
                 <li>친구 추천 시 아마존 기프트카드 지급 → 자연스러운 일본 커뮤니티 내 입소문</li>
               </ul>
             </div>
@@ -319,7 +319,7 @@ export default function DataPage() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="section"
         >
-          <h2>👤 타겟 페르소나: "뷰티 오타쿠 여행자"</h2>
+          <h2>👤 타겟 페르소나: &ldquo;뷰티 오타쿠 여행자&rdquo;</h2>
 
           <div className="persona-card">
             <div className="persona-header">
@@ -341,7 +341,7 @@ export default function DataPage() {
                 <h5>🎯 라이프스타일</h5>
                 <ul>
                   <li>평일 규칙적 근무, 주말 취미 활동</li>
-                  <li><strong>'미용 여행'</strong> 목적으로 한국 방문</li>
+                  <li><strong>&lsquo;미용 여행&rsquo;</strong> 목적으로 한국 방문</li>
                   <li>최신 유행에 민감</li>
                   <li>자기 투자에 적극적</li>
                 </ul>
@@ -362,7 +362,7 @@ export default function DataPage() {
                 <ul>
                   <li>한국 미용 의료의 장점을 이미 인지</li>
                   <li>SNS 정보 → 직접 경험 → 후기 공유</li>
-                  <li>'즐거운 경험'으로 미용을 인식</li>
+                  <li>&lsquo;즐거운 경험&rsquo;으로 미용을 인식</li>
                   <li>단순 가격보다 품질과 경험 중시</li>
                 </ul>
               </div>
@@ -415,7 +415,7 @@ export default function DataPage() {
               padding: '2px 6px',
               borderRadius: '4px',
               margin: '0 2px'
-            }}>'전문 미용 의료 소비자'</strong>입니다. 
+            }}>&lsquo;전문 미용 의료 소비자&rsquo;</strong>입니다. 
             가격 경쟁보다는 <strong style={{
               color: '#ffffff',
               fontWeight: 'bold',
