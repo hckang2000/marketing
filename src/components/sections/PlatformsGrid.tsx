@@ -8,9 +8,7 @@ const platforms = [
   { name: "Instagram", icon: "📸", description: "주요 플랫폼" },
   { name: "X(트위터)", icon: "🐦", description: "실시간 소통" },
   { name: "YouTube", icon: "📺", description: "비디오 콘텐츠" },
-  { name: "LINE", icon: "💬", description: "일본 메신저" },
-  { name: "GOOGLE", icon: "🌐", description: "검색 최적화" },
-  { name: "NEWS", icon: "📝", description: "관련 기사 송출" }
+  { name: "LINE", icon: "💬", description: "일본 메신저" }
 ]
 
 export function PlatformsGrid() {

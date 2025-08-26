@@ -11,7 +11,6 @@ import { useContact } from "@/components/providers/ContactProvider"
 
 const navigation = [
   { name: "서비스", href: "/#services" },
-  { name: "후기", href: "/case-studies" },
   { name: "소개", href: "/about" },
   { name: "칼럼", href: "/blog" },
 ]

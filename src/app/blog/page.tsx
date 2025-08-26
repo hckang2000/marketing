@@ -4,63 +4,9 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
+import { getAllBlogPosts } from "@/data/blogPosts"
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "일본 인플루언서 마케팅의 핵심 전략",
-    excerpt: "일본 고객을 유치하기 위한 인플루언서 마케팅의 핵심 전략과 실제 성공 사례를 소개합니다.",
-    date: "2024-01-15",
-    readTime: "5분",
-    category: "마케팅 전략",
-    slug: "japan-influencer-marketing-strategy",
-  },
-  {
-    id: 2,
-    title: "병원 해외 마케팅 성공 사례 분석",
-    excerpt: "실제 병원들의 해외 마케팅 성공 사례를 분석하고 핵심 성공 요인을 알아봅니다.",
-    date: "2024-01-10",
-    readTime: "7분",
-    category: "성공 사례",
-    slug: "hospital-overseas-marketing-success",
-  },
-  {
-    id: 3,
-    title: "일본 고객의 의사결정 패턴 이해하기",
-    excerpt: "일본 고객들이 병원을 선택할 때 어떤 요소들을 중시하는지 분석해봅니다.",
-    date: "2024-01-05",
-    readTime: "6분",
-    category: "고객 분석",
-    slug: "japanese-customer-decision-pattern",
-  },
-  {
-    id: 4,
-    title: "효과적인 SNS 마케팅 전략",
-    excerpt: "병원 SNS 마케팅에서 성과를 높이는 실전 전략들을 공유합니다.",
-    date: "2024-01-01",
-    readTime: "8분",
-    category: "SNS 마케팅",
-    slug: "effective-sns-marketing-strategy",
-  },
-  {
-    id: 5,
-    title: "해외 환자 유치를 위한 콘텐츠 전략",
-    excerpt: "일본 고객을 유치하기 위한 효과적인 콘텐츠 마케팅 전략을 소개합니다.",
-    date: "2023-12-25",
-    readTime: "6분",
-    category: "콘텐츠 마케팅",
-    slug: "overseas-patient-content-strategy",
-  },
-  {
-    id: 6,
-    title: "병원 브랜딩의 중요성과 전략",
-    excerpt: "해외 시장에서 성공하기 위한 병원 브랜딩 전략과 실제 적용 사례를 다룹니다.",
-    date: "2023-12-20",
-    readTime: "9분",
-    category: "브랜딩",
-    slug: "hospital-branding-importance",
-  },
-]
+const blogPosts = getAllBlogPosts()
 
 export default function BlogPage() {
   return (
@@ -92,8 +38,13 @@ export default function BlogPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link href={`/blog/${post.slug}`}>
-                  <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-                    <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 rounded-t-2xl flex items-center justify-center">
+                  <Card className={`h-full hover:shadow-lg transition-shadow cursor-pointer ${post.isReport ? 'ring-2 ring-primary/20' : ''}`}>
+                    <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 rounded-t-2xl flex items-center justify-center relative">
+                      {post.isReport && (
+                        <div className="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full font-medium">
+                          보고서
+                        </div>
+                      )}
                       <span className="text-gray-600 font-medium">
                         {post.title} 썸네일
                       </span>
