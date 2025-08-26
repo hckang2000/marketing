@@ -13,6 +13,7 @@ const navigation = [
   { name: "서비스", href: "/#services" },
   { name: "소개", href: "/about" },
   { name: "칼럼", href: "/blog" },
+  { name: "데이터", href: "/data" },
 ]
 
 export function Header() {
