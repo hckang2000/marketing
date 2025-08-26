@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
+    title: "클리닉브릿지 - 일본 병원 마케팅 전문",
     description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사",
     url: "https://clinicbridge.co.kr",
     siteName: "클리닉브릿지",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
+        alt: "클리닉브릿지 - 일본 병원 마케팅 전문",
       },
     ],
     locale: "ko_KR",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
+    title: "클리닉브릿지 - 일본 병원 마케팅 전문",
     description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사",
     images: ["/og-image.jpg"],
   },
