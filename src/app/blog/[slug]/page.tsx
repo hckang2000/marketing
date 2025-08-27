@@ -6,7 +6,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
-import { getBlogPostBySlug } from "@/data/blogPosts"
+import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts"
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -28,25 +28,51 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       .split('\n')
       .map((line, index) => {
         if (line.startsWith('# ')) {
-          return <h1 key={index} className="text-3xl font-bold text-gray-900 mb-6">{line.substring(2)}</h1>
+          return <h1 key={index} className="text-3xl font-bold text-gray-900 mb-6">{renderInlineMarkdown(line.substring(2))}</h1>
         }
         if (line.startsWith('## ')) {
-          return <h2 key={index} className="text-2xl font-bold text-gray-900 mb-4 mt-8">{line.substring(3)}</h2>
+          return <h2 key={index} className="text-3xl font-bold text-gray-900 mb-4 mt-8">{renderInlineMarkdown(line.substring(3))}</h2>
         }
         if (line.startsWith('### ')) {
-          return <h3 key={index} className="text-xl font-semibold text-gray-900 mb-3 mt-6">{line.substring(4)}</h3>
+          return <h3 key={index} className="text-3xl font-bold text-gray-900 mb-3 mt-6">{renderInlineMarkdown(line.substring(4))}</h3>
         }
         if (line.startsWith('- ')) {
-          return <li key={index} className="text-gray-700 mb-2 ml-4">{line.substring(2)}</li>
+          return <li key={index} className="text-base text-gray-700 mb-2 ml-4">{renderInlineMarkdown(line.substring(2))}</li>
         }
         if (line.trim() === '') {
           return <br key={index} />
         }
         if (line.trim()) {
-          return <p key={index} className="text-gray-700 mb-4 leading-relaxed">{line}</p>
+          return <p key={index} className="text-base text-gray-700 mb-4 leading-relaxed">{renderInlineMarkdown(line)}</p>
         }
         return null
       })
+  }
+
+  // 인라인 마크다운 (볼드체, 밑줄) 렌더링 함수
+  const renderInlineMarkdown = (text: string) => {
+    // **볼드체** 처리
+    const boldRegex = /\*\*(.*?)\*\*/g
+    const parts = []
+    let lastIndex = 0
+    let match
+
+    while ((match = boldRegex.exec(text)) !== null) {
+      // 매치 이전 텍스트 추가
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index))
+      }
+      // 볼드체 텍스트 추가
+      parts.push(<strong key={`bold-${match.index}`} className="font-bold">{match[1]}</strong>)
+      lastIndex = match.index + match[0].length
+    }
+
+    // 남은 텍스트 추가
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex))
+    }
+
+    return parts.length > 0 ? parts : text
   }
 
   return (
@@ -96,12 +122,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 {post.title}
               </h1>
 
               {/* Excerpt */}
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base text-gray-600 mb-8 leading-relaxed">
                 {post.excerpt}
               </p>
 
@@ -162,25 +188,52 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </motion.div>
           )}
 
-          {/* Related Posts */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">관련 글</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* 여기에 관련 글들을 표시할 수 있습니다 */}
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                  <CardContent className="p-6">
-                    <p className="text-sm text-gray-500 mb-2">다음 글 준비 중...</p>
-                    <h4 className="font-semibold text-gray-900">더 많은 마케팅 인사이트</h4>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </motion.div>
+                     {/* Previous/Next Posts */}
+           <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, delay: 0.4 }}
+           >
+             <div className="max-w-4xl mx-auto">
+               <div className="flex justify-between items-center">
+                 {/* Previous Post */}
+                 {post.id > 1 && (
+                   <Link
+                     href={`/blog/${blogPosts.find((p: any) => p.id === post.id - 1)?.slug}`}
+                     className="flex items-center text-primary hover:text-primary/80 transition-colors group"
+                   >
+                     <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                     </svg>
+                     <div className="text-left">
+                       <p className="text-sm text-gray-500">이전 글</p>
+                       <p className="font-medium text-gray-900 group-hover:text-primary transition-colors">
+                         {blogPosts.find((p: any) => p.id === post.id - 1)?.title}
+                       </p>
+                     </div>
+                   </Link>
+                 )}
+                 
+                 {/* Next Post */}
+                 {post.id < blogPosts.length && (
+                   <Link
+                     href={`/blog/${blogPosts.find((p: any) => p.id === post.id + 1)?.slug}`}
+                     className="flex items-center text-primary hover:text-primary/80 transition-colors group ml-auto"
+                   >
+                     <div className="text-right">
+                       <p className="text-sm text-gray-500">다음 글</p>
+                       <p className="font-medium text-gray-900 group-hover:text-primary transition-colors">
+                         {blogPosts.find((p: any) => p.id === post.id + 1)?.title}
+                       </p>
+                     </div>
+                     <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                     </svg>
+                   </Link>
+                 )}
+               </div>
+             </div>
+           </motion.div>
         </div>
       </Container>
     </div>

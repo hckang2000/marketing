@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Target, Search, TrendingUp, Heart } from "lucide-react"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
@@ -29,23 +30,23 @@ const timeline = [
 const values = [
   {
     title: "전문성",
-    description: "서울대 출신 마케터의 전문적인 서비스",
-    icon: "🎯",
+    description: "서울대 출신 대표가 직접 관리",
+    icon: Target,
   },
   {
     title: "투명성",
-    description: "모든 과정을 투명하게 공유하고 소통",
-    icon: "🔍",
+    description: "전 과정을 공유하고 소통",
+    icon: Search,
   },
   {
     title: "성과 중심",
-    description: "실제 성과를 만들어내는 마케팅만 제안",
-    icon: "📈",
+    description: "실제 매출을 올려주는 마케팅",
+    icon: TrendingUp,
   },
   {
     title: "고객 중심",
-    description: "원장님의 성공을 위한 맞춤형 전략",
-    icon: "💝",
+    description: "병원별 맞춤형 전략 제안",
+    icon: Heart,
   },
 ]
 
@@ -189,7 +190,9 @@ export default function AboutPage() {
                 >
                   <Card className="h-full text-center">
                     <CardHeader>
-                      <div className="text-4xl mb-4">{value.icon}</div>
+                      <div className="w-16 h-16 mx-auto bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                        <value.icon className="h-8 w-8 text-white" />
+                      </div>
                       <CardTitle className="text-xl font-semibold text-gray-900">
                         {value.title}
                       </CardTitle>
