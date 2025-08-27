@@ -461,6 +461,9 @@ export default function DataPage() {
           font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
           line-height: 1.7;
           color: #0f172a;
+          word-break: keep-all;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
 
         .container {
@@ -671,10 +674,19 @@ export default function DataPage() {
         li {
           margin: 8px 0;
           color: #555;
+          word-break: keep-all;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
 
         strong {
           color: #3b82f6;
+        }
+
+        p, h1, h2, h3, h4, h5, h6, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl {
+          word-break: keep-all;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
 
         @media (max-width: 768px) {
