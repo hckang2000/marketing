@@ -84,7 +84,7 @@ export function HighlightResult() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className={`text-3xl font-bold ${result.color} mb-2`}>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">
                     {result.value}
                   </div>
                   <p className="text-gray-600 text-sm">

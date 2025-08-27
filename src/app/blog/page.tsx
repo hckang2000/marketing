@@ -22,17 +22,13 @@ export default function BlogPage() {
     setSubmitStatus("idle")
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: "블로그 구독자",
-          phone: "없음",
-          email: email,
-          message: "블로그 이메일 구독 신청",
-          hp: "" // honeypot
+          email: email
         }),
       })
 
@@ -43,6 +39,8 @@ export default function BlogPage() {
           setSubmitStatus("idle")
         }, 3000)
       } else {
+        const errorData = await response.json()
+        console.error("Subscription error:", errorData)
         setSubmitStatus("error")
       }
     } catch (error) {
