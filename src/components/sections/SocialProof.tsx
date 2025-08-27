@@ -266,6 +266,9 @@ export function SocialProof() {
                           fill
                           className="object-cover"
                           draggable={false}
+                          sizes="(max-width: 1024px) 100vw"
+                          quality={80}
+                          loading="lazy"
                         />
                       </div>
                       
@@ -277,6 +280,9 @@ export function SocialProof() {
                           fill
                           className="object-cover"
                           draggable={false}
+                          sizes="(min-width: 1024px) 800px"
+                          quality={80}
+                          loading="lazy"
                         />
                       </div>
                       
