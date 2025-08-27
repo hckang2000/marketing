@@ -15,19 +15,19 @@ const testimonials = [
     id: 1,
     desktopImage: "/images/testimonials/testimonial-1-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-1-mobile.jpg",
-    caption: "홍대 OOO의원 원장님: 일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
+    caption: "홍대 OOO의원 원장님<br />일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
   },
   {
     id: 2,
     desktopImage: "/images/testimonials/testimonial-2-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-2-mobile.jpg",
-    caption: "강남 XXX의원 원장님: 광고비 대비 15배 매출이면 광고비가 거의 안 든거네요",
+    caption: "강남 XXX의원 원장님<br />광고비 대비 15배 매출이 나옵니다.",
   },
   {
     id: 3,
     desktopImage: "/images/testimonials/testimonial-3-desktop.jpg",
     mobileImage: "/images/testimonials/testimonial-3-mobile.jpg",
-    caption: "신논현 YYY의원 원장님: 주말에 일본 환자가 40명까지 오네요",
+    caption: "신논현 YYY의원 원장님<br />주말에 일본 환자가 40명까지 오네요",
   },
 ]
 
@@ -280,12 +280,13 @@ export function SocialProof() {
                         />
                       </div>
                       
-                      {/* Caption */}
-                      <div className="text-center">
-                        <p className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium">
-                          {testimonial.caption}
-                        </p>
-                      </div>
+                                             {/* Caption */}
+                       <div className="text-center">
+                         <p 
+                           className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
+                           dangerouslySetInnerHTML={{ __html: testimonial.caption }}
+                         />
+                       </div>
                     </CardContent>
                   </Card>
                 </div>

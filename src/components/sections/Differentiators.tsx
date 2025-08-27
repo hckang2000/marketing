@@ -105,9 +105,9 @@ export function Differentiators() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <item.icon className="h-6 w-6 text-white" />
-                      </div>
+                                             <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
+                         <item.icon className="h-6 w-6 text-white" />
+                       </div>
                       <div>
                         <CardTitle className="text-xl font-semibold text-gray-900">
                           {item.title}
