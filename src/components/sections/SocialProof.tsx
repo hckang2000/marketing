@@ -6,9 +6,19 @@ import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
+
+// Swiper CSS
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+// 커스텀 스타일로 Swiper 기본 스타일 숨기기
+import './SocialProof.css'
 
 const AUTOPLAY_MS = 10000
-const DRAG_THRESHOLD = 40
 
 const testimonials = [
   {
@@ -32,211 +42,94 @@ const testimonials = [
 ]
 
 export function SocialProof() {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
-  const [isDragging, setIsDragging] = useState(false)
-  
-  const timerRef = useRef<number | null>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
-  const isDraggingRef = useRef(false)
-  const startXRef = useRef(0)
-  const startYRef = useRef(0)
-  const deltaXRef = useRef(0)
-  const deltaYRef = useRef(0)
-  const unlockRef = useRef<null | (() => void)>(null)
-  const isHorizontalSwipeRef = useRef(false)
+  const swiperRef = useRef<SwiperType | null>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  function lockBodyScroll() {
-    if (typeof window === "undefined") return
-    const { body } = document
-    const prev = body.style.overflow
-    body.style.overflow = "hidden"
-    unlockRef.current = () => { body.style.overflow = prev }
+  const handleSlideChange = (swiper: SwiperType) => {
+    setCurrentIndex(swiper.activeIndex)
   }
 
-  function unlockBodyScroll() {
-    unlockRef.current?.()
-    unlockRef.current = null
-  }
-
-  const startAutoPlay = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current)
-    }
-    timerRef.current = window.setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, AUTOPLAY_MS)
-  }
-
-  const stopAutoPlay = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current)
-      timerRef.current = null
+  const toggleAutoplay = () => {
+    if (swiperRef.current) {
+      if (isPlaying) {
+        swiperRef.current.autoplay.stop()
+      } else {
+        swiperRef.current.autoplay.start()
+      }
+      setIsPlaying(!isPlaying)
     }
   }
 
-  const resetAutoPlay = () => {
-    if (isPlaying) {
-      startAutoPlay()
+  const goToSlide = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index)
+    }
+  }
+
+  const nextSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext()
+    }
+  }
+
+  const prevSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev()
+    }
+  }
+
+  // 각도 기반 스크롤 제어를 위한 커스텀 터치 이벤트
+  const handleTouchStart = (e: Event) => {
+    const touchEvent = e as TouchEvent
+    const touch = touchEvent.touches[0]
+    const startX = touch.clientX
+    const startY = touch.clientY
+    
+    // 터치 시작점 저장
+    ;(e.target as HTMLElement).setAttribute('data-start-x', startX.toString())
+    ;(e.target as HTMLElement).setAttribute('data-start-y', startY.toString())
+  }
+
+  const handleTouchMove = (e: Event) => {
+    const touchEvent = e as TouchEvent
+    const touch = touchEvent.touches[0]
+    const startX = parseInt((e.target as HTMLElement).getAttribute('data-start-x') || '0')
+    const startY = parseInt((e.target as HTMLElement).getAttribute('data-start-y') || '0')
+    
+    const deltaX = touch.clientX - startX
+    const deltaY = touch.clientY - startY
+    
+    // 각도 계산 (0도는 수평, 90도는 수직)
+    const angle = Math.abs(Math.atan2(deltaY, deltaX) * 180 / Math.PI)
+    
+    // 드래그 거리가 충분히 클 때만 방향 결정
+    const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+    
+    if (totalDistance > 10) {
+      // -45도 ~ 45도: 수평 스와이프 (카루셀 이동)
+      // 그 외: 수직 스크롤 (페이지 스크롤 허용)
+      if (angle <= 45) {
+        // 수평 스와이프 - preventDefault로 수직 스크롤 차단
+        e.preventDefault()
+      }
+      // 수직 스크롤의 경우 preventDefault 호출하지 않음
     }
   }
 
   useEffect(() => {
-    if (isPlaying) {
-      startAutoPlay()
-    } else {
-      stopAutoPlay()
-    }
-
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current)
-      }
-      unlockBodyScroll()
-    }
-  }, [isPlaying, currentIndex])
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    resetAutoPlay()
-  }
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-    resetAutoPlay()
-  }
-
-  const handleCardClick = () => {
-    if (!isDraggingRef.current) {
-      nextSlide()
-    }
-  }
-
-  const handleDragStart = (clientX: number, clientY: number) => {
-    isDraggingRef.current = true
-    setIsDragging(true)
-    startXRef.current = clientX
-    startYRef.current = clientY
-    deltaXRef.current = 0
-    deltaYRef.current = 0
-    isHorizontalSwipeRef.current = false
-    stopAutoPlay()
-    // lockBodyScroll() 제거 - 방향이 결정된 후에만 스크롤 차단
-  }
-
-  const handleDragMove = (clientX: number, clientY: number) => {
-    if (!isDraggingRef.current) return
-    
-    deltaXRef.current = clientX - startXRef.current
-    deltaYRef.current = clientY - startYRef.current
-    
-    // 각도 계산 (절댓값 제거하여 실제 방향 고려)
-    const angle = Math.atan2(deltaYRef.current, deltaXRef.current) * 180 / Math.PI
-    
-    // 드래그 거리가 충분히 클 때만 방향 결정
-    const totalDistance = Math.sqrt(deltaXRef.current * deltaXRef.current + deltaYRef.current * deltaYRef.current)
-    
-    if (totalDistance > 10 && !isHorizontalSwipeRef.current) {
-      // 각도 범위별로 방향 결정
-      // -45도 ~ 45도: 수평 스와이프
-      // 그 외: 수직 스크롤
-      const normalizedAngle = Math.abs(angle)
-      isHorizontalSwipeRef.current = normalizedAngle <= 45
+    // Swiper 컨테이너에 터치 이벤트 리스너 추가
+    const swiperContainer = document.querySelector('.swiper-container')
+    if (swiperContainer) {
+      swiperContainer.addEventListener('touchstart', handleTouchStart, { passive: false })
+      swiperContainer.addEventListener('touchmove', handleTouchMove, { passive: false })
       
-      // 수평 스와이프로 결정된 경우에만 body 스크롤 차단
-      if (isHorizontalSwipeRef.current) {
-        lockBodyScroll()
+      return () => {
+        swiperContainer.removeEventListener('touchstart', handleTouchStart)
+        swiperContainer.removeEventListener('touchmove', handleTouchMove)
       }
     }
-    
-    // 수평 스와이프일 때만 카루셀 이동
-    if (isHorizontalSwipeRef.current && trackRef.current) {
-      const translateX = -(currentIndex * 100) + (deltaXRef.current / trackRef.current.offsetWidth * 100)
-      trackRef.current.style.transform = `translateX(${translateX}%)`
-      trackRef.current.style.transition = 'none'
-    }
-  }
-
-  const handleDragEnd = () => {
-    unlockBodyScroll()
-    
-    if (!isDraggingRef.current) return
-    
-    const deltaX = deltaXRef.current
-    const threshold = DRAG_THRESHOLD
-
-    // 수평 스와이프일 때만 슬라이드 전환
-    if (isHorizontalSwipeRef.current && Math.abs(deltaX) > threshold) {
-      if (deltaX > 0) {
-        prevSlide()
-      } else {
-        nextSlide()
-      }
-    }
-
-    // Reset transform
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(-${currentIndex * 100}%)`
-      trackRef.current.style.transition = 'transform 500ms ease-in-out'
-    }
-
-    isDraggingRef.current = false
-    setIsDragging(false)
-    deltaXRef.current = 0
-    deltaYRef.current = 0
-    isHorizontalSwipeRef.current = false
-    resetAutoPlay()
-  }
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault()
-    handleDragStart(e.clientX, e.clientY)
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingRef.current) return
-    handleDragMove(e.clientX, e.clientY)
-  }
-
-  const handleMouseUp = () => {
-    handleDragEnd()
-  }
-
-  const handleMouseLeave = () => {
-    if (isDraggingRef.current) {
-      handleDragEnd()
-    }
-  }
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const touch = e.touches[0]
-    handleDragStart(touch.clientX, touch.clientY)
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDraggingRef.current) return
-    const touch = e.touches[0]
-    
-    // 수평 스와이프일 때만 preventDefault (수직 스크롤 차단)
-    if (isHorizontalSwipeRef.current) {
-      e.preventDefault()
-    }
-    
-    handleDragMove(touch.clientX, touch.clientY)
-  }
-
-  const handleTouchEnd = () => {
-    handleDragEnd()
-  }
-
-  const handleTouchCancel = () => {
-    handleDragEnd()
-  }
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index)
-    resetAutoPlay()
-  }
+  }, [])
 
   return (
     <section className="section-padding bg-gray-50">
@@ -264,89 +157,94 @@ export function SocialProof() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Carousel */}
-          <div className="relative overflow-hidden rounded-none lg:rounded-2xl">
-            <div
-              ref={trackRef}
-              className={`flex transition-transform duration-500 ease-in-out [touch-action:pan-x] overscroll-contain ${
-                isDragging ? 'select-none cursor-grabbing' : 'cursor-grab'
-              }`}
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
+          {/* Swiper Carousel */}
+          <div className="swiper-container">
+            <Swiper
+              modules={[Autoplay, Navigation, Pagination]}
+              spaceBetween={0}
+              slidesPerView={1}
+              loop={true}
+              autoplay={isPlaying ? { delay: AUTOPLAY_MS, disableOnInteraction: false } : false}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper
               }}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchCancel}
+              onSlideChange={handleSlideChange}
+              className="rounded-none lg:rounded-2xl"
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              pagination={{
+                clickable: true,
+                el: '.swiper-pagination',
+                bulletClass: 'swiper-pagination-bullet',
+                bulletActiveClass: 'swiper-pagination-bullet-active',
+              }}
+              allowTouchMove={true}
+              resistance={true}
+              resistanceRatio={0.85}
+              touchStartPreventDefault={false}
             >
               {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className="w-full flex-shrink-0 px-4"
-                >
-                  <Card 
-                    className="rounded-none lg:rounded-2xl cursor-pointer"
-                    onClick={handleCardClick}
-                  >
-                    <CardContent className="p-6">
-                      {/* Mobile Image Container - 9:16 비율 (450x800) */}
-                      <div className="relative w-full aspect-[9/16] lg:hidden mb-4 overflow-hidden rounded-lg">
-                        <Image
-                          src={testimonial.mobileImage}
-                          alt={`후기 이미지 ${index + 1}`}
-                          fill
-                          className="object-cover"
-                          draggable={false}
-                          sizes="(max-width: 1024px) 100vw"
-                          quality={80}
-                          loading="lazy"
-                        />
-                      </div>
-                      
-                      {/* Desktop Image Container - 16:9 비율 (800x450) */}
-                      <div className="relative w-full aspect-video hidden lg:block mb-4 overflow-hidden rounded-lg">
-                        <Image
-                          src={testimonial.desktopImage}
-                          alt={`후기 이미지 ${index + 1}`}
-                          fill
-                          className="object-cover"
-                          draggable={false}
-                          sizes="(min-width: 1024px) 800px"
-                          quality={80}
-                          loading="lazy"
-                        />
-                      </div>
-                      
-                                             {/* Caption */}
-                       <div className="text-center">
-                         <p 
-                           className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
-                           dangerouslySetInnerHTML={{ __html: testimonial.caption }}
-                         />
-                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
+                <SwiperSlide key={testimonial.id}>
+                  <div className="px-4">
+                    <Card className="rounded-none lg:rounded-2xl">
+                      <CardContent className="p-6">
+                        {/* Mobile Image Container - 9:16 비율 */}
+                        <div className="relative w-full aspect-[9/16] lg:hidden mb-4 overflow-hidden rounded-lg">
+                          <Image
+                            src={testimonial.mobileImage}
+                            alt={`후기 이미지 ${index + 1}`}
+                            fill
+                            className="object-cover"
+                            draggable={false}
+                            sizes="(max-width: 1024px) 100vw"
+                            quality={80}
+                            loading="lazy"
+                          />
+                        </div>
+                        
+                        {/* Desktop Image Container - 16:9 비율 */}
+                        <div className="relative w-full aspect-video hidden lg:block mb-4 overflow-hidden rounded-lg">
+                          <Image
+                            src={testimonial.desktopImage}
+                            alt={`후기 이미지 ${index + 1}`}
+                            fill
+                            className="object-cover"
+                            draggable={false}
+                            sizes="(min-width: 1024px) 800px"
+                            quality={80}
+                            loading="lazy"
+                          />
+                        </div>
+                        
+                        {/* Caption */}
+                        <div className="text-center">
+                          <p 
+                            className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
+                            dangerouslySetInnerHTML={{ __html: testimonial.caption }}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
 
           {/* Navigation */}
           <div className="flex items-center justify-center mt-8 space-x-4">
             <button
               onClick={prevSlide}
-              className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              className="swiper-button-prev p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
               aria-label="이전 슬라이드"
             >
               <ChevronLeft className="h-5 w-5 text-gray-600" />
             </button>
 
             <button
-              onClick={() => setIsPlaying(!isPlaying)}
+              onClick={toggleAutoplay}
               className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
               aria-label={isPlaying ? "자동 재생 일시정지" : "자동 재생 시작"}
             >
@@ -359,7 +257,7 @@ export function SocialProof() {
 
             <button
               onClick={nextSlide}
-              className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              className="swiper-button-next p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
               aria-label="다음 슬라이드"
             >
               <ChevronRight className="h-5 w-5 text-gray-600" />
@@ -367,11 +265,11 @@ export function SocialProof() {
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center mt-4 space-x-2">
+          <div className="swiper-pagination flex justify-center mt-4 space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => handleDotClick(index)}
+                onClick={() => goToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
                   index === currentIndex ? "bg-primary" : "bg-gray-300"
                 }`}
