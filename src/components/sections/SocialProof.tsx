@@ -219,12 +219,12 @@ export function SocialProof() {
           {/* Description - Mobile */}
           <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
             클리닉브릿지와 함께한 원장님들의<br />
-            생생한 후기를 확인해보세요
+            실제 후기를 확인해보세요
           </p>
           
           {/* Description - Desktop */}
           <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
-            클리닉브릿지와 함께한 원장님들의 생생한 후기를 확인해보세요
+            클리닉브릿지와 함께한 원장님들의 실제 후기를 확인해보세요
           </p>
         </motion.div>
 

@@ -105,7 +105,7 @@ export function Differentiators() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
                         <item.icon className="h-6 w-6 text-white" />
                       </div>
                       <div>
@@ -144,10 +144,10 @@ export function Differentiators() {
 
                       <div className="space-y-4">
                         {item.profile && (
-                          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
+                          <div className="bg-primary/5 rounded-lg p-4 border border-primary/10">
                             <h4 className="font-semibold text-gray-900 mb-3">대표</h4>
                             <div className="flex items-center space-x-3">
-                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
+                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-primary">
                                 {item.profile.image ? (
                                   <Image
                                     src={item.profile.image}
@@ -174,10 +174,10 @@ export function Differentiators() {
                         )}
 
                         {item.id === 1 && (
-                          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4">
+                          <div className="bg-primary/5 rounded-lg p-4 border border-primary/10">
                             <h4 className="font-semibold text-gray-900 mb-3">자문의</h4>
                             <div className="flex items-center space-x-3">
-                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500">
+                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-primary">
                                 <Image
                                   src="/images/profiles/doctor_profile.jpg"
                                   alt="자문의 프로필 사진"

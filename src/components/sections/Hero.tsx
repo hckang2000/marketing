@@ -37,7 +37,7 @@ export function Hero({ onContactClick }: HeroProps) {
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/60" />
       <Container>
-        <div className="relative z-10 py-20 lg:py-32">
+        <div className="relative z-10 py-20 lg:py-32 min-h-[80vh] lg:min-h-0 flex items-center">
           <div className="max-w-4xl mx-auto text-center">
             {/* Headline - Mobile */}
             <motion.h1
@@ -106,8 +106,8 @@ export function Hero({ onContactClick }: HeroProps) {
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 right-0 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-3xl" />
+        <div className="absolute -top-40 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl" />
       </div>
     </section>
   )

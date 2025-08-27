@@ -10,7 +10,7 @@ interface FinalCTAProps {
 
 export function FinalCTA({ onContactClick }: FinalCTAProps) {
   return (
-    <section className="section-padding bg-gradient-to-br from-blue-600 to-purple-600">
+    <section className="section-padding bg-primary">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,12 +64,12 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
             </div>
           </div>
 
-          <Button
-            onClick={onContactClick}
-            variant="default"
-            size="lg"
-            className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4"
-          >
+                      <Button
+              onClick={onContactClick}
+              variant="default"
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-4"
+            >
             1분 문의하기
           </Button>
 
