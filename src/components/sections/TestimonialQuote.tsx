@@ -24,17 +24,17 @@ export function TestimonialQuote() {
             {/* Quote Text */}
             <blockquote className="text-white">
               {/* Quote - Mobile */}
-              <p className="text-xl font-medium leading-relaxed mb-6 lg:hidden">
+              <p className="text-base font-medium leading-relaxed mb-6 lg:hidden">
                 &ldquo;일본 인플루언서 협찬 마케팅<br />
                 시작하고 월 매출 2억에서<br />
                 6개월만에 3.5억으로 올랐습니다.&rdquo;
               </p>
               
               {/* Quote - Desktop */}
-              <p className="hidden lg:block text-3xl font-medium leading-relaxed mb-6">
+              <p className="hidden lg:block text-base font-medium leading-relaxed mb-6">
                 &ldquo;일본 인플루언서 협찬 마케팅 시작하고<br />월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.&rdquo;
               </p>
-              <footer className="text-lg text-white/80">
+              <footer className="text-base text-white/80">
                 - 홍대 OOO의원 원장님
               </footer>
             </blockquote>

@@ -213,7 +213,7 @@ export function SocialProof() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             원장님들 실제 후기
           </h2>
           {/* Description - Mobile */}
@@ -223,7 +223,7 @@ export function SocialProof() {
           </p>
           
           {/* Description - Desktop */}
-          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
             클리닉브릿지와 함께한 원장님들의 생생한 후기를 확인해보세요
           </p>
         </motion.div>

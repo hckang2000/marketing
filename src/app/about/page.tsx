@@ -63,10 +63,10 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
               회사 소개
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 max-w-2xl mx-auto">
               클리닉브릿지는 일본 대상<br className="sm:hidden" /> 병원 마케팅 전문 회사입니다
             </p>
           </motion.div>

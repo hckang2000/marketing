@@ -44,12 +44,12 @@ export function HighlightResult() {
           className="text-center mb-12"
         >
           {/* Title - Mobile */}
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 lg:hidden">
             클리닉브릿지의 핵심 성과
           </h2>
           
           {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="hidden lg:block text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지의 핵심 성과
           </h2>
           
@@ -60,10 +60,10 @@ export function HighlightResult() {
           </p>
           
           {/* Description - Desktop */}
-          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
             클리닉브릿지는 광고비의 최소 10배 이상을 벌 수 있는 일본 마케팅만 제안합니다.
           </p>
-        </motion.div>
+        </motion.div> 
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {results.map((result, index) => (

@@ -67,13 +67,13 @@ export function Differentiators() {
           className="text-center mb-12"
         >
           {/* Title - Mobile */}
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 lg:hidden">
             클리닉브릿지가<br />
             타 업체와 다른 이유?
           </h2>
           
           {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="hidden lg:block text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지가 타 업체와 다른 이유?
           </h2>
           
@@ -84,7 +84,7 @@ export function Differentiators() {
           </p>
           
           {/* Description - Desktop */}
-          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
             단순한 광고 대행이 아닌, 실제 매출을 만들어내는 차별화된 서비스
           </p>
         </motion.div>

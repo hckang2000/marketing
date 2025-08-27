@@ -54,12 +54,12 @@ export function Process() {
           className="text-center mb-12"
         >
           {/* Title - Mobile */}
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 lg:hidden">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 lg:hidden">
             클리닉브릿지의 5단계 프로세스
           </h2>
 
           {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="hidden lg:block text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지의 5단계 프로세스
           </h2>
 
@@ -70,7 +70,7 @@ export function Process() {
           </p>
 
           {/* Description - Desktop */}
-          <p className="hidden lg:block text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
             체계적이고 전문적인 일본 마케팅 프로세스로 성공적인 결과를 만들어냅니다
           </p>
         </motion.div>

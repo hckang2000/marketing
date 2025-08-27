@@ -89,23 +89,15 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4"
+              className="flex justify-center items-center"
             >
               <Button
                 onClick={onContactClick}
-                variant="gradient"
-                size="lg"
-                className="w-full sm:w-48"
-              >
-                1분 문의하기
-              </Button>
-              <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-48"
-                asChild
+                className="w-full lg:w-96 lg:px-8"
               >
-                <a href="/about#story">창업 스토리 보기</a>
+                1분 문의하기
               </Button>
             </motion.div>
           </div>

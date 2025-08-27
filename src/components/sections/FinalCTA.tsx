@@ -20,23 +20,23 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
           className="text-center max-w-4xl mx-auto"
         >
           {/* Title - Mobile */}
-          <h2 className="text-2xl font-bold text-white mb-6 lg:hidden">
+          <h2 className="text-3xl font-bold text-white mb-6 lg:hidden">
             1분만 투자해서 문의해주시면
           </h2>
 
           {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-4xl font-bold text-white mb-6">
+          <h2 className="hidden lg:block text-3xl font-bold text-white mb-6">
             1분만 투자해서 문의해주시면
           </h2>
 
           {/* Description - Mobile */}
-          <p className="text-lg text-white/90 mb-8 leading-relaxed lg:hidden">
+          <p className="text-base text-white/90 mb-8 leading-relaxed lg:hidden">
             직접 찾아뵙고 무료로<br />
             병원 해외마케팅을 진단해드립니다.
           </p>
 
           {/* Description - Desktop */}
-          <p className="hidden lg:block text-2xl text-white/90 mb-8 leading-relaxed">
+          <p className="hidden lg:block text-base text-white/90 mb-8 leading-relaxed">
             직접 찾아뵙고 무료로 병원 해외마케팅을 진단해드립니다.
           </p>
 

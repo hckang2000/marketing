@@ -22,10 +22,10 @@ export function PlatformsGrid() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             마케팅 대상 플랫폼
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
             일본에서 효과를 내는 SNS는 정해져 있습니다
           </p>
         </motion.div>
