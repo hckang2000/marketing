@@ -6,7 +6,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
-import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts"
+import { getBlogPostBySlug, blogPosts, type BlogPost } from "@/data/blogPosts"
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -199,7 +199,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                  {/* Previous Post */}
                  {post.id > 1 && (
                    <Link
-                     href={`/blog/${blogPosts.find((p: any) => p.id === post.id - 1)?.slug}`}
+                     href={`/blog/${blogPosts.find((p: BlogPost) => p.id === post.id - 1)?.slug}`}
                      className="flex items-center text-primary hover:text-primary/80 transition-colors group"
                    >
                      <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                      <div className="text-left">
                        <p className="text-sm text-gray-500">이전 글</p>
                        <p className="font-medium text-gray-900 group-hover:text-primary transition-colors">
-                         {blogPosts.find((p: any) => p.id === post.id - 1)?.title}
+                         {blogPosts.find((p: BlogPost) => p.id === post.id - 1)?.title}
                        </p>
                      </div>
                    </Link>
@@ -217,13 +217,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                  {/* Next Post */}
                  {post.id < blogPosts.length && (
                    <Link
-                     href={`/blog/${blogPosts.find((p: any) => p.id === post.id + 1)?.slug}`}
+                     href={`/blog/${blogPosts.find((p: BlogPost) => p.id === post.id + 1)?.slug}`}
                      className="flex items-center text-primary hover:text-primary/80 transition-colors group ml-auto"
                    >
                      <div className="text-right">
                        <p className="text-sm text-gray-500">다음 글</p>
                        <p className="font-medium text-gray-900 group-hover:text-primary transition-colors">
-                         {blogPosts.find((p: any) => p.id === post.id + 1)?.title}
+                         {blogPosts.find((p: BlogPost) => p.id === post.id + 1)?.title}
                        </p>
                      </div>
                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
