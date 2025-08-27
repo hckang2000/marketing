@@ -121,7 +121,7 @@ export function SocialProof() {
     deltaYRef.current = 0
     isHorizontalSwipeRef.current = false
     stopAutoPlay()
-    lockBodyScroll()
+    // lockBodyScroll() 제거 - 방향이 결정된 후에만 스크롤 차단
   }
 
   const handleDragMove = (clientX: number, clientY: number) => {
@@ -130,15 +130,23 @@ export function SocialProof() {
     deltaXRef.current = clientX - startXRef.current
     deltaYRef.current = clientY - startYRef.current
     
-    // 각도 계산 (0도는 수평, 90도는 수직)
-    const angle = Math.abs(Math.atan2(deltaYRef.current, deltaXRef.current) * 180 / Math.PI)
+    // 각도 계산 (절댓값 제거하여 실제 방향 고려)
+    const angle = Math.atan2(deltaYRef.current, deltaXRef.current) * 180 / Math.PI
     
     // 드래그 거리가 충분히 클 때만 방향 결정
     const totalDistance = Math.sqrt(deltaXRef.current * deltaXRef.current + deltaYRef.current * deltaYRef.current)
     
     if (totalDistance > 10 && !isHorizontalSwipeRef.current) {
-      // 0-45도: 수평 스와이프, 45-90도: 수직 스크롤
-      isHorizontalSwipeRef.current = angle <= 45
+      // 각도 범위별로 방향 결정
+      // -45도 ~ 45도: 수평 스와이프
+      // 그 외: 수직 스크롤
+      const normalizedAngle = Math.abs(angle)
+      isHorizontalSwipeRef.current = normalizedAngle <= 45
+      
+      // 수평 스와이프로 결정된 경우에만 body 스크롤 차단
+      if (isHorizontalSwipeRef.current) {
+        lockBodyScroll()
+      }
     }
     
     // 수평 스와이프일 때만 카루셀 이동
