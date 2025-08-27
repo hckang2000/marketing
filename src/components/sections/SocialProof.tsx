@@ -40,8 +40,11 @@ export function SocialProof() {
   const trackRef = useRef<HTMLDivElement>(null)
   const isDraggingRef = useRef(false)
   const startXRef = useRef(0)
+  const startYRef = useRef(0)
   const deltaXRef = useRef(0)
+  const deltaYRef = useRef(0)
   const unlockRef = useRef<null | (() => void)>(null)
+  const isHorizontalSwipeRef = useRef(false)
 
   function lockBodyScroll() {
     if (typeof window === "undefined") return
@@ -109,21 +112,37 @@ export function SocialProof() {
     }
   }
 
-  const handleDragStart = (clientX: number) => {
+  const handleDragStart = (clientX: number, clientY: number) => {
     isDraggingRef.current = true
     setIsDragging(true)
     startXRef.current = clientX
+    startYRef.current = clientY
     deltaXRef.current = 0
+    deltaYRef.current = 0
+    isHorizontalSwipeRef.current = false
     stopAutoPlay()
     lockBodyScroll()
   }
 
-  const handleDragMove = (clientX: number) => {
+  const handleDragMove = (clientX: number, clientY: number) => {
     if (!isDraggingRef.current) return
     
     deltaXRef.current = clientX - startXRef.current
+    deltaYRef.current = clientY - startYRef.current
     
-    if (trackRef.current) {
+    // 각도 계산 (0도는 수평, 90도는 수직)
+    const angle = Math.abs(Math.atan2(deltaYRef.current, deltaXRef.current) * 180 / Math.PI)
+    
+    // 드래그 거리가 충분히 클 때만 방향 결정
+    const totalDistance = Math.sqrt(deltaXRef.current * deltaXRef.current + deltaYRef.current * deltaYRef.current)
+    
+    if (totalDistance > 10 && !isHorizontalSwipeRef.current) {
+      // 0-45도: 수평 스와이프, 45-90도: 수직 스크롤
+      isHorizontalSwipeRef.current = angle <= 45
+    }
+    
+    // 수평 스와이프일 때만 카루셀 이동
+    if (isHorizontalSwipeRef.current && trackRef.current) {
       const translateX = -(currentIndex * 100) + (deltaXRef.current / trackRef.current.offsetWidth * 100)
       trackRef.current.style.transform = `translateX(${translateX}%)`
       trackRef.current.style.transition = 'none'
@@ -138,7 +157,8 @@ export function SocialProof() {
     const deltaX = deltaXRef.current
     const threshold = DRAG_THRESHOLD
 
-    if (Math.abs(deltaX) > threshold) {
+    // 수평 스와이프일 때만 슬라이드 전환
+    if (isHorizontalSwipeRef.current && Math.abs(deltaX) > threshold) {
       if (deltaX > 0) {
         prevSlide()
       } else {
@@ -155,17 +175,19 @@ export function SocialProof() {
     isDraggingRef.current = false
     setIsDragging(false)
     deltaXRef.current = 0
+    deltaYRef.current = 0
+    isHorizontalSwipeRef.current = false
     resetAutoPlay()
   }
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
-    handleDragStart(e.clientX)
+    handleDragStart(e.clientX, e.clientY)
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDraggingRef.current) return
-    handleDragMove(e.clientX)
+    handleDragMove(e.clientX, e.clientY)
   }
 
   const handleMouseUp = () => {
@@ -180,14 +202,19 @@ export function SocialProof() {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     const touch = e.touches[0]
-    handleDragStart(touch.clientX)
+    handleDragStart(touch.clientX, touch.clientY)
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDraggingRef.current) return
-    e.preventDefault() // block vertical scroll during swipe
     const touch = e.touches[0]
-    handleDragMove(touch.clientX)
+    
+    // 수평 스와이프일 때만 preventDefault (수직 스크롤 차단)
+    if (isHorizontalSwipeRef.current) {
+      e.preventDefault()
+    }
+    
+    handleDragMove(touch.clientX, touch.clientY)
   }
 
   const handleTouchEnd = () => {
