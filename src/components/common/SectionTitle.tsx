@@ -5,13 +5,14 @@ interface SectionTitleProps {
   subtitle?: string
   className?: string
   centered?: boolean
+  titleClassName?: string
 }
 
-export function SectionTitle({ title, subtitle, className, centered = true }: SectionTitleProps) {
+export function SectionTitle({ title, subtitle, className, centered = true, titleClassName }: SectionTitleProps) {
   return (
     <div className={cn("mb-12", centered && "text-center", className)}>
       <h2 
-        className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+        className={cn("text-3xl lg:text-4xl font-bold text-gray-900 mb-4", titleClassName)}
         dangerouslySetInnerHTML={{ __html: title }}
       />
       {subtitle && (

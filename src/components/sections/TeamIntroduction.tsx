@@ -11,7 +11,7 @@ export function TeamIntroduction() {
   const motionProps = useMotionAnimation()
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-gray-100">
       <Container>
         <motion.div {...motionProps} className="text-center mb-16">
           <SectionTitle 

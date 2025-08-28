@@ -9,14 +9,16 @@ const TeamIntroduction = dynamic(() => import("@/components/sections/TeamIntrodu
   loading: () => <div className="h-96 bg-white animate-pulse" />
 })
 
+const GuaranteeSection = dynamic(() => import("@/components/sections/GuaranteeSection").then(mod => ({ default: mod.GuaranteeSection })), {
+  loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
+})
+
 // Lazy load components that are not immediately visible
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
 
-const HighlightResult = dynamic(() => import("@/components/sections/HighlightResult").then(mod => ({ default: mod.HighlightResult })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
+
 
 
 
@@ -44,7 +46,7 @@ export default function HomePage() {
       <Hero onContactClick={openContact} />
       <TeamIntroduction />
       <SocialProof />
-      <HighlightResult />
+      <GuaranteeSection />
       <Differentiators />
       <Process />
       <PlatformsGrid />

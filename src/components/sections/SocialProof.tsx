@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent } from "@/components/common/Card"
@@ -26,44 +26,24 @@ const AUTOPLAY_MS = 10000
 const testimonials = [
   {
     id: 1,
-    desktopImage: "/images/testimonials/testimonial-1-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-1-mobile.jpg",
+    image: "/images/testimonials/testimonial-1.jpg",
     caption: "홍대 OOO의원 원장님<br />일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
   },
   {
     id: 2,
-    desktopImage: "/images/testimonials/testimonial-2-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-2-mobile.jpg",
+    image: "/images/testimonials/testimonial-2.jpg",
     caption: "강남 XXX의원 원장님<br />광고비 대비 15배 매출이 나옵니다.",
   },
   {
     id: 3,
-    desktopImage: "/images/testimonials/testimonial-3-desktop.jpg",
-    mobileImage: "/images/testimonials/testimonial-3-mobile.jpg",
+    image: "/images/testimonials/testimonial-3.jpg",
     caption: "신논현 YYY의원 원장님<br />주말에 일본 환자가 40명까지 오네요",
   },
 ]
 
 export function SocialProof() {
-  const [isPlaying, setIsPlaying] = useState(true)
   const swiperRef = useRef<SwiperType | null>(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const motionProps = useMotionAnimation()
-
-  const handleSlideChange = (swiper: SwiperType) => {
-    setCurrentIndex(swiper.activeIndex)
-  }
-
-  const toggleAutoplay = () => {
-    if (swiperRef.current) {
-      if (isPlaying) {
-        swiperRef.current.autoplay.stop()
-      } else {
-        swiperRef.current.autoplay.start()
-      }
-      setIsPlaying(!isPlaying)
-    }
-  }
 
   const goToSlide = (index: number) => {
     if (swiperRef.current) {
@@ -136,7 +116,7 @@ export function SocialProof() {
   }, [handleTouchStart, handleTouchMove])
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-white">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
           <SectionTitle 
@@ -157,11 +137,10 @@ export function SocialProof() {
               spaceBetween={0}
               slidesPerView={1}
               loop={true}
-              autoplay={isPlaying ? { delay: AUTOPLAY_MS, disableOnInteraction: false } : false}
+              autoplay={{ delay: AUTOPLAY_MS, disableOnInteraction: false }}
               onSwiper={(swiper) => {
                 swiperRef.current = swiper
               }}
-              onSlideChange={handleSlideChange}
               className="rounded-none lg:rounded-2xl"
               navigation={{
                 nextEl: '.swiper-button-next',
@@ -182,35 +161,22 @@ export function SocialProof() {
                 <SwiperSlide key={testimonial.id}>
                   <div className="px-4">
                     <Card className="rounded-none lg:rounded-2xl">
-                      <CardContent className="p-6">
-                        {/* Mobile Image Container - 9:16 비율 */}
-                        <div className="relative w-full aspect-[9/16] lg:hidden mb-4 overflow-hidden rounded-lg">
+                      <CardContent className="p-6 h-[450px] lg:h-auto flex flex-col">
+                        {/* Image Container - 1:1 비율 (450x450) */}
+                        <div className="relative w-full max-w-[450px] mx-auto aspect-square mb-4 overflow-hidden rounded-lg flex-shrink-0">
                           <Image
-                            src={testimonial.mobileImage}
+                            src={testimonial.image}
                             alt={`후기 이미지 ${index + 1}`}
                             fill
                             className="object-cover"
                             draggable={false}
-                            sizes="(max-width: 1024px) 100vw"
-                            loading="lazy"
-                          />
-                        </div>
-                        
-                        {/* Desktop Image Container - 16:9 비율 */}
-                        <div className="relative w-full aspect-video hidden lg:block mb-4 overflow-hidden rounded-lg">
-                          <Image
-                            src={testimonial.desktopImage}
-                            alt={`후기 이미지 ${index + 1}`}
-                            fill
-                            className="object-cover"
-                            draggable={false}
-                            sizes="(min-width: 1024px) 800px"
+                            sizes="(max-width: 768px) 100vw, 450px"
                             loading="lazy"
                           />
                         </div>
                         
                         {/* Caption */}
-                        <div className="text-center">
+                        <div className="text-center flex-1 flex items-center justify-center">
                           <p 
                             className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
                             dangerouslySetInnerHTML={{ __html: testimonial.caption }}
@@ -235,18 +201,6 @@ export function SocialProof() {
             </button>
 
             <button
-              onClick={toggleAutoplay}
-              className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
-              aria-label={isPlaying ? "자동 재생 일시정지" : "자동 재생 시작"}
-            >
-              {isPlaying ? (
-                <Pause className="h-5 w-5 text-gray-600" />
-              ) : (
-                <Play className="h-5 w-5 text-gray-600" />
-              )}
-            </button>
-
-            <button
               onClick={nextSlide}
               className="swiper-button-next p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
               aria-label="다음 슬라이드"
@@ -255,19 +209,8 @@ export function SocialProof() {
             </button>
           </div>
 
-          {/* Dots */}
-          <div className="swiper-pagination flex justify-center mt-4 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-primary" : "bg-gray-300"
-                }`}
-                aria-label={`슬라이드 ${index + 1}로 이동`}
-              />
-            ))}
-          </div>
+          {/* Swiper Pagination */}
+          <div className="swiper-pagination"></div>
         </div>
       </Container>
     </section>

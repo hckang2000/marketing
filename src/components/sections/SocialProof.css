@@ -4,8 +4,17 @@
   display: none !important;
 }
 
+/* Swiper pagination 기본 스타일 활성화 */
 .swiper-pagination-bullet {
-  display: none !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #d1d5db !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #3b82f6 !important;
 }
 
 /* 커스텀 네비게이션 버튼 스타일 */
