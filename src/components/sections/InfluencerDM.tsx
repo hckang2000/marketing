@@ -123,7 +123,7 @@ export function InfluencerDM() {
             title="일본 인플루언서와<br class='block sm:inline' />진짜로 DM 주고받는 회사"
           />
           <ResponsiveText
-            mobile="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
+            mobile="중간 브로커 NO 직접 대화 YES<br />이 정도 투명성, 보신 적 있나요?"
             desktop="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
             className="text-base text-gray-600 max-w-lg mx-auto"
           />
@@ -148,6 +148,9 @@ export function InfluencerDM() {
               }}
               pagination={{
                 clickable: true,
+                el: '.swiper-pagination',
+                bulletClass: 'swiper-pagination-bullet',
+                bulletActiveClass: 'swiper-pagination-bullet-active',
               }}
               allowTouchMove={true}
               resistance={true}
@@ -206,7 +209,8 @@ export function InfluencerDM() {
             </button>
           </div>
 
-
+          {/* Swiper Pagination */}
+          <div className="swiper-pagination"></div>
         </div>
       </Container>
     </section>

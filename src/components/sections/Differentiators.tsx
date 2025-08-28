@@ -11,7 +11,7 @@ import { Button } from "@/components/common/Button"
 const pricingPlans = [
   {
     id: 1,
-    title: "라이트 300만",
+    title: "라이트 300만/월",
     description: "",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
@@ -20,7 +20,7 @@ const pricingPlans = [
   },
   {
     id: 2,
-    title: "매출안심 500만",
+    title: "매출안심 500만/월",
     description: "목표 매출 미달시 환불",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
@@ -32,7 +32,7 @@ const pricingPlans = [
   },
   {
     id: 3,
-    title: "매출안심 플러스 1,000만",
+    title: "매출안심 플러스 1,000만/월",
     description: "목표 매출 미달시 환불",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",

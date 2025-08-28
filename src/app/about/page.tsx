@@ -2,53 +2,12 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Target, Search, TrendingUp, Heart } from "lucide-react"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
 import { useContact } from "@/components/providers/ContactProvider"
 
-const timeline = [
-  {
-    year: "2024",
-    title: "클리닉브릿지 설립",
-    description: "일본 대상 병원 마케팅 전문 회사로 설립",
-  },
-  {
-    year: "2024",
-    title: "일본 현지 파트너십",
-    description: "일본 현지 인플루언서 네트워크 300명 구축 완료",
-  },
-  {
-    year: "2025",
-    title: "첫 번째 성공 사례",
-    description: "홍대 OOO의원과 함께 월 매출 2억에서 3.5억으로 성장",
-  },
 
-]
-
-const values = [
-  {
-    title: "전문성",
-    description: "서울대 출신 대표가 직접 관리",
-    icon: Target,
-  },
-  {
-    title: "투명성",
-    description: "전 과정을 공유하고 소통",
-    icon: Search,
-  },
-  {
-    title: "성과 중심",
-    description: "실제 매출을 올려주는 마케팅",
-    icon: TrendingUp,
-  },
-  {
-    title: "고객 중심",
-    description: "병원별 맞춤형 전략 제안",
-    icon: Heart,
-  },
-]
 
 export default function AboutPage() {
   const { openContact } = useContact()
@@ -96,27 +55,27 @@ export default function AboutPage() {
                 <p className="text-gray-600">클리닉브릿지 대표</p>
               </CardHeader>
               <CardContent className="text-center">
-                <div className="max-w-2xl mx-auto space-y-4">
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="max-w-2xl mx-auto space-y-4" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     근거 기반 마케팅으로 매출을 올려드리는 클리닉브릿지 대표 이은석입니다.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     서울대학교 경영대학을 졸업하고 10년 이상의 마케팅 경험을 바탕으로,<br className="hidden sm:inline" />
                     병원들이 일본 시장에서 성공할 수 있도록 도와드리고 있습니다.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     마케팅은 소비가 아니라 투자가 되어야 합니다.<br className="hidden sm:inline" />
                     광고비의 10배 이상을 벌 수 있는 전략으로 원장님들의 성공을 보장하겠습니다.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     항상 폭발적인 매출을 만들었던 실력을 바탕으로<br className="hidden sm:inline" />
                     병원들의 해외 환자 마케팅을 책임지겠습니다.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     저희는 소개로 찾아주시는 분들이 많습니다.<br className="hidden sm:inline" />
                     일을 맡겨보신 분들은 다르다는 것을 느끼시기 때문입니다.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
                     가볍게 문의해주세요.<br className="hidden sm:inline" />
                     15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
                   </p>
@@ -128,85 +87,7 @@ export default function AboutPage() {
             </Card>
           </motion.div>
 
-          {/* Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-              회사 연혁
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600" />
-                
-                <div className="space-y-8">
-                  {timeline.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                      className="relative flex items-start"
-                    >
-                      <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transform -translate-x-1/2" />
-                      <div className="ml-16">
-                        <div className="text-sm font-semibold text-primary mb-1">
-                          {item.year}
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">
-                          {item.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Values */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-              우리의 가치
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                >
-                  <Card className="h-full text-center">
-                    <CardHeader>
-                      <div className="w-16 h-16 mx-auto bg-gray-900 rounded-lg flex items-center justify-center mb-4">
-                        <value.icon className="h-8 w-8 text-white" />
-                      </div>
-                      <CardTitle className="text-xl font-semibold text-gray-900">
-                        {value.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        {value.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </Container>
     </div>

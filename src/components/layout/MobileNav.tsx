@@ -44,7 +44,7 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
       
       {/* Menu */}
       <div 
-        className="fixed right-0 top-0 h-screen min-h-[100vh] w-80 bg-white shadow-xl flex flex-col"
+        className="fixed right-0 top-0 h-screen w-80 bg-white shadow-xl flex flex-col overflow-hidden"
         style={{
           paddingTop: "env(safe-area-inset-top)",
           paddingBottom: "env(safe-area-inset-bottom)"
@@ -62,7 +62,7 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-6">
+        <nav className="flex-1 p-6 overflow-y-auto">
           <div className="space-y-4">
             {navigation.map((item) => (
               <Link

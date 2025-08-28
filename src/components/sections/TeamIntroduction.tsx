@@ -45,7 +45,7 @@ export function TeamIntroduction() {
                 대표 이은석
               </h3>
               <p className="text-gray-600">
-                서울대학교 15 사회학과/벤처경영학과 졸
+                서울대학교 사회학과 14 / 벤처경영학과 졸업
               </p>
             </motion.div>
 
@@ -65,10 +65,10 @@ export function TeamIntroduction() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                강OO 자문의
+                자문의 강OO
               </h3>
               <p className="text-gray-600">
-                서울대학교 의과대학 14 / 서울대병원 수련
+                서울대학교 의과대학 14 졸업 / 서울대병원 수련
               </p>
             </motion.div>
           </div>
