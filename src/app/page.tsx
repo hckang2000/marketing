@@ -13,9 +13,7 @@ const HighlightResult = dynamic(() => import("@/components/sections/HighlightRes
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
 
-const TestimonialQuote = dynamic(() => import("@/components/sections/TestimonialQuote").then(mod => ({ default: mod.TestimonialQuote })), {
-  loading: () => <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600 animate-pulse" />
-})
+
 
 const Differentiators = dynamic(() => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
@@ -41,7 +39,6 @@ export default function HomePage() {
       <Hero onContactClick={openContact} />
       <SocialProof />
       <HighlightResult />
-      <TestimonialQuote />
       <Differentiators />
       <Process />
       <PlatformsGrid />

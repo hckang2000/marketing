@@ -3,42 +3,32 @@
 import { motion } from "framer-motion"
 import { Container } from "@/components/common/Container"
 import { Button } from "@/components/common/Button"
+import { ResponsiveText } from "@/components/common/ResponsiveText"
+import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 
 interface FinalCTAProps {
   onContactClick: () => void
 }
 
 export function FinalCTA({ onContactClick }: FinalCTAProps) {
+  const motionProps = useMotionAnimation()
+
   return (
     <section className="section-padding bg-primary">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          {/* Title - Mobile */}
-          <h2 className="text-3xl font-bold text-white mb-6 lg:hidden">
-            1분만 투자해서 문의해주시면
-          </h2>
+        <motion.div {...motionProps} className="text-center max-w-4xl mx-auto">
+          <ResponsiveText
+            mobile="1분만 투자해서 문의해주시면"
+            desktop="1분만 투자해서 문의해주시면"
+            as="h2"
+            className="text-3xl font-bold text-white mb-6"
+          />
 
-          {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-3xl font-bold text-white mb-6">
-            1분만 투자해서 문의해주시면
-          </h2>
-
-          {/* Description - Mobile */}
-          <p className="text-base text-white/90 mb-8 leading-relaxed lg:hidden">
-            직접 찾아뵙고 무료로<br />
-            병원 해외마케팅을 진단해드립니다.
-          </p>
-
-          {/* Description - Desktop */}
-          <p className="hidden lg:block text-base text-white/90 mb-8 leading-relaxed">
-            직접 찾아뵙고 무료로 병원 해외마케팅을 진단해드립니다.
-          </p>
+          <ResponsiveText
+            mobile="직접 찾아뵙고 무료로<br />병원 해외마케팅을 진단해드립니다."
+            desktop="직접 찾아뵙고 무료로 병원 해외마케팅을 진단해드립니다."
+            className="text-base text-white/90 mb-8 leading-relaxed"
+          />
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
             <h3 className="text-xl font-semibold text-white mb-4">

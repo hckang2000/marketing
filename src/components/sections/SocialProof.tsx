@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import Image from "next/image"
@@ -9,6 +9,9 @@ import { Card, CardContent } from "@/components/common/Card"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
+import { SectionTitle } from "@/components/common/SectionTitle"
+import { ResponsiveText } from "@/components/common/ResponsiveText"
+import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 
 // Swiper CSS
 import 'swiper/css'
@@ -45,6 +48,7 @@ export function SocialProof() {
   const [isPlaying, setIsPlaying] = useState(true)
   const swiperRef = useRef<SwiperType | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const motionProps = useMotionAnimation()
 
   const handleSlideChange = (swiper: SwiperType) => {
     setCurrentIndex(swiper.activeIndex)
@@ -80,7 +84,7 @@ export function SocialProof() {
   }
 
   // 각도 기반 스크롤 제어를 위한 커스텀 터치 이벤트
-  const handleTouchStart = (e: Event) => {
+  const handleTouchStart = useCallback((e: Event) => {
     const touchEvent = e as TouchEvent
     const touch = touchEvent.touches[0]
     const startX = touch.clientX
@@ -89,9 +93,9 @@ export function SocialProof() {
     // 터치 시작점 저장
     ;(e.target as HTMLElement).setAttribute('data-start-x', startX.toString())
     ;(e.target as HTMLElement).setAttribute('data-start-y', startY.toString())
-  }
+  }, [])
 
-  const handleTouchMove = (e: Event) => {
+  const handleTouchMove = useCallback((e: Event) => {
     const touchEvent = e as TouchEvent
     const touch = touchEvent.touches[0]
     const startX = parseInt((e.target as HTMLElement).getAttribute('data-start-x') || '0')
@@ -115,7 +119,7 @@ export function SocialProof() {
       }
       // 수직 스크롤의 경우 preventDefault 호출하지 않음
     }
-  }
+  }, [])
 
   useEffect(() => {
     // Swiper 컨테이너에 터치 이벤트 리스너 추가
@@ -129,31 +133,20 @@ export function SocialProof() {
         swiperContainer.removeEventListener('touchmove', handleTouchMove)
       }
     }
-  }, [])
+  }, [handleTouchStart, handleTouchMove])
 
   return (
     <section className="section-padding bg-gray-50">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            원장님들 실제 후기
-          </h2>
-          {/* Description - Mobile */}
-          <p className="text-base text-gray-600 max-w-lg mx-auto lg:hidden">
-            클리닉브릿지와 함께한 원장님들의<br />
-            실제 후기를 확인해보세요
-          </p>
-          
-          {/* Description - Desktop */}
-          <p className="hidden lg:block text-base text-gray-600 max-w-2xl mx-auto">
-            클리닉브릿지와 함께한 원장님들의 실제 후기를 확인해보세요
-          </p>
+        <motion.div {...motionProps} className="text-center mb-12">
+          <SectionTitle 
+            title="원장님들 실제 후기"
+          />
+          <ResponsiveText
+            mobile="클리닉브릿지와 함께한 원장님들의<br />실제 후기를 확인해보세요"
+            desktop="클리닉브릿지와 함께한 원장님들의 실제 후기를 확인해보세요"
+            className="text-base text-gray-600 max-w-lg mx-auto"
+          />
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
@@ -199,7 +192,6 @@ export function SocialProof() {
                             className="object-cover"
                             draggable={false}
                             sizes="(max-width: 1024px) 100vw"
-                            quality={80}
                             loading="lazy"
                           />
                         </div>
@@ -213,7 +205,6 @@ export function SocialProof() {
                             className="object-cover"
                             draggable={false}
                             sizes="(min-width: 1024px) 800px"
-                            quality={80}
                             loading="lazy"
                           />
                         </div>
