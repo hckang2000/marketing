@@ -13,6 +13,10 @@ const GuaranteeSection = dynamic(() => import("@/components/sections/GuaranteeSe
   loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
 })
 
+const InfluencerDM = dynamic(() => import("@/components/sections/InfluencerDM").then(mod => ({ default: mod.InfluencerDM })), {
+  loading: () => <div className="h-96 bg-white animate-pulse" />
+})
+
 // Lazy load components that are not immediately visible
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
@@ -23,14 +27,6 @@ const SocialProof = dynamic(() => import("@/components/sections/SocialProof").th
 
 
 const Differentiators = dynamic(() => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
-
-const Process = dynamic(() => import("@/components/sections/Process").then(mod => ({ default: mod.Process })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
-
-const PlatformsGrid = dynamic(() => import("@/components/sections/PlatformsGrid").then(mod => ({ default: mod.PlatformsGrid })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
 
@@ -48,8 +44,7 @@ export default function HomePage() {
       <SocialProof />
       <GuaranteeSection />
       <Differentiators />
-      <Process />
-      <PlatformsGrid />
+      <InfluencerDM />
       <FinalCTA onContactClick={openContact} />
     </>
   )

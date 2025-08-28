@@ -50,7 +50,7 @@ export function Differentiators() {
   const [openItem, setOpenItem] = useState<number | null>(null)
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-gray-100">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

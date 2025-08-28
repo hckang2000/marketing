@@ -23,25 +23,25 @@ import './SocialProof.css'
 
 const AUTOPLAY_MS = 10000
 
-const testimonials = [
+const dmConversations = [
   {
     id: 1,
-    image: "/images/testimonials/testimonial-1.jpg",
-    caption: "홍대 OOO의원 원장님<br />일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
+    image: "/images/dm/dm-1.jpg",
+    caption: "일본 인플루언서와의<br />실제 DM 대화 내용입니다.",
   },
   {
     id: 2,
-    image: "/images/testimonials/testimonial-2.jpg",
-    caption: "강남 XXX의원 원장님<br />광고비 대비 15배 매출이 나옵니다.",
+    image: "/images/dm/dm-2.jpg",
+    caption: "협찬 제안부터 계약까지<br />모든 과정을 투명하게 공개합니다.",
   },
   {
     id: 3,
-    image: "/images/testimonials/testimonial-3.jpg",
-    caption: "신논현 YYY의원 원장님<br />주말에 일본 환자가 40명까지 오네요",
+    image: "/images/dm/dm-3.jpg",
+    caption: "중간 브로커 없이<br />직접 소통하는 진짜 마케팅",
   },
 ]
 
-export function SocialProof() {
+export function InfluencerDM() {
   const swiperRef = useRef<SwiperType | null>(null)
   const motionProps = useMotionAnimation()
 
@@ -120,11 +120,11 @@ export function SocialProof() {
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
           <SectionTitle 
-            title="원장님들 실제 후기"
+            title="일본 인플루언서와<br class='block sm:inline' />진짜로 DM 주고받는 회사"
           />
           <ResponsiveText
-            mobile="클리닉브릿지와 함께한 원장님들의<br />실제 후기를 확인해보세요"
-            desktop="클리닉브릿지와 함께한 원장님들의 실제 후기를 확인해보세요"
+            mobile="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
+            desktop="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
             className="text-base text-gray-600 max-w-lg mx-auto"
           />
         </motion.div>
@@ -154,16 +154,16 @@ export function SocialProof() {
               resistanceRatio={0.85}
               touchStartPreventDefault={false}
             >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={testimonial.id}>
+              {dmConversations.map((conversation, index) => (
+                <SwiperSlide key={conversation.id}>
                   <div className="px-4">
-                    <Card className="rounded-none lg:rounded-2xl">
+                    <Card className="rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                       <CardContent className="p-6 h-[450px] lg:h-auto flex flex-col">
                         {/* Image Container - 1:1 비율 (450x450) */}
                         <div className="relative w-full max-w-[450px] mx-auto aspect-square mb-4 overflow-hidden rounded-lg flex-shrink-0">
                           <Image
-                            src={testimonial.image}
-                            alt={`후기 이미지 ${index + 1}`}
+                            src={conversation.image}
+                            alt={`DM 대화 ${index + 1}`}
                             fill
                             className="object-cover"
                             draggable={false}
@@ -176,7 +176,7 @@ export function SocialProof() {
                         <div className="text-center flex-1 flex items-center justify-center">
                           <p 
                             className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
-                            dangerouslySetInnerHTML={{ __html: testimonial.caption }}
+                            dangerouslySetInnerHTML={{ __html: conversation.caption }}
                           />
                         </div>
                       </CardContent>
@@ -187,7 +187,7 @@ export function SocialProof() {
             </Swiper>
           </div>
 
-                    {/* Navigation */}
+          {/* Navigation */}
           <div className="flex items-center justify-center mt-8 space-x-4">
             <button
               onClick={prevSlide}

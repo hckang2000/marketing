@@ -1,6 +1,6 @@
-/* Swiper 기본 스타일 숨기기 */
-.swiper-button-next,
-.swiper-button-prev {
+/* Swiper 기본 네비게이션 버튼 숨기기 (커스텀 버튼 사용) */
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
   display: none !important;
 }
 
@@ -25,12 +25,13 @@
   outline: none !important;
 }
 
-/* 커스텀 페이지네이션 스타일 */
+/* Swiper 기본 페이지네이션 스타일 */
 .swiper-pagination {
-  position: static !important;
+  position: relative !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   gap: 0.5rem !important;
   margin-top: 1rem !important;
+  bottom: auto !important;
 }
