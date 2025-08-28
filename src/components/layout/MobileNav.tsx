@@ -78,7 +78,7 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
         </nav>
 
         {/* CTA */}
-        <div className="p-6 border-t">
+        <div className="p-6 pb-8 border-t">
           <Button
             onClick={() => {
               onContactClick()
