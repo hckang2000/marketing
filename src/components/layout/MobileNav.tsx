@@ -87,7 +87,7 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
             variant="gradient"
             className="w-full"
           >
-            1분 문의하기
+            10초 문의하기
           </Button>
         </div>
       </div>

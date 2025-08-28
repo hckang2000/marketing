@@ -43,7 +43,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Button onClick={openContact} variant="gradient" size="sm">
-              1분 문의
+              10초 문의
             </Button>
           </div>
 

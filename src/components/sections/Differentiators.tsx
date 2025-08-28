@@ -18,14 +18,7 @@ const differentiators = [
       "대표 포함 전원 서울대학교 출신",
       "10년 이상 마케팅 경력",
       "1:1 맞춤형 전략 수립"
-    ],
-    profile: {
-      name: "이은석 대표",
-      education: "서울대학교 벤처경영학과 졸",
-      experience: "10년+ 마케팅 경력",
-      image: "/images/profiles/ceo_profile.jpg"
-    }
-    
+    ]
   },
   {
     id: 2,
@@ -142,60 +135,7 @@ export function Differentiators() {
                         </ul>
                       </div>
 
-                      <div className="space-y-4">
-                        {item.profile && (
-                          <div className="bg-primary/5 rounded-lg p-4 border border-primary/10">
-                            <h4 className="font-semibold text-gray-900 mb-3">대표</h4>
-                            <div className="flex items-center space-x-3">
-                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-primary">
-                                {item.profile.image ? (
-                                  <Image
-                                    src={item.profile.image}
-                                    alt={`${item.profile.name} 프로필 사진`}
-                                    fill
-                                    className="object-cover"
-                                    sizes="64px"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center">
-                                    <span className="text-white font-semibold text-lg">
-                                      {item.profile.name.charAt(0)}
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                              <div>
-                                <p className="font-semibold text-gray-900">{item.profile.name}</p>
-                                <p className="text-sm text-gray-600">{item.profile.education}</p>
-                                <p className="text-sm text-gray-600">{item.profile.experience}</p>
-                              </div>
-                            </div>
-                          </div>
-                        )}
 
-                        {item.id === 1 && (
-                          <div className="bg-primary/5 rounded-lg p-4 border border-primary/10">
-                            <h4 className="font-semibold text-gray-900 mb-3">자문의</h4>
-                            <div className="flex items-center space-x-3">
-                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-primary">
-                                <Image
-                                  src="/images/profiles/doctor_profile.jpg"
-                                  alt="자문의 프로필 사진"
-                                  fill
-                                  className="object-cover"
-                                  sizes="64px"
-                                />
-                              </div>
-                              <div>
-                                <p className="font-semibold text-gray-900">강OO 자문의</p>
-                                <p className="text-sm text-gray-600">서울대학교 의과대학 졸업</p>
-                                <p className="text-sm text-gray-600">서울대학교 병원 수련</p>
-                                <p className="text-sm text-gray-600">의료 마케팅 5년+ 경력</p>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
                     </div>
                   </CardContent>
                 )}

@@ -66,7 +66,7 @@ export function InquiryDialog() {
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b">
-              <Dialog.Title className="text-xl font-semibold">1분 문의하기</Dialog.Title>
+              <Dialog.Title className="text-xl font-semibold">10초 문의하기</Dialog.Title>
               <Dialog.Close asChild>
                 <button className="p-2 text-gray-500 hover:text-gray-700 transition-colors">
                   <X className="h-5 w-5" />

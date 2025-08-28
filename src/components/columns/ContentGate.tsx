@@ -67,7 +67,7 @@ export function ContentGate({ articleSlug, children }: ContentGateProps) {
           size="lg"
           className="shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          1분 문의하고 마저 읽기
+          10초 문의하고 마저 읽기
         </Button>
       </div>
     </div>

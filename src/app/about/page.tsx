@@ -121,7 +121,7 @@ export default function AboutPage() {
                     15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
                   </p>
                   <Button onClick={openContact} variant="gradient" className="mt-6">
-                    1분 문의하기
+                    10초 문의하기
                   </Button>
                 </div>
               </CardContent>

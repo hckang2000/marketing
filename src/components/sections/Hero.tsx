@@ -11,6 +11,17 @@ interface HeroProps {
 }
 
 export function Hero({ onContactClick }: HeroProps) {
+  // 현재 날짜로부터 7일 뒤 날짜 계산
+  const getDateAfter7Days = () => {
+    const today = new Date()
+    const after7Days = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
+    const month = after7Days.getMonth() + 1 // getMonth()는 0부터 시작하므로 +1
+    const day = after7Days.getDate()
+    return `${month}월 ${day}일`
+  }
+
+  const deadlineDate = getDateAfter7Days()
+
   return (
     <section className="relative overflow-hidden">
       {/* Background Image - Mobile */}
@@ -42,7 +53,7 @@ export function Hero({ onContactClick }: HeroProps) {
       </div>
       
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/80" />
       <Container>
         <div className="relative z-10 py-20 lg:py-32 min-h-[80vh] lg:min-h-0 flex items-center">
           <div className="max-w-4xl mx-auto text-center">
@@ -54,8 +65,8 @@ export function Hero({ onContactClick }: HeroProps) {
               className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
               <span className="block">일본 환자 유치로</span>
-              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출을</span>
-              <span className="block">만드는 병원 마케팅</span>
+              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출 보장</span>
+              <span className="block">못하면 무조건 환불</span>
             </motion.h1>
 
             {/* Subcopy */}
@@ -66,8 +77,8 @@ export function Hero({ onContactClick }: HeroProps) {
               className="text-lg lg:text-2xl text-gray-100 mb-8 max-w-2xl lg:max-w-3xl mx-auto"
             >
               <ResponsiveText
-                mobile="딱 1분만 읽어보시고<br />무료로 병원마케팅 진단을 받아보세요."
-                desktop="딱 1분만 읽어보시고 무료로 병원마케팅 진단을 받아보세요."
+                mobile={`${deadlineDate}까지 문의시 광고비 50% 할인`}
+                desktop={`${deadlineDate}까지 문의시 광고비 50% 할인`}
               />
             </motion.div>
 
@@ -84,7 +95,7 @@ export function Hero({ onContactClick }: HeroProps) {
                 size="lg"
                 className="w-full lg:w-96 lg:px-8"
               >
-                1분 문의하기
+                10초 문의하기
               </Button>
             </motion.div>
           </div>

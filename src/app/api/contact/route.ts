@@ -51,7 +51,7 @@ export async function POST(req: Request) {
          await resend.emails.send({
        from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
        to: process.env.TO_EMAIL || "clinicbridge.kr@gmail.com",
-      subject: "클리닉브릿지 1분 문의 도착",
+      subject: "클리닉브릿지 10초 문의 도착",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px;">

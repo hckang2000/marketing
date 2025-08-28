@@ -59,7 +59,7 @@ export function Footer() {
             <div>
               <h3 className="font-semibold mb-4">문의</h3>
               <Button onClick={openContact} variant="gradient" className="w-full mb-4">
-                1분 문의하기
+                10초 문의하기
               </Button>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">

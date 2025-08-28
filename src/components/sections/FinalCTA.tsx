@@ -18,8 +18,8 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
       <Container>
         <motion.div {...motionProps} className="text-center max-w-4xl mx-auto">
           <ResponsiveText
-            mobile="1분만 투자해서 문의해주시면"
-            desktop="1분만 투자해서 문의해주시면"
+            mobile="10초만 투자해서 문의해주시면"
+            desktop="10초만 투자해서 문의해주시면"
             as="h2"
             className="text-3xl font-bold text-white mb-6"
           />
@@ -60,7 +60,7 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
               size="lg"
               className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-4"
             >
-            1분 문의하기
+            10초 문의하기
           </Button>
 
           <p className="text-white/70 text-sm mt-4">

@@ -5,6 +5,11 @@ import { Hero } from "@/components/sections/Hero"
 import { useContact } from "@/components/providers/ContactProvider"
 
 // Lazy load components that are not immediately visible
+const TeamIntroduction = dynamic(() => import("@/components/sections/TeamIntroduction").then(mod => ({ default: mod.TeamIntroduction })), {
+  loading: () => <div className="h-96 bg-white animate-pulse" />
+})
+
+// Lazy load components that are not immediately visible
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
@@ -37,6 +42,7 @@ export default function HomePage() {
   return (
     <>
       <Hero onContactClick={openContact} />
+      <TeamIntroduction />
       <SocialProof />
       <HighlightResult />
       <Differentiators />
