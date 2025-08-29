@@ -65,7 +65,7 @@ export function Hero({ onContactClick }: HeroProps) {
               className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
               <span className="block">일본 환자 유치로</span>
-              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출 보장</span>
+              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출보장</span>
               <span className="block">못하면 무조건 환불</span>
             </motion.h1>
 
