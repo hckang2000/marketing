@@ -27,17 +27,22 @@ const dmConversations = [
   {
     id: 1,
     image: "/images/dm/dm-1.jpg",
-    caption: "일본 인플루언서와의<br />실제 DM 대화 내용입니다.",
+    caption: "일본 인플루언서와<br />전 과정을 직접 조율",
   },
   {
     id: 2,
     image: "/images/dm/dm-2.jpg",
-    caption: "협찬 제안부터 계약까지<br />모든 과정을 투명하게 공개합니다.",
+    caption: "협찬 제안부터 계약까지<br />모든 과정을 투명하게 공개",
   },
   {
     id: 3,
     image: "/images/dm/dm-3.jpg",
     caption: "중간 브로커 없이<br />직접 소통하는 진짜 마케팅",
+  },
+  {
+    id: 4,
+    image: "/images/dm/dm-4.jpg",
+    caption: "이렇게 모집한 인플루언서<br />500명 이상 보유",
   },
 ]
 
@@ -160,30 +165,30 @@ export function InfluencerDM() {
               {dmConversations.map((conversation, index) => (
                 <SwiperSlide key={conversation.id}>
                   <div className="px-4">
-                    <Card className="rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                      <CardContent className="p-6 h-[450px] lg:h-auto flex flex-col">
-                        {/* Image Container - 1:1 비율 (450x450) */}
-                        <div className="relative w-full max-w-[450px] mx-auto aspect-square mb-4 overflow-hidden rounded-lg flex-shrink-0">
-                          <Image
-                            src={conversation.image}
-                            alt={`DM 대화 ${index + 1}`}
-                            fill
-                            className="object-cover"
-                            draggable={false}
-                            sizes="(max-width: 768px) 100vw, 450px"
-                            loading="lazy"
-                          />
-                        </div>
-                        
-                        {/* Caption */}
-                        <div className="text-center flex-1 flex items-center justify-center">
-                          <p 
-                            className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
-                            dangerouslySetInnerHTML={{ __html: conversation.caption }}
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
+                                         <Card className="rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                       <CardContent className="p-4 lg:p-6 flex flex-col">
+                         {/* Image Container - 350x700 비율 */}
+                         <div className="relative w-full max-w-[350px] mx-auto aspect-[350/700] overflow-hidden rounded-lg flex-shrink-0 bg-white">
+                           <Image
+                             src={conversation.image}
+                             alt={`DM 대화 ${index + 1}`}
+                             fill
+                             className="object-contain"
+                             draggable={false}
+                             sizes="(max-width: 768px) 100vw, 350px"
+                             loading="lazy"
+                           />
+                         </div>
+                         
+                         {/* Caption */}
+                         <div className="text-center mt-4 lg:mt-6">
+                           <p 
+                             className="text-gray-700 text-base lg:text-lg leading-relaxed font-medium"
+                             dangerouslySetInnerHTML={{ __html: conversation.caption }}
+                           />
+                         </div>
+                       </CardContent>
+                     </Card>
                   </div>
                 </SwiperSlide>
               ))}
