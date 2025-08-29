@@ -14,7 +14,7 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
   const motionProps = useMotionAnimation()
 
   return (
-    <section className="section-padding bg-primary">
+    <section className="section-padding bg-red-600">
       <Container>
         <motion.div {...motionProps} className="text-center max-w-4xl mx-auto">
           <ResponsiveText
@@ -34,7 +34,7 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
             onClick={onContactClick}
             variant="default"
             size="lg"
-            className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-4"
+            className="w-full lg:w-96 lg:px-8 bg-white text-red-600 hover:bg-gray-100 text-lg py-4 font-semibold shadow-lg"
           >
             10초 문의하기
           </Button>
