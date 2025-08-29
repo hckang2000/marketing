@@ -62,11 +62,11 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              <span className="block">일본 환자 유치로</span>
-              <span className="block bg-red-600 text-white px-4 py-2 rounded-lg inline-block">광고비 10배 매출보장</span>
-              <span className="block">못하면 무조건 환불</span>
+              <span className="block whitespace-nowrap">일본 환자 유치로</span>
+              <span className="block bg-red-600 text-white px-2 sm:px-4 py-2 rounded-lg inline-block whitespace-nowrap">광고비 10배 매출보장</span>
+              <span className="block whitespace-nowrap">못하면 무조건 환불</span>
             </motion.h1>
 
             {/* Subcopy */}
