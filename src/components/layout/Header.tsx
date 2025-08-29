@@ -10,6 +10,7 @@ import { MobileNav } from "./MobileNav"
 import { useContact } from "@/components/providers/ContactProvider"
 
 const navigation = [
+  { name: "처음으로", href: "/" },
   { name: "회사 소개", href: "/about" },
   { name: "마케팅 칼럼", href: "/blog" },
   { name: "설문 데이터", href: "/data" },
