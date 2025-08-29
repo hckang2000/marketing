@@ -77,8 +77,8 @@ export function Hero({ onContactClick }: HeroProps) {
               className="text-lg lg:text-2xl text-gray-100 mb-8 max-w-2xl lg:max-w-3xl mx-auto"
             >
               <ResponsiveText
-                mobile={`${deadlineDate}까지 문의시 광고비 50% 할인`}
-                desktop={`${deadlineDate}까지 문의시 광고비 50% 할인`}
+                mobile={`지금 문의시 광고비 50% 할인`}
+                desktop={`지금 문의시 광고비 50% 할인`}
               />
             </motion.div>
 

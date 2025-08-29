@@ -68,7 +68,7 @@ export function TeamIntroduction() {
                 자문의 강OO
               </h3>
               <p className="text-gray-600">
-                서울대학교 의과대학 14 졸업 / 서울대병원 수련
+                서울대학교 의과대학 14 / 서울대병원 수련
               </p>
             </motion.div>
           </div>

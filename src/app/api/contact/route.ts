@@ -7,7 +7,7 @@ const resend = resendApiKey ? new Resend(resendApiKey) : null
 
 export async function POST(req: Request) {
   try {
-    const { name, phone, email, message, hp } = await req.json()
+    const { name, phone, hospital, email, message, hp } = await req.json()
 
     // Honeypot check
     if (hp) {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     // Validation
-    if (!name || !phone || !email || !message) {
+    if (!name || !phone || !hospital || !email || !message) {
       return NextResponse.json(
         { error: "모든 필드를 입력해주세요" },
         { status: 400 }
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     if (!resend) {
       console.log("Resend API key not configured. Skipping email send.")
       // In development or when API key is not set, just log the data
-      console.log("Contact form data:", { name, phone, email, message })
+      console.log("Contact form data:", { name, phone, hospital, email, message })
       return NextResponse.json({ ok: true })
     }
 
@@ -62,6 +62,7 @@ export async function POST(req: Request) {
             <h3 style="color: #667eea; margin-top: 0;">문의자 정보</h3>
             <p><strong>이름:</strong> ${name}</p>
             <p><strong>연락처:</strong> ${phone}</p>
+            <p><strong>병원명/직책:</strong> ${hospital}</p>
             <p><strong>이메일:</strong> ${email}</p>
           </div>
           

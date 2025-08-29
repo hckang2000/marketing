@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import toast from "react-hot-toast"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { getAllBlogPosts } from "@/data/blogPosts"
@@ -12,14 +13,12 @@ const blogPosts = getAllBlogPosts()
 export default function BlogPage() {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.trim()) return
 
     setIsSubmitting(true)
-    setSubmitStatus("idle")
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -33,19 +32,16 @@ export default function BlogPage() {
       })
 
       if (response.ok) {
-        setSubmitStatus("success")
+        toast.success("구독이 완료되었습니다!")
         setEmail("")
-        setTimeout(() => {
-          setSubmitStatus("idle")
-        }, 3000)
       } else {
         const errorData = await response.json()
         console.error("Subscription error:", errorData)
-        setSubmitStatus("error")
+        toast.error("구독 중 오류가 발생했습니다. 다시 시도해주세요.")
       }
     } catch (error) {
       console.error("Email subscription error:", error)
-      setSubmitStatus("error")
+      toast.error("구독 중 오류가 발생했습니다. 다시 시도해주세요.")
     } finally {
       setIsSubmitting(false)
     }
@@ -145,18 +141,6 @@ export default function BlogPage() {
                      {isSubmitting ? "구독 중..." : "구독하기"}
                    </button>
                  </form>
-                 
-                 {/* Status Messages */}
-                 {submitStatus === "success" && (
-                   <p className="text-sm text-green-600 text-center mt-3">
-                     구독이 완료되었습니다!
-                   </p>
-                 )}
-                 {submitStatus === "error" && (
-                   <p className="text-sm text-red-600 text-center mt-3">
-                     구독 중 오류가 발생했습니다. 다시 시도해주세요.
-                   </p>
-                 )}
                </CardContent>
             </Card>
           </motion.div>
