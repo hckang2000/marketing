@@ -22,7 +22,7 @@ const pricingPlans = [
   {
     id: 2,
     title: "매출안심 500만/월",
-    description: "목표 매출 미달시 환불",
+    description: "목표 매출 미달시 환불 정책",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
       "일본 구글 검색결과 상위노출",
@@ -34,7 +34,7 @@ const pricingPlans = [
   {
     id: 3,
     title: "매출안심 플러스 1,000만/월",
-    description: "목표 매출 미달시 환불",
+    description: "목표 매출 미달시 환불 정책",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
       "일본 구글 검색결과 상위노출",

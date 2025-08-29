@@ -18,8 +18,8 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
       <Container>
         <motion.div {...motionProps} className="text-center max-w-4xl mx-auto">
           <ResponsiveText
-            mobile="10초 투자해서 문의하시면"
-            desktop="10초 투자해서 문의하시면"
+            mobile="지금 바로 문의주세요"
+            desktop="지금 바로 문의주세요"
             as="h2"
             className="text-3xl font-bold text-white mb-6"
           />
