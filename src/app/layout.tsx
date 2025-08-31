@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import "./globals.css"
 import { ClientProviders } from "@/components/providers/ClientProviders"
+import { GAProvider } from "@/components/providers/GAProvider"
+import { GA_ID } from "@/lib/gtag"
 
 export const metadata: Metadata = {
   title: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
@@ -64,7 +67,28 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
+        {GA_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <Script
+              id="gtag-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
         <ClientProviders>
+          <GAProvider />
           {children}
         </ClientProviders>
       </body>
