@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Script from "next/script"
+import { Suspense } from "react"
 import "./globals.css"
 import { ClientProviders } from "@/components/providers/ClientProviders"
 import { GAProvider } from "@/components/providers/GAProvider"
@@ -88,7 +89,9 @@ export default function RootLayout({
           </>
         )}
         <ClientProviders>
-          <GAProvider />
+          <Suspense fallback={null}>
+            <GAProvider />
+          </Suspense>
           {children}
         </ClientProviders>
       </body>
