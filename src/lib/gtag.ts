@@ -27,3 +27,13 @@ export const event = (action: string, params: Record<string, unknown>) => {
   
   window.gtag('event', action, params);
 };
+
+// 버튼 클릭 이벤트 추적 함수
+export const trackButtonClick = (buttonName: string, location: string) => {
+  event('button_click', {
+    button_name: buttonName,
+    location: location,
+    event_category: 'engagement',
+    event_label: `${location}_${buttonName}`,
+  });
+};

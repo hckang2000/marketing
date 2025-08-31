@@ -5,6 +5,7 @@ import { Container } from "@/components/common/Container"
 import { Button } from "@/components/common/Button"
 import { ResponsiveText } from "@/components/common/ResponsiveText"
 import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
+import { trackButtonClick } from "@/lib/gtag"
 
 interface FinalCTAProps {
   onContactClick: () => void
@@ -12,6 +13,12 @@ interface FinalCTAProps {
 
 export function FinalCTA({ onContactClick }: FinalCTAProps) {
   const motionProps = useMotionAnimation()
+
+  // 문의 버튼 클릭 핸들러
+  const handleContactClick = () => {
+    trackButtonClick('contact', 'final_cta')
+    onContactClick()
+  }
 
   return (
     <section className="section-padding bg-red-600">
@@ -31,7 +38,7 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
           />
 
           <Button
-            onClick={onContactClick}
+            onClick={handleContactClick}
             variant="default"
             size="lg"
             className="w-full lg:w-96 lg:px-8 bg-white text-red-600 hover:bg-gray-100 text-lg py-4 font-semibold shadow-lg"

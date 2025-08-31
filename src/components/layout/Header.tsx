@@ -8,6 +8,7 @@ import { Button } from "@/components/common/Button"
 import { Container } from "@/components/common/Container"
 import { MobileNav } from "./MobileNav"
 import { useContact } from "@/components/providers/ContactProvider"
+import { trackButtonClick } from "@/lib/gtag"
 
 const navigation = [
   { name: "처음으로", href: "/" },
@@ -23,6 +24,12 @@ interface HeaderProps {
 export function Header({ onMobileNavStateChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { openContact } = useContact()
+
+  // 문의 버튼 클릭 핸들러
+  const handleContactClick = () => {
+    trackButtonClick('contact', 'header')
+    openContact()
+  }
 
   // MobileNav 상태 변경 시 부모 컴포넌트에 알림
   const handleMobileMenuToggle = (open: boolean) => {
@@ -52,14 +59,14 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Button onClick={openContact} variant="gradient" size="sm">
+            <Button onClick={handleContactClick} variant="gradient" size="sm">
               10초 문의
             </Button>
           </div>
 
           {/* Mobile CTA Button and Menu */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button onClick={openContact} variant="gradient" size="sm">
+            <Button onClick={handleContactClick} variant="gradient" size="sm">
               문의
             </Button>
             <button
@@ -78,7 +85,7 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
         open={mobileMenuOpen}
         onClose={() => handleMobileMenuToggle(false)}
         navigation={navigation}
-        onContactClick={openContact}
+        onContactClick={handleContactClick}
       />
     </header>
   )
