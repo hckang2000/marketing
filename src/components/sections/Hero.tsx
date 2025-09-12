@@ -12,13 +12,13 @@ interface HeroProps {
 
 export function Hero({ onContactClick }: HeroProps) {
   // 현재 날짜로부터 7일 뒤 날짜 계산
-  const getDateAfter7Days = () => {
-    const today = new Date()
-    const after7Days = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
-    const month = after7Days.getMonth() + 1 // getMonth()는 0부터 시작하므로 +1
-    const day = after7Days.getDate()
-    return `${month}월 ${day}일`
-  }
+  // const getDateAfter7Days = () => {
+  //   const today = new Date()
+  //   const after7Days = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
+  //   const month = after7Days.getMonth() + 1 // getMonth()는 0부터 시작하므로 +1
+  //   const day = after7Days.getDate()
+  //   return `${month}월 ${day}일`
+  // }
 
   // const deadlineDate = getDateAfter7Days()
 

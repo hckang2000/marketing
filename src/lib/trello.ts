@@ -79,7 +79,6 @@ ${message}
     name: cardName,
     desc: cardDescription,
     pos: 'top', // 리스트 상단에 추가
-    due: null, // 마감일 없음
   })
 
   try {
