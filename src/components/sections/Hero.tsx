@@ -20,7 +20,7 @@ export function Hero({ onContactClick }: HeroProps) {
     return `${month}월 ${day}일`
   }
 
-  const deadlineDate = getDateAfter7Days()
+  // const deadlineDate = getDateAfter7Days()
 
   return (
     <section className="relative overflow-hidden">

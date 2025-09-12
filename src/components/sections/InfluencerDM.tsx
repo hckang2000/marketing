@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
@@ -50,11 +50,11 @@ export function InfluencerDM() {
   const swiperRef = useRef<SwiperType | null>(null)
   const motionProps = useMotionAnimation()
 
-  const goToSlide = (index: number) => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(index)
-    }
-  }
+  // const goToSlide = (index: number) => {
+  //   if (swiperRef.current) {
+  //     swiperRef.current.slideTo(index)
+  //   }
+  // }
 
   const nextSlide = () => {
     if (swiperRef.current) {

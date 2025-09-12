@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { Container } from "@/components/common/Container"
 import { SectionTitle } from "@/components/common/SectionTitle"
-import { ResponsiveText } from "@/components/common/ResponsiveText"
 import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 
 export function GuaranteeSection() {

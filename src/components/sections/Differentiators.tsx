@@ -3,10 +3,8 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
-import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
-import { Button } from "@/components/common/Button"
 
 const pricingPlans = [
   {

@@ -211,7 +211,15 @@ export async function testTrelloAuth(config: TrelloConfig): Promise<boolean> {
 /**
  * Trello 보드의 리스트 목록을 가져오는 함수 (디버깅용)
  */
-export async function getTrelloLists(config: TrelloConfig): Promise<any[]> {
+export interface TrelloList {
+  id: string
+  name: string
+  closed: boolean
+  idBoard: string
+  pos: number
+}
+
+export async function getTrelloLists(config: TrelloConfig): Promise<TrelloList[]> {
   const { apiKey, token, boardId } = config
   
   const url = `https://api.trello.com/1/boards/${boardId}/lists`

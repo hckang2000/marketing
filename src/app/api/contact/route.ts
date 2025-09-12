@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
-import { createTrelloCard, getTrelloConfig, testTrelloAuth, type ContactFormData } from "@/lib/trello"
+import { createTrelloCard, getTrelloConfig, testTrelloAuth } from "@/lib/trello"
 
 // Check if Resend API key is available
 const resendApiKey = process.env.RESEND_API_KEY
