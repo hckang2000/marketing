@@ -45,13 +45,21 @@ export async function POST(req: Request) {
     const trelloConfig = getTrelloConfig()
     let trelloCardId: string | null = null
     
+    console.log("🔍 Trello 카드 생성 시작:", {
+      hasConfig: !!trelloConfig,
+      name: name,
+      hospital: hospital
+    })
+    
     if (trelloConfig) {
       try {
         // 먼저 인증 테스트
+        console.log("🧪 Trello API 인증 테스트 시작...")
         const authSuccess = await testTrelloAuth(trelloConfig)
         if (!authSuccess) {
           console.error("❌ Trello API 인증 실패로 카드 생성을 건너뜁니다.")
         } else {
+          console.log("✅ Trello API 인증 성공, 카드 생성 시작...")
           const trelloCard = await createTrelloCard(trelloConfig, {
             name,
             phone,
@@ -64,6 +72,10 @@ export async function POST(req: Request) {
         }
       } catch (error) {
         console.error("❌ Trello 카드 생성 실패:", error)
+        console.error("❌ 오류 상세:", {
+          message: error instanceof Error ? error.message : "알 수 없는 오류",
+          stack: error instanceof Error ? error.stack : undefined
+        })
         // Trello 오류는 이메일 전송을 중단시키지 않음
       }
     } else {

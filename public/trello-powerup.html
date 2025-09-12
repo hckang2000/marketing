@@ -3,10 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>Trello Power-Up Connector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
     <script>
+      // Power-Up 초기화 전에 오류 처리 추가
+      window.addEventListener('error', function(e) {
+        console.log('Power-Up 오류:', e.message);
+      });
+
       TrelloPowerUp.initialize({
         'card-buttons': function(t, options) {
           return [{
@@ -15,7 +21,9 @@
             callback: function(t) {
               return t.popup({
                 title: '문의 정보',
-                url: '/trello-popup.html',
+                url: 'https://www.clinicbridge.co.kr/trello-popup.html',
+                height: 300,
+                width: 400
               });
             },
           }];
