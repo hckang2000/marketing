@@ -42,6 +42,13 @@ export async function POST(req: Request) {
     }
 
     // Trello 카드 생성
+    console.log("🔍 환경변수 직접 확인:", {
+      TRELLO_API_KEY: process.env.TRELLO_API_KEY ? `${process.env.TRELLO_API_KEY.substring(0, 8)}...` : "❌ 없음",
+      TRELLO_API_TOKEN: process.env.TRELLO_API_TOKEN ? `${process.env.TRELLO_API_TOKEN.substring(0, 8)}...` : "❌ 없음",
+      TRELLO_BOARD_ID: process.env.TRELLO_BOARD_ID ? `${process.env.TRELLO_BOARD_ID.substring(0, 8)}...` : "❌ 없음",
+      TRELLO_LIST_ID: process.env.TRELLO_LIST_ID ? `${process.env.TRELLO_LIST_ID.substring(0, 8)}...` : "❌ 없음"
+    })
+    
     const trelloConfig = getTrelloConfig()
     let trelloCardId: string | null = null
     
@@ -86,6 +93,8 @@ export async function POST(req: Request) {
       }
     } else {
       console.log("❌ Trello 설정이 없어 카드 생성을 건너뜁니다.")
+      console.log("❌ Vercel 환경변수를 확인해주세요:")
+      console.log("❌ TRELLO_API_KEY, TRELLO_API_TOKEN, TRELLO_BOARD_ID, TRELLO_LIST_ID")
     }
 
     // Send email
