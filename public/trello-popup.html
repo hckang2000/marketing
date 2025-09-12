@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css" />
+    <style>
+      .info-section {
+        margin: 10px 0;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 5px;
+      }
+      .info-label {
+        font-weight: bold;
+        color: #667eea;
+      }
+      .info-value {
+        margin-left: 10px;
+      }
+    </style>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  </head>
+  <body>
+    <div id="inquiry-info">
+      <h3>문의 정보</h3>
+      <div class="info-section">
+        <span class="info-label">상태:</span>
+        <span class="info-value" id="status">처리 중</span>
+      </div>
+      <div class="info-section">
+        <span class="info-label">생성일:</span>
+        <span class="info-value" id="created-date">-</span>
+      </div>
+      <div class="info-section">
+        <span class="info-label">우선순위:</span>
+        <span class="info-value" id="priority">보통</span>
+      </div>
+    </div>
+    
+    <script>
+      var t = TrelloPowerUp.iframe();
+      
+      // 현재 날짜 설정
+      document.getElementById('created-date').textContent = new Date().toLocaleDateString('ko-KR');
+      
+      t.render(function () {
+        t.sizeTo("#inquiry-info").done();
+      });
+    </script>
+  </body>
+</html>

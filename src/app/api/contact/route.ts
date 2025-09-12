@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { createTrelloCard, getTrelloConfig, testTrelloAuth, type ContactFormData } from "@/lib/trello"
 
 // Check if Resend API key is available
 const resendApiKey = process.env.RESEND_API_KEY
@@ -40,15 +41,47 @@ export async function POST(req: Request) {
       )
     }
 
+    // Trello 카드 생성
+    const trelloConfig = getTrelloConfig()
+    let trelloCardId: string | null = null
+    
+    if (trelloConfig) {
+      try {
+        // 먼저 인증 테스트
+        const authSuccess = await testTrelloAuth(trelloConfig)
+        if (!authSuccess) {
+          console.error("❌ Trello API 인증 실패로 카드 생성을 건너뜁니다.")
+        } else {
+          const trelloCard = await createTrelloCard(trelloConfig, {
+            name,
+            phone,
+            hospital,
+            email,
+            message,
+          })
+          trelloCardId = trelloCard.id
+          console.log(`✅ Trello 카드 생성 성공: ${trelloCard.shortUrl}`)
+        }
+      } catch (error) {
+        console.error("❌ Trello 카드 생성 실패:", error)
+        // Trello 오류는 이메일 전송을 중단시키지 않음
+      }
+    } else {
+      console.log("❌ Trello 설정이 없어 카드 생성을 건너뜁니다.")
+    }
+
     // Send email
     if (!resend) {
       console.log("Resend API key not configured. Skipping email send.")
       // In development or when API key is not set, just log the data
       console.log("Contact form data:", { name, phone, hospital, email, message })
-      return NextResponse.json({ ok: true })
+      return NextResponse.json({ 
+        ok: true, 
+        trelloCardId: trelloCardId 
+      })
     }
 
-         await resend.emails.send({
+    await resend.emails.send({
        from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
        to: process.env.TO_EMAIL || "clinicbridge.kr@gmail.com",
       subject: "클리닉브릿지 10초 문의 도착",
@@ -79,7 +112,10 @@ export async function POST(req: Request) {
       `,
     })
 
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ 
+      ok: true, 
+      trelloCardId: trelloCardId 
+    })
   } catch (error) {
     console.error("Contact form error:", error)
     return NextResponse.json(
