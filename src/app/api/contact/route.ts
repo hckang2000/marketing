@@ -48,7 +48,13 @@ export async function POST(req: Request) {
     console.log("🔍 Trello 카드 생성 시작:", {
       hasConfig: !!trelloConfig,
       name: name,
-      hospital: hospital
+      hospital: hospital,
+      configDetails: trelloConfig ? {
+        apiKeyLength: trelloConfig.apiKey.length,
+        tokenLength: trelloConfig.token.length,
+        boardId: trelloConfig.boardId,
+        listId: trelloConfig.listId
+      } : null
     })
     
     if (trelloConfig) {

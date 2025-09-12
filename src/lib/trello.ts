@@ -144,12 +144,14 @@ export function getTrelloConfig(): TrelloConfig | null {
   // API 키 형식 검증
   if (apiKey && !/^[a-f0-9]{32}$/.test(apiKey)) {
     console.error('❌ API 키 형식이 올바르지 않습니다. 32자리 영숫자여야 합니다.')
+    console.error('❌ 현재 API 키:', apiKey)
     return null
   }
 
   // 토큰 형식 검증 (64자리 영숫자)
   if (token && !/^[a-f0-9]{64}$/.test(token)) {
     console.error('❌ 토큰 형식이 올바르지 않습니다. 64자리 영숫자여야 합니다.')
+    console.error('❌ 현재 토큰:', token)
     return null
   }
 
