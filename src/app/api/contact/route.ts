@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       )
     }
 
-    // Trello 카드 생성
+    // Trello 카드 생성 - 강제 실행
     console.log("🔍 환경변수 직접 확인:", {
       TRELLO_API_KEY: process.env.TRELLO_API_KEY ? `${process.env.TRELLO_API_KEY.substring(0, 8)}...` : "❌ 없음",
       TRELLO_API_TOKEN: process.env.TRELLO_API_TOKEN ? `${process.env.TRELLO_API_TOKEN.substring(0, 8)}...` : "❌ 없음",
@@ -49,29 +49,39 @@ export async function POST(req: Request) {
       TRELLO_LIST_ID: process.env.TRELLO_LIST_ID ? `${process.env.TRELLO_LIST_ID.substring(0, 8)}...` : "❌ 없음"
     })
     
-    const trelloConfig = getTrelloConfig()
+    // 환경변수가 없어도 강제로 Trello API 호출 시도
+    console.log("🚀 Trello API 강제 실행 시작...")
     let trelloCardId: string | null = null
     
-    console.log("🔍 Trello 카드 생성 시작:", {
-      hasConfig: !!trelloConfig,
-      name: name,
-      hospital: hospital,
-      configDetails: trelloConfig ? {
-        apiKeyLength: trelloConfig.apiKey.length,
-        tokenLength: trelloConfig.token.length,
-        boardId: trelloConfig.boardId,
-        listId: trelloConfig.listId
-      } : null
-    })
-    
-    if (trelloConfig) {
-      try {
-        // 먼저 인증 테스트
+    try {
+      // 환경변수에서 직접 가져오기
+      const apiKey = process.env.TRELLO_API_KEY
+      const token = process.env.TRELLO_API_TOKEN
+      const boardId = process.env.TRELLO_BOARD_ID
+      const listId = process.env.TRELLO_LIST_ID
+      
+      console.log("🔍 직접 환경변수 확인:", {
+        apiKey: apiKey ? "✅ 설정됨" : "❌ 없음",
+        token: token ? "✅ 설정됨" : "❌ 없음",
+        boardId: boardId ? "✅ 설정됨" : "❌ 없음",
+        listId: listId ? "✅ 설정됨" : "❌ 없음"
+      })
+      
+      if (apiKey && token && boardId && listId) {
+        const trelloConfig = {
+          apiKey: apiKey.trim(),
+          token: token.trim(),
+          boardId: boardId.trim(),
+          listId: listId.trim()
+        }
+        
+        console.log("✅ 환경변수 모두 설정됨, Trello API 호출 시작...")
+        
+        // 인증 테스트
         console.log("🧪 Trello API 인증 테스트 시작...")
         const authSuccess = await testTrelloAuth(trelloConfig)
-        if (!authSuccess) {
-          console.error("❌ Trello API 인증 실패로 카드 생성을 건너뜁니다.")
-        } else {
+        
+        if (authSuccess) {
           console.log("✅ Trello API 인증 성공, 카드 생성 시작...")
           const trelloCard = await createTrelloCard(trelloConfig, {
             name,
@@ -82,19 +92,24 @@ export async function POST(req: Request) {
           })
           trelloCardId = trelloCard.id
           console.log(`✅ Trello 카드 생성 성공: ${trelloCard.shortUrl}`)
+        } else {
+          console.error("❌ Trello API 인증 실패")
         }
-      } catch (error) {
-        console.error("❌ Trello 카드 생성 실패:", error)
-        console.error("❌ 오류 상세:", {
-          message: error instanceof Error ? error.message : "알 수 없는 오류",
-          stack: error instanceof Error ? error.stack : undefined
+      } else {
+        console.error("❌ 환경변수가 일부 누락됨")
+        console.error("❌ 누락된 변수:", {
+          apiKey: !apiKey,
+          token: !token,
+          boardId: !boardId,
+          listId: !listId
         })
-        // Trello 오류는 이메일 전송을 중단시키지 않음
       }
-    } else {
-      console.log("❌ Trello 설정이 없어 카드 생성을 건너뜁니다.")
-      console.log("❌ Vercel 환경변수를 확인해주세요:")
-      console.log("❌ TRELLO_API_KEY, TRELLO_API_TOKEN, TRELLO_BOARD_ID, TRELLO_LIST_ID")
+    } catch (error) {
+      console.error("❌ Trello API 강제 실행 실패:", error)
+      console.error("❌ 오류 상세:", {
+        message: error instanceof Error ? error.message : "알 수 없는 오류",
+        stack: error instanceof Error ? error.stack : undefined
+      })
     }
 
     // Send email

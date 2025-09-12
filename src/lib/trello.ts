@@ -185,12 +185,21 @@ export async function testTrelloAuth(config: TrelloConfig): Promise<boolean> {
     // OAuth 헤더 방식으로 인증 시도 (새로운 토큰 형식)
     const authHeader = `OAuth oauth_consumer_key="${apiKey}", oauth_token="${token}"`
     
+    console.log("🔍 인증 헤더:", authHeader.substring(0, 50) + "...")
+    console.log("🚀 Trello API 요청 URL:", url)
+    
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Authorization': authHeader,
         'Content-Type': 'application/json'
       }
+    })
+    
+    console.log("📝 Trello API 응답:", {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok
     })
     
     if (!response.ok) {
