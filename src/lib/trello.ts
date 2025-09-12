@@ -82,23 +82,22 @@ ${message}
   })
 
   try {
-    const requestUrl = `${url}?${params}`
     console.log('🚀 Trello API 요청:', {
       url: url,
       method: 'POST',
-      params: {
-        key: `${apiKey.substring(0, 8)}...`,
-        token: `${token.substring(0, 8)}...`,
-        idList: listId,
-        name: cardName,
-        desc: cardDescription.substring(0, 100) + '...',
-        pos: 'top'
-      }
+      idList: listId,
+      name: cardName,
+      desc: cardDescription.substring(0, 100) + '...',
+      pos: 'top'
     })
 
-    const response = await fetch(requestUrl, {
+    // OAuth 헤더 방식으로 인증
+    const authHeader = `OAuth oauth_consumer_key="${apiKey}", oauth_token="${token}"`
+    
+    const response = await fetch(`${url}?${params}`, {
       method: 'POST',
       headers: {
+        'Authorization': authHeader,
         'Content-Type': 'application/json',
       },
     })
@@ -182,7 +181,17 @@ export async function testTrelloAuth(config: TrelloConfig): Promise<boolean> {
 
   try {
     console.log('🧪 Trello API 인증 테스트 중...')
-    const response = await fetch(`${url}?${params}`)
+    
+    // OAuth 헤더 방식으로 인증 시도
+    const authHeader = `OAuth oauth_consumer_key="${apiKey}", oauth_token="${token}"`
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': authHeader,
+        'Content-Type': 'application/json'
+      }
+    })
     
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
@@ -192,7 +201,8 @@ export async function testTrelloAuth(config: TrelloConfig): Promise<boolean> {
         error: errorData,
         url: url,
         apiKey: `${apiKey.substring(0, 8)}...`,
-        token: `${token.substring(0, 8)}...`
+        token: `${token.substring(0, 8)}...`,
+        authHeader: authHeader.substring(0, 50) + '...'
       })
       return false
     }
@@ -230,7 +240,16 @@ export async function getTrelloLists(config: TrelloConfig): Promise<TrelloList[]
   })
 
   try {
-    const response = await fetch(`${url}?${params}`)
+    // OAuth 헤더 방식으로 인증
+    const authHeader = `OAuth oauth_consumer_key="${apiKey}", oauth_token="${token}"`
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': authHeader,
+        'Content-Type': 'application/json'
+      }
+    })
     
     if (!response.ok) {
       throw new Error(`Trello API 오류: ${response.status}`)
