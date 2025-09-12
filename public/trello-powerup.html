@@ -13,6 +13,13 @@
         console.log('Power-Up 오류:', e.message);
       });
 
+      // postMessage 오류 무시
+      window.addEventListener('message', function(e) {
+        if (e.origin !== 'https://trello.com') {
+          return;
+        }
+      });
+
       TrelloPowerUp.initialize({
         'card-buttons': function(t, options) {
           return [{
@@ -28,6 +35,20 @@
             },
           }];
         },
+        'card-badges': function(t, options) {
+          return [{
+            title: '문의 상태',
+            text: '처리 중',
+            color: 'blue'
+          }];
+        },
+        'card-detail-badges': function(t, options) {
+          return [{
+            title: '문의 상태',
+            text: '처리 중',
+            color: 'blue'
+          }];
+        }
       });
     </script>
   </body>
