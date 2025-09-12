@@ -147,9 +147,9 @@ export function getTrelloConfig(): TrelloConfig | null {
     return null
   }
 
-  // 토큰 형식 검증 (64자리 영숫자)
-  if (token && !/^[a-f0-9]{64}$/.test(token)) {
-    console.error('❌ 토큰 형식이 올바르지 않습니다. 64자리 영숫자여야 합니다.')
+  // 토큰 형식 검증 (ATTA로 시작하는 새로운 형식)
+  if (token && !/^ATTA[a-f0-9]{64}$/.test(token)) {
+    console.error('❌ 토큰 형식이 올바르지 않습니다. ATTA로 시작하는 68자리여야 합니다.')
     console.error('❌ 현재 토큰:', token)
     return null
   }
@@ -182,7 +182,7 @@ export async function testTrelloAuth(config: TrelloConfig): Promise<boolean> {
   try {
     console.log('🧪 Trello API 인증 테스트 중...')
     
-    // OAuth 헤더 방식으로 인증 시도
+    // OAuth 헤더 방식으로 인증 시도 (새로운 토큰 형식)
     const authHeader = `OAuth oauth_consumer_key="${apiKey}", oauth_token="${token}"`
     
     const response = await fetch(url, {
