@@ -22,14 +22,6 @@ const SocialProof = dynamic(() => import("@/components/sections/SocialProof").th
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
 
-const PartnerHospitals = dynamic(() => import("@/components/sections/PartnerHospitals").then(mod => ({ default: mod.PartnerHospitals })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
-
-
-
-
-
 const Differentiators = dynamic(() => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })), {
   loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
 })
@@ -46,7 +38,6 @@ export default function HomePage() {
       <Hero onContactClick={openContact} />
       <TeamIntroduction />
       <SocialProof />
-      <PartnerHospitals />
       <GuaranteeSection />
       <Differentiators />
       <InfluencerDM />
