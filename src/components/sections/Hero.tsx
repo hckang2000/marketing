@@ -66,7 +66,6 @@ export function Hero({ onContactClick }: HeroProps) {
             >
               <span className="block whitespace-nowrap">일본 환자 유치로</span>
               <span className="block bg-red-600 text-white px-2 sm:px-4 py-2 rounded-lg inline-block whitespace-nowrap">광고비 10배 매출보장</span>
-              <span className="block whitespace-nowrap">못하면 무조건 환불</span>
             </motion.h1>
 
             {/* Subcopy */}
