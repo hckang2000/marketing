@@ -9,10 +9,6 @@ const TeamIntroduction = dynamic(() => import("@/components/sections/TeamIntrodu
   loading: () => <div className="h-96 bg-white animate-pulse" />
 })
 
-const GuaranteeSection = dynamic(() => import("@/components/sections/GuaranteeSection").then(mod => ({ default: mod.GuaranteeSection })), {
-  loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
-})
-
 const InfluencerDM = dynamic(() => import("@/components/sections/InfluencerDM").then(mod => ({ default: mod.InfluencerDM })), {
   loading: () => <div className="h-96 bg-white animate-pulse" />
 })
@@ -38,7 +34,6 @@ export default function HomePage() {
       <Hero onContactClick={openContact} />
       <TeamIntroduction />
       <SocialProof />
-      <GuaranteeSection />
       <Differentiators />
       <InfluencerDM />
       <FinalCTA onContactClick={openContact} />
