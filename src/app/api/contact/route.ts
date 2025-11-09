@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
-import { createTrelloCard, getTrelloConfig, testTrelloAuth } from "@/lib/trello"
+import {
+  createTrelloCard,
+  getTrelloConfig,
+  testTrelloAuth,
+  type TrelloCardResponse,
+} from "@/lib/trello"
+import { sendSlackNotification } from "@/lib/slack"
 
 // Check if Resend API key is available
 const resendApiKey = process.env.RESEND_API_KEY
@@ -51,7 +57,7 @@ export async function POST(req: Request) {
     
     // 환경변수가 없어도 강제로 Trello API 호출 시도
     console.log("🚀 Trello API 강제 실행 시작...")
-    let trelloCardId: string | null = null
+    let trelloCard: TrelloCardResponse | null = null
     
     try {
       // 환경변수에서 직접 가져오기
@@ -83,14 +89,13 @@ export async function POST(req: Request) {
         
         if (authSuccess) {
           console.log("✅ Trello API 인증 성공, 카드 생성 시작...")
-          const trelloCard = await createTrelloCard(trelloConfig, {
+          trelloCard = await createTrelloCard(trelloConfig, {
             name,
             phone,
             hospital,
             email,
             message,
           })
-          trelloCardId = trelloCard.id
           console.log(`✅ Trello 카드 생성 성공: ${trelloCard.shortUrl}`)
         } else {
           console.error("❌ Trello API 인증 실패")
@@ -112,6 +117,71 @@ export async function POST(req: Request) {
       })
     }
 
+    const slackMessage = {
+      text: `새로운 10초 문의가 접수되었습니다: ${name} (${hospital})`,
+      blocks: [
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "📬 신규 문의 접수",
+            emoji: true,
+          },
+        },
+        {
+          type: "section",
+          fields: [
+            {
+              type: "mrkdwn",
+              text: `*이름*\n${name}`,
+            },
+            {
+              type: "mrkdwn",
+              text: `*연락처*\n${phone}`,
+            },
+            {
+              type: "mrkdwn",
+              text: `*병원명/직책*\n${hospital}`,
+            },
+            {
+              type: "mrkdwn",
+              text: `*이메일*\n${email}`,
+            },
+          ],
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `*문의내용*\n${message}`,
+          },
+        },
+        {
+          type: "context",
+          elements: [
+            {
+              type: "mrkdwn",
+              text: `접수 시간: ${new Date().toLocaleString("ko-KR")}`,
+            },
+            ...(trelloCard?.shortUrl
+              ? [
+                  {
+                    type: "mrkdwn" as const,
+                    text: `<${trelloCard.shortUrl}|Trello 카드 바로가기>`,
+                  },
+                ]
+              : []),
+          ],
+        },
+      ],
+    }
+
+    const slackResult = await sendSlackNotification(slackMessage)
+
+    if (!slackResult.ok && !slackResult.skipped) {
+      console.error("❌ Slack 알림 전송 실패:", slackResult)
+    }
+
     // Send email
     if (!resend) {
       console.log("Resend API key not configured. Skipping email send.")
@@ -119,7 +189,9 @@ export async function POST(req: Request) {
       console.log("Contact form data:", { name, phone, hospital, email, message })
       return NextResponse.json({ 
         ok: true, 
-        trelloCardId: trelloCardId 
+        trelloCardId: trelloCard?.id ?? null,
+        trelloCardShortUrl: trelloCard?.shortUrl ?? null,
+        slackNotified: slackResult.ok || slackResult.skipped || false,
       })
     }
 
@@ -156,7 +228,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ 
       ok: true, 
-      trelloCardId: trelloCardId 
+      trelloCardId: trelloCard?.id ?? null,
+      trelloCardShortUrl: trelloCard?.shortUrl ?? null,
+      slackNotified: slackResult.ok || slackResult.skipped || false,
     })
   } catch (error) {
     console.error("Contact form error:", error)
