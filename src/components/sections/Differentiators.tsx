@@ -130,6 +130,18 @@ export function Differentiators() {
           ))}
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            초기 6개월 이후 <br className="lg:hidden" />매출 인센티브 10% 방식으로 전환 예정
+          </p>
+        </motion.div>
+
       </Container>
     </section>
   )
