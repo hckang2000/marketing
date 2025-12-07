@@ -9,17 +9,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Ca
 const pricingPlans = [
   {
     id: 1,
-    title: "라이트 300만/월",
+    title: "라이트 500만/월",
     description: "",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
-      "일본 구글 검색결과 상위노출",
+      "LINE 공식계정 개설 및 관리 운영",
       "기본 통번역 서비스 및 콘텐츠 번역"
     ]
   },
   {
     id: 2,
-    title: "매출안심 500만/월",
+    title: "매출안심 700만/월",
     description: "",
     details: [
       "인플루언서 협찬 (방문형/기자단형)",
