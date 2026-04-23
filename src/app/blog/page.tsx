@@ -53,18 +53,20 @@ export default function BlogPage() {
         category="마케팅 칼럼"
         title="마케팅 칼럼"
         subtitle="병원 마케팅에 대한 생각을 공유합니다"
+        image="/images/hero-blog.png"
       />
       <Container>
         <div className="py-16">
 
-          {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Blog Posts Flex */}
+          <div className="flex flex-wrap justify-center gap-8">
             {blogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)] max-w-md"
               >
                 <Link href={`/blog/${post.slug}`}>
                   <Card className={`h-full hover:shadow-lg transition-shadow cursor-pointer ${post.isReport ? 'ring-2 ring-primary/20' : ''}`}>
