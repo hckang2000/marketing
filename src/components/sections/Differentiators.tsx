@@ -43,7 +43,8 @@ export function Differentiators() {
             className="text-base text-gray-600"
             style={{ wordBreak: "keep-all" }}
           >
-            일본 시장에서 검증된 방법으로 병원의 매출을 만들어 드립니다
+            일본 시장에서 검증된 방법으로<br className="sm:hidden" />{" "}
+            병원의 매출을 만들어 드립니다.
           </p>
         </motion.div>
 

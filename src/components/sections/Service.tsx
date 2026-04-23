@@ -73,7 +73,8 @@ export function Service() {
             className="text-base text-gray-500 leading-relaxed"
             style={{ wordBreak: "keep-all" }}
           >
-            병원의 위치, 주력 시술, 규모에 맞는 채널을 선택해 집중합니다.
+            병원의 위치, 주력 시술, 규모에 맞는<br className="sm:hidden" />{" "}
+            채널을 선택해 집중합니다.
             <br />
             클리닉브릿지의 업무 분야입니다.
           </p>
