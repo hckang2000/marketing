@@ -1,16 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Container } from "@/components/common/Container"
-import { Button } from "@/components/common/Button"
-import { useContact } from "@/components/providers/ContactProvider"
 import { TeamIntroduction } from "@/components/sections/TeamIntroduction"
 import { PageHero } from "@/components/common/PageHero"
 
 export default function AboutPage() {
-  const { openContact } = useContact()
-
   return (
     <div className="min-h-screen bg-white">
       <PageHero
