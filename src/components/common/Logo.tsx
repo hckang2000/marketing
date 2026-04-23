@@ -15,7 +15,7 @@ export function Logo({ className, size = "md", variant = "dark" }: LogoProps) {
     lg: { text: "text-xl font-bold", image: "w-10 h-10" },
   }
   const sizes = sizeClasses[size]
-  const textColor = variant === "light" ? "text-white" : "text-gray-900"
+  const textColor = variant === "light" ? "text-white" : "text-red-500"
 
   return (
     <Link
@@ -32,7 +32,7 @@ export function Logo({ className, size = "md", variant = "dark" }: LogoProps) {
           priority
         />
       </div>
-      <span className={cn(sizes.text, textColor, "tracking-tight")}>
+      <span className={cn(sizes.text, textColor, "tracking-tight transition-colors")}>
         CLINIC BRIDGE
       </span>
     </Link>

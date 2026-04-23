@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { Logo } from "@/components/common/Logo"
@@ -22,11 +22,31 @@ interface HeaderProps {
   onMobileNavStateChange?: (open: boolean) => void
 }
 
+const SCROLL_THRESHOLD = 500
+
 export function Header({ onMobileNavStateChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { openContact } = useContact()
   const pathname = usePathname()
   const isHome = pathname === "/"
+
+  useEffect(() => {
+    if (!isHome) {
+      setIsScrolled(true)
+      return
+    }
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isHome])
+
+  const isTransparent = isHome && !isScrolled
 
   const handleContactClick = () => {
     trackButtonClick("contact", "header")
@@ -38,23 +58,23 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
     onMobileNavStateChange?.(open)
   }
 
-  const headerClass = isHome
+  const headerClass = isTransparent
     ? "bg-transparent backdrop-blur-sm border-b border-white/15"
     : "bg-white/95 backdrop-blur-sm border-b border-gray-200"
 
-  const navLinkClass = isHome
+  const navLinkClass = isTransparent
     ? "text-white/90 hover:text-white transition-colors font-medium"
-    : "text-gray-700 hover:text-primary transition-colors font-medium"
+    : "text-gray-900 hover:text-red-500 transition-colors font-medium"
 
-  const mobileMenuIconClass = isHome ? "text-white" : "text-gray-700"
+  const mobileMenuIconClass = isTransparent ? "text-white" : "text-gray-900"
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors ${headerClass}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerClass}`}
     >
       <Container>
         <div className="flex items-center justify-between h-16">
-          <Logo size="md" variant={isHome ? "light" : "dark"} />
+          <Logo size="md" variant={isTransparent ? "light" : "dark"} />
 
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
