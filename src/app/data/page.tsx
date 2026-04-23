@@ -672,13 +672,59 @@ export default function DataPage() {
         }
 
         @media (max-width: 768px) {
+          .section-wrapper {
+            padding: 20px;
+            margin: 24px 0;
+          }
+
           .section {
             padding: 25px;
             margin: 20px 0;
           }
 
+          .meta-info {
+            padding: 20px;
+            margin: 24px 0;
+          }
+
+          .journey-stage {
+            padding: 24px 16px;
+            margin: 24px 0;
+          }
+
+          .journey-stage::before {
+            left: 16px;
+          }
+
+          .insight-box,
+          .strategy-box,
+          .key-point {
+            padding: 16px;
+            margin: 16px 0;
+          }
+
+          .persona-card {
+            padding: 20px;
+            margin: 24px 0;
+          }
+
+          .persona-title {
+            font-size: 1.3rem;
+            padding: 10px 20px;
+          }
+
+          .stat-number {
+            font-size: 2rem;
+          }
+
           .persona-grid, .stats-grid {
             grid-template-columns: 1fr;
+          }
+
+          .tier-table th,
+          .tier-table td {
+            padding: 10px 8px;
+            font-size: 0.85rem;
           }
         }
       `}</style>
