@@ -63,7 +63,7 @@ export function Service() {
     <section className="section-padding bg-gray-50">
       <Container>
         <motion.div {...motionProps} className="mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-5 leading-tight">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지가 제공하는 가치
           </h2>
           <p className="text-base text-gray-500 leading-relaxed">
@@ -81,7 +81,7 @@ export function Service() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               viewport={{ once: true }}
-              className="flex flex-col"
+              className="flex flex-col bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
             >
               <div className="relative w-12 h-12 mb-6 flex-shrink-0">
                 <Image
