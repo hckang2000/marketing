@@ -4,6 +4,11 @@ import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/Hero"
 import { useContact } from "@/components/providers/ContactProvider"
 
+const TeamIntroduction = dynamic(
+  () => import("@/components/sections/TeamIntroduction").then(mod => ({ default: mod.TeamIntroduction })),
+  { loading: () => <div className="h-96 bg-gray-100 animate-pulse" /> }
+)
+
 const Differentiators = dynamic(
   () => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })),
   { loading: () => <div className="h-96 bg-white animate-pulse" /> }
@@ -25,6 +30,7 @@ export default function HomePage() {
   return (
     <>
       <Hero onContactClick={openContact} />
+      <TeamIntroduction />
       <Differentiators />
       <Service />
       <SocialProof />

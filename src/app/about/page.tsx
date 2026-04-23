@@ -6,6 +6,7 @@ import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
 import { useContact } from "@/components/providers/ContactProvider"
+import { TeamIntroduction } from "@/components/sections/TeamIntroduction"
 
 
 
@@ -90,6 +91,7 @@ export default function AboutPage() {
 
         </div>
       </Container>
+      <TeamIntroduction />
     </div>
   )
 }
