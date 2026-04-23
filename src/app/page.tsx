@@ -19,6 +19,11 @@ const Service = dynamic(
   { loading: () => <div className="h-96 bg-gray-50 animate-pulse" /> }
 )
 
+const InfluencerDM = dynamic(
+  () => import("@/components/sections/InfluencerDM").then(mod => ({ default: mod.InfluencerDM })),
+  { loading: () => <div className="h-96 bg-white animate-pulse" /> }
+)
+
 const SocialProof = dynamic(
   () => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })),
   { loading: () => <div className="h-96 bg-white animate-pulse" /> }
@@ -33,6 +38,7 @@ export default function HomePage() {
       <TeamIntroduction />
       <Differentiators />
       <Service />
+      <InfluencerDM />
       <SocialProof />
     </>
   )
