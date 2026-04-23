@@ -22,7 +22,10 @@ interface HeaderProps {
   onMobileNavStateChange?: (open: boolean) => void
 }
 
-const SCROLL_THRESHOLD = 500
+const HOME_SCROLL_THRESHOLD = 500
+const PAGE_HERO_SCROLL_THRESHOLD = 416
+
+const PAGE_HERO_ROUTES = ["/about", "/blog", "/data"]
 
 export function Header({ onMobileNavStateChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -30,23 +33,27 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
   const { openContact } = useContact()
   const pathname = usePathname()
   const isHome = pathname === "/"
+  const hasHero = isHome || PAGE_HERO_ROUTES.some((route) =>
+    pathname === route || pathname.startsWith(`${route}/`)
+  )
+  const scrollThreshold = isHome ? HOME_SCROLL_THRESHOLD : PAGE_HERO_SCROLL_THRESHOLD
 
   useEffect(() => {
-    if (!isHome) {
+    if (!hasHero) {
       setIsScrolled(true)
       return
     }
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
+      setIsScrolled(window.scrollY > scrollThreshold)
     }
 
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [isHome])
+  }, [hasHero, scrollThreshold])
 
-  const isTransparent = isHome && !isScrolled
+  const isTransparent = hasHero && !isScrolled
 
   const handleContactClick = () => {
     trackButtonClick("contact", "header")
@@ -64,9 +71,10 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
 
   const navLinkClass = isTransparent
     ? "text-white/90 hover:text-white transition-colors font-medium"
-    : "text-gray-900 hover:text-red-500 transition-colors font-medium"
+    : "text-gray-900 hover:text-[#014A9F] transition-colors font-medium"
 
   const mobileMenuIconClass = isTransparent ? "text-white" : "text-gray-900"
+  const ctaButtonClass = isTransparent ? "bg-[#0664D3] hover:bg-[#0557b5]" : ""
 
   return (
     <header
@@ -85,13 +93,13 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
           </nav>
 
           <div className="hidden md:flex items-center">
-            <Button onClick={handleContactClick} variant="default" size="sm">
+            <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
               10초 문의
             </Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
-            <Button onClick={handleContactClick} variant="default" size="sm">
+            <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
               문의
             </Button>
             <button

@@ -12,7 +12,7 @@ export function PageHero({
   category,
   title,
   subtitle,
-  image = "/images/hero-desktop.jpg",
+  image = "/images/hero-skyscraper.png",
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden -mt-16">
@@ -32,7 +32,7 @@ export function PageHero({
       <div className="absolute inset-0 bg-black/60" />
 
       <Container>
-        <div className="relative z-10 min-h-[360px] flex flex-col justify-center pt-16 pb-12">
+        <div className="relative z-10 min-h-[480px] flex flex-col justify-center pt-16 pb-12">
           <p className="text-white/70 text-sm font-medium mb-3 tracking-wider uppercase">
             {category}
           </p>
