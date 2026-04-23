@@ -19,7 +19,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 // 커스텀 스타일로 Swiper 기본 스타일 숨기기
-import './SocialProof.css'
+import './InfluencerDM.css'
 
 const AUTOPLAY_MS = 10000
 
