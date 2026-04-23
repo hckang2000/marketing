@@ -7,32 +7,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Ca
 import { Button } from "@/components/common/Button"
 import { useContact } from "@/components/providers/ContactProvider"
 import { TeamIntroduction } from "@/components/sections/TeamIntroduction"
-
-
+import { PageHero } from "@/components/common/PageHero"
 
 export default function AboutPage() {
   const { openContact } = useContact()
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Container>
-        <div className="py-16">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              회사 소개
-            </h1>
-            <p className="text-base text-gray-600 max-w-2xl mx-auto">
-              클리닉브릿지는 일본 대상<br className="sm:hidden" /> 병원 마케팅 전문 회사입니다
-            </p>
-          </motion.div>
-        </div>
-      </Container>
+      <PageHero
+        category="회사 소개"
+        title="클리닉브릿지 소개"
+        subtitle="일본 대상 병원 마케팅 전문 회사"
+      />
 
       {/* Team Introduction */}
       <TeamIntroduction />

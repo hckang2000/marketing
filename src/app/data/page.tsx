@@ -2,53 +2,16 @@
 
 import { motion } from "framer-motion"
 import { ContentGate } from "@/components/columns/ContentGate"
+import { PageHero } from "@/components/common/PageHero"
 
 export default function DataPage() {
   return (
     <div className="data-page">
-      {/* Header */}
-      <motion.header
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="report-header"
-        style={{
-          background: '#EF4444',
-          color: 'white',
-          padding: '60px 0',
-          textAlign: 'center',
-          boxShadow: '0 4px 20px rgba(239, 68, 68, 0.3)',
-          marginBottom: '40px',
-          width: '100%',
-          position: 'relative'
-        }}
-      >
-        <div className="container">
-          {/* Mobile Title */}
-          <h1 className="text-3xl font-bold text-white mb-4 md:mb-6 leading-tight lg:hidden" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
-            한국 미용 클리닉<br/>
-            일본인 고객<br/>
-            심층 분석 보고서
-          </h1>
-          
-          {/* Desktop Title */}
-          <h1 className="hidden lg:block text-3xl font-bold text-white mb-6 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
-            한국 미용 클리닉<br/>
-            일본인 고객 심층 분석 보고서
-          </h1>
-          
-          {/* Mobile Description */}
-          <p className="text-base text-white mb-4 md:mb-6 max-w-2xl mx-auto leading-relaxed lg:hidden" style={{ opacity: '0.95' }}>
-            일본인 환자의 5단계 고객 여정을<br/>
-            기반으로 한 마케팅 전략 가이드
-          </p>
-          
-          {/* Desktop Description */}
-          <p className="hidden lg:block text-base text-white mb-6 max-w-3xl mx-auto leading-relaxed" style={{ opacity: '0.95' }}>
-            일본인 환자의 5단계 고객 여정을 기반으로 한 마케팅 전략 가이드
-          </p>
-        </div>
-      </motion.header>
+      <PageHero
+        category="설문 데이터"
+        title="일본인 고객 심층 분석"
+        subtitle="일본인 환자의 5단계 고객 여정을 기반으로 한 마케팅 전략 가이드"
+      />
 
       <div className="container">
         {/* Meta Info */}

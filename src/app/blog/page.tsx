@@ -7,6 +7,7 @@ import toast from "react-hot-toast"
 import { Container } from "@/components/common/Container"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { getAllBlogPosts } from "@/data/blogPosts"
+import { PageHero } from "@/components/common/PageHero"
 
 const blogPosts = getAllBlogPosts()
 
@@ -48,22 +49,13 @@ export default function BlogPage() {
   }
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageHero
+        category="마케팅 칼럼"
+        title="마케팅 칼럼"
+        subtitle="병원 마케팅에 대한 생각을 공유합니다"
+      />
       <Container>
         <div className="py-16">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              마케팅 칼럼
-            </h1>
-            <p className="text-base text-gray-600 max-w-2xl mx-auto">
-              병원 마케팅에 대한 생각을 공유합니다
-            </p>
-          </motion.div>
 
           {/* Blog Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
