@@ -33,10 +33,16 @@ export function Differentiators() {
     <section className="section-padding bg-white">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4"
+            style={{ wordBreak: "keep-all" }}
+          >
             클리닉브릿지가 특별한 이유
           </h2>
-          <p className="text-base text-gray-600">
+          <p
+            className="text-base text-gray-600"
+            style={{ wordBreak: "keep-all" }}
+          >
             일본 시장에서 검증된 방법으로 병원의 매출을 만들어 드립니다
           </p>
         </motion.div>

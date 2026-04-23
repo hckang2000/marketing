@@ -63,10 +63,16 @@ export function Service() {
     <section className="section-padding bg-white">
       <Container>
         <motion.div {...motionProps} className="mb-16 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4"
+            style={{ wordBreak: "keep-all" }}
+          >
             클리닉브릿지가 제공하는 가치
           </h2>
-          <p className="text-base text-gray-500 leading-relaxed">
+          <p
+            className="text-base text-gray-500 leading-relaxed"
+            style={{ wordBreak: "keep-all" }}
+          >
             병원의 위치, 주력 시술, 규모에 맞는 채널을 선택해 집중합니다.
             <br />
             클리닉브릿지의 업무 분야입니다.
