@@ -51,7 +51,8 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              className="text-4xl sm:text-5xl font-bold text-white mb-6"
+              style={{ fontSize: "clamp(40px, 6vw, 75px)", lineHeight: 1.5 }}
             >
               일본 환자 유치로<br />
               광고비 10배 매출목표
@@ -62,7 +63,8 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg lg:text-xl text-gray-200 mb-10 font-normal leading-relaxed"
+              className="text-gray-200 mb-10 font-normal"
+              style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.5 }}
             >
               지금 문의시 광고비 50% 할인
             </motion.h2>
