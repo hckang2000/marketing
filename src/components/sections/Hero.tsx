@@ -11,7 +11,7 @@ interface HeroProps {
 
 export function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden -mt-16">
       {/* Background Image - Mobile */}
       <div className="absolute inset-0 lg:hidden">
         <Image
@@ -41,11 +41,11 @@ export function Hero({ onContactClick }: HeroProps) {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/60" />
 
       <Container>
-        <div className="relative z-10 py-24 lg:py-40 min-h-[80vh] lg:min-h-0 flex items-center">
-          <div className="max-w-2xl">
+        <div className="relative z-10 min-h-screen flex items-center justify-center pt-16">
+          <div className="max-w-3xl mx-auto text-center">
             {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -72,6 +72,7 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex justify-center"
             >
               <Button
                 onClick={onContactClick}

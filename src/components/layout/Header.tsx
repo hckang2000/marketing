@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { Logo } from "@/components/common/Logo"
 import { Button } from "@/components/common/Button"
@@ -24,54 +25,58 @@ interface HeaderProps {
 export function Header({ onMobileNavStateChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { openContact } = useContact()
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
-  // 문의 버튼 클릭 핸들러
   const handleContactClick = () => {
-    trackButtonClick('contact', 'header')
+    trackButtonClick("contact", "header")
     openContact()
   }
 
-  // MobileNav 상태 변경 시 부모 컴포넌트에 알림
   const handleMobileMenuToggle = (open: boolean) => {
     setMobileMenuOpen(open)
     onMobileNavStateChange?.(open)
   }
 
+  const headerClass = isHome
+    ? "bg-transparent backdrop-blur-sm border-b border-white/15"
+    : "bg-white/95 backdrop-blur-sm border-b border-gray-200"
+
+  const navLinkClass = isHome
+    ? "text-white/90 hover:text-white transition-colors font-medium"
+    : "text-gray-700 hover:text-primary transition-colors font-medium"
+
+  const mobileMenuIconClass = isHome ? "text-white" : "text-gray-700"
+
   return (
-    <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors ${headerClass}`}
+    >
       <Container>
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Logo size="md" />
+          <Logo size="md" variant={isHome ? "light" : "dark"} />
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-              >
+              <Link key={item.name} href={item.href} className={navLinkClass}>
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Button onClick={handleContactClick} variant="gradient" size="sm">
+            <Button onClick={handleContactClick} variant="default" size="sm">
               10초 문의
             </Button>
           </div>
 
-          {/* Mobile CTA Button and Menu */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button onClick={handleContactClick} variant="gradient" size="sm">
+            <Button onClick={handleContactClick} variant="default" size="sm">
               문의
             </Button>
             <button
               type="button"
-              className="p-2 text-gray-700"
+              className={`p-2 ${mobileMenuIconClass}`}
               onClick={() => handleMobileMenuToggle(true)}
             >
               <Menu className="h-6 w-6" />
@@ -80,7 +85,6 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
         </div>
       </Container>
 
-      {/* Mobile Navigation */}
       <MobileNav
         open={mobileMenuOpen}
         onClose={() => handleMobileMenuToggle(false)}
