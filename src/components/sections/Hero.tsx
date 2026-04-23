@@ -45,7 +45,7 @@ export function Hero({ onContactClick }: HeroProps) {
 
       <Container>
         <div className="relative z-10 min-h-[600px] lg:min-h-[700px] flex items-center justify-center pt-16 pb-16">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-left">
             {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex justify-center"
+              className="flex justify-start"
             >
               <Button
                 onClick={onContactClick}
