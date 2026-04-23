@@ -1,147 +1,71 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
-import { Plus, Minus } from "lucide-react"
+import { Users, TrendingUp, Search } from "lucide-react"
 import { Container } from "@/components/common/Container"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
+import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 
-const pricingPlans = [
+const differentiators = [
   {
     id: 1,
-    title: "라이트 500만/월",
-    description: "",
-    details: [
-      "인플루언서 협찬 (방문형/기자단형)",
-      "LINE 공식계정 개설 및 관리 운영",
-      "기본 통번역 서비스 및 콘텐츠 번역"
-    ]
+    icon: Users,
+    title: "일본 고객 직접 소통",
+    description: "MCN 없이 일본 마이크로 인플루언서와 직접 계약. 1,000명 이상의 일본 고객과 직접 소통한 현지 데이터를 보유하고 있습니다.",
   },
   {
     id: 2,
-    title: "매출안심 700만/월",
-    description: "",
-    details: [
-      "인플루언서 협찬 (방문형/기자단형)",
-      "일본 구글 검색결과 상위노출",
-      "기본 통번역 서비스 및 콘텐츠 번역",
-      "LINE 공식계정 개설 및 관리 운영",
-      "팔로워수 증대 및 SNS 활성화"
-    ]
+    icon: TrendingUp,
+    title: "광고비 10배 매출",
+    description: "실제 집행한 캠페인에서 광고비 대비 평균 10배 이상의 매출을 기록했습니다. 성과 없는 마케팅은 제안하지 않습니다.",
   },
   {
     id: 3,
-    title: "매출안심 플러스 1,000만/월",
-    description: "",
-    details: [
-      "인플루언서 협찬 (방문형/기자단형)",
-      "일본 구글 검색결과 상위노출",
-      "데이터 분석 및 퍼널 개선",
-      "구글, 메타 해외 마케팅 (광고비 별도)",
-      "기본 통번역 서비스 및 콘텐츠 번역",
-      "LINE 공식계정 개설 및 관리 운영",
-      "팔로워수 증대 및 SNS 활성화"
-    ]
-  }
+    icon: Search,
+    title: "데이터 기반 전략",
+    description: "서울대 경영 출신 마케터가 설문 데이터와 고객 여정 분석을 바탕으로 병원에 맞는 최적 채널과 예산을 설계합니다.",
+  },
 ]
 
 export function Differentiators() {
-  const [openItem, setOpenItem] = useState<number | null>(null)
+  const motionProps = useMotionAnimation()
 
   return (
-    <section className="section-padding bg-gray-100">
+    <section className="section-padding bg-white">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          {/* Title - Mobile */}
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 lg:hidden">
-            마케팅 가격
+        <motion.div {...motionProps} className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            클리닉브릿지가 특별한 이유
           </h2>
-          
-          {/* Title - Desktop */}
-          <h2 className="hidden lg:block text-3xl font-bold text-gray-900 mb-4">
-            마케팅 가격
-          </h2>
-        </motion.div>
-
-        <div className="max-w-4xl mx-auto space-y-4">
-          {pricingPlans.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="overflow-hidden">
-                <CardHeader
-                  className="cursor-pointer hover:bg-gray-50 transition-colors"
-                  onClick={() => setOpenItem(openItem === item.id ? null : item.id)}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div>
-                        <CardTitle className="text-xl font-semibold text-gray-900">
-                          {item.title}
-                        </CardTitle>
-                        {item.description && (
-                          <p className="text-gray-600 mt-1">
-                            <span className="text-red-600 font-bold">{item.description}</span>
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                                         <div className="text-gray-400">
-                       {openItem === item.id ? (
-                         <Minus className="h-6 w-6 text-primary" />
-                       ) : (
-                         <Plus className="h-6 w-6 text-primary" />
-                       )}
-                     </div>
-                  </div>
-                </CardHeader>
-
-                {openItem === item.id && (
-                  <CardContent className="pt-0">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">패키지 구성</h4>
-                        <ul className="space-y-2">
-                          {item.details.map((detail, detailIndex) => (
-                            <li key={detailIndex} className="flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-gray-700">{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-
-                    </div>
-                  </CardContent>
-                )}
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            초기 6개월 이후 <br className="lg:hidden" />매출 인센티브 10% 방식으로 전환 예정
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            일본 시장에서 검증된 방법으로 병원의 매출을 만들어 드립니다
           </p>
         </motion.div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {differentiators.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center mb-6">
+                  <Icon className="h-7 w-7 text-red-500" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {item.description}
+                </p>
+              </motion.div>
+            )
+          })}
+        </div>
       </Container>
     </section>
   )
