@@ -31,7 +31,14 @@ export default function AboutPage() {
               클리닉브릿지는 일본 대상<br className="sm:hidden" /> 병원 마케팅 전문 회사입니다
             </p>
           </motion.div>
+        </div>
+      </Container>
 
+      {/* Team Introduction */}
+      <TeamIntroduction />
+
+      <Container>
+        <div className="py-16">
           {/* CEO Profile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +98,7 @@ export default function AboutPage() {
 
         </div>
       </Container>
-      <TeamIntroduction />
     </div>
   )
 }
+
