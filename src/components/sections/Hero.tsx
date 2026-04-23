@@ -15,7 +15,7 @@ export function Hero({ onContactClick }: HeroProps) {
       {/* Background Image - Mobile */}
       <div className="absolute inset-0 lg:hidden">
         <Image
-          src="/images/hero-mobile.jpg"
+          src="/images/hero-skyscraper.png"
           alt="Hero background mobile"
           fill
           className="object-cover"
@@ -29,7 +29,7 @@ export function Hero({ onContactClick }: HeroProps) {
       {/* Background Image - Desktop */}
       <div className="absolute inset-0 hidden lg:block">
         <Image
-          src="/images/hero-desktop.jpg"
+          src="/images/hero-skyscraper.png"
           alt="Hero background desktop"
           fill
           className="object-cover"
@@ -45,14 +45,14 @@ export function Hero({ onContactClick }: HeroProps) {
 
       <Container>
         <div className="relative z-10 min-h-[600px] lg:min-h-[700px] flex items-center justify-center pt-16 pb-16">
-          <div className="max-w-3xl mx-auto text-left">
+          <div className="max-w-3xl mx-auto text-center">
             {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl sm:text-5xl font-bold text-white mb-6"
-              style={{ fontSize: "42px", lineHeight: 1.5 }}
+              className="font-bold text-white mb-6"
+              style={{ fontSize: "56px", lineHeight: 1.5 }}
             >
               일본 환자 유치로<br />
               광고비 10배 매출목표
@@ -74,13 +74,13 @@ export function Hero({ onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex justify-start"
+              className="flex justify-center"
             >
               <Button
                 onClick={onContactClick}
                 variant="default"
                 size="lg"
-                className="px-10"
+                className="px-10 bg-[#0664D3] hover:bg-[#0557b5]"
               >
                 10초 문의하기
               </Button>

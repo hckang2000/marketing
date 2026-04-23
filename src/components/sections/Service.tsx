@@ -62,7 +62,7 @@ export function Service() {
   return (
     <section className="section-padding bg-white">
       <Container>
-        <motion.div {...motionProps} className="mb-16">
+        <motion.div {...motionProps} className="mb-16 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지가 제공하는 가치
           </h2>
