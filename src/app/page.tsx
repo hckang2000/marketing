@@ -4,31 +4,20 @@ import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/Hero"
 import { useContact } from "@/components/providers/ContactProvider"
 
-// Lazy load components that are not immediately visible
-const TeamIntroduction = dynamic(() => import("@/components/sections/TeamIntroduction").then(mod => ({ default: mod.TeamIntroduction })), {
-  loading: () => <div className="h-96 bg-white animate-pulse" />
-})
+const Differentiators = dynamic(
+  () => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })),
+  { loading: () => <div className="h-96 bg-white animate-pulse" /> }
+)
 
-const InfluencerDM = dynamic(() => import("@/components/sections/InfluencerDM").then(mod => ({ default: mod.InfluencerDM })), {
-  loading: () => <div className="h-96 bg-white animate-pulse" />
-})
+const Service = dynamic(
+  () => import("@/components/sections/Service").then(mod => ({ default: mod.Service })),
+  { loading: () => <div className="h-96 bg-gray-50 animate-pulse" /> }
+)
 
-// Lazy load components that are not immediately visible
-const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
-
-const Service = dynamic(() => import("@/components/sections/Service").then(mod => ({ default: mod.Service })), {
-  loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
-})
-
-const Differentiators = dynamic(() => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
-
-const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA").then(mod => ({ default: mod.FinalCTA })), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-})
+const SocialProof = dynamic(
+  () => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })),
+  { loading: () => <div className="h-96 bg-white animate-pulse" /> }
+)
 
 export default function HomePage() {
   const { openContact } = useContact()
@@ -36,12 +25,9 @@ export default function HomePage() {
   return (
     <>
       <Hero onContactClick={openContact} />
-      <TeamIntroduction />
-      <SocialProof />
-      <Service />
       <Differentiators />
-      <InfluencerDM />
-      <FinalCTA onContactClick={openContact} />
+      <Service />
+      <SocialProof />
     </>
   )
 }
