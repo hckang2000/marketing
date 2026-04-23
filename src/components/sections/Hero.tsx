@@ -44,7 +44,7 @@ export function Hero({ onContactClick }: HeroProps) {
       <div className="absolute inset-0 bg-black/60" />
 
       <Container>
-        <div className="relative z-10 min-h-screen flex items-center justify-center pt-16">
+        <div className="relative z-10 min-h-[600px] lg:min-h-[700px] flex items-center justify-center pt-16 pb-16">
           <div className="max-w-3xl mx-auto text-center">
             {/* H1 */}
             <motion.h1
