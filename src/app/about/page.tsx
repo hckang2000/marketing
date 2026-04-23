@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Container } from "@/components/common/Container"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/Card"
 import { Button } from "@/components/common/Button"
 import { useContact } from "@/components/providers/ContactProvider"
 import { TeamIntroduction } from "@/components/sections/TeamIntroduction"
@@ -13,7 +12,7 @@ export default function AboutPage() {
   const { openContact } = useContact()
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <PageHero
         category="회사 소개"
         title="클리닉브릿지 소개"
@@ -23,68 +22,76 @@ export default function AboutPage() {
       {/* Team Introduction */}
       <TeamIntroduction />
 
-      <Container>
-        <div className="py-16">
-          {/* CEO Profile */}
+      {/* CEO Profile — 2-column layout */}
+      <section className="section-padding bg-white">
+        <Container>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-16"
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
           >
-            <Card className="max-w-4xl mx-auto">
-              <CardHeader className="text-center">
-                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 mb-6">
-                  <Image
-                    src="/images/profiles/ceo_profile.jpg"
-                    alt="이은석 대표 프로필 사진"
-                    fill
-                    className="object-cover"
-                    sizes="128px"
-                  />
-                </div>
-                <CardTitle className="text-2xl font-bold text-gray-900">
-                  이은석 대표
-                </CardTitle>
-                <p className="text-gray-600">클리닉브릿지 대표</p>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="max-w-2xl mx-auto space-y-4" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    근거 기반 마케팅으로 매출을 올려드리는 클리닉브릿지 대표 이은석입니다.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    서울대학교 경영대학을 졸업하고 10년 이상의 마케팅 경험을 바탕으로,<br className="hidden sm:inline" />
-                    병원들이 일본 시장에서 성공할 수 있도록 도와드리고 있습니다.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    마케팅은 소비가 아니라 투자가 되어야 합니다.<br className="hidden sm:inline" />
-                    광고비의 10배 이상을 벌 수 있는 전략으로 원장님들의 성공을 보장하겠습니다.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    항상 폭발적인 매출을 만들었던 실력을 바탕으로<br className="hidden sm:inline" />
-                    병원들의 해외 환자 마케팅을 책임지겠습니다.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    저희는 소개로 찾아주시는 분들이 많습니다.<br className="hidden sm:inline" />
-                    일을 맡겨보신 분들은 다르다는 것을 느끼시기 때문입니다.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
-                    가볍게 문의해주세요.<br className="hidden sm:inline" />
-                    15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
-                  </p>
-                  <Button onClick={openContact} variant="default" className="mt-6">
-                    10초 문의하기
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Left: Text */}
+            <div>
+              {/* Label */}
+              <p className="text-sm text-red-500 font-medium mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 bg-red-500 rounded-full inline-block" />
+                클리닉브릿지. 이은석 대표
+              </p>
+
+              {/* Headline */}
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 leading-tight" style={{ wordBreak: 'keep-all' }}>
+                마케팅은 소비가 아닌<br />
+                투자입니다.
+              </h2>
+
+              {/* Quotes */}
+              <p className="text-base font-semibold text-gray-800 mb-2" style={{ wordBreak: 'keep-all' }}>
+                "서울대 경영대 출신 마케터가 직접 전략을 설계합니다."
+              </p>
+              <p className="text-base font-semibold text-gray-800 mb-8" style={{ wordBreak: 'keep-all' }}>
+                "광고비의 10배 이상을 벌 수 있는 전략으로 성공을 보장합니다."
+              </p>
+
+              {/* Description */}
+              <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed mb-10" style={{ wordBreak: 'keep-all' }}>
+                <p>
+                  근거 기반 마케팅으로 매출을 올려드리는 클리닉브릿지 대표 이은석입니다.
+                  서울대학교 경영대학을 졸업하고 10년 이상의 마케팅 경험을 바탕으로
+                  병원들이 일본 시장에서 성공할 수 있도록 도와드리고 있습니다.
+                </p>
+                <p>
+                  항상 폭발적인 매출을 만들었던 실력을 바탕으로
+                  병원들의 해외 환자 마케팅을 책임지겠습니다.
+                  저희는 소개로 찾아주시는 분들이 많습니다.
+                  일을 맡겨보신 분들은 다르다는 것을 느끼시기 때문입니다.
+                </p>
+                <p>
+                  가볍게 문의해주세요.
+                  15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
+                </p>
+              </div>
+
+              <Button onClick={openContact} variant="default" size="lg">
+                10초 문의하기
+              </Button>
+            </div>
+
+            {/* Right: Image */}
+            <div className="relative">
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/ceo-image.png"
+                  alt="이은석 대표"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
           </motion.div>
-
-
-        </div>
-      </Container>
+        </Container>
+      </section>
     </div>
   )
 }
-
