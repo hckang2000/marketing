@@ -2,8 +2,28 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { useState } from "react"
 import { Container } from "@/components/common/Container"
 import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
+
+function CardImage({ src, alt }: { src: string; alt: string }) {
+  const [hasError, setHasError] = useState(false)
+  if (hasError) {
+    return <div className="aspect-[4/3] w-full bg-gray-100" />
+  }
+  return (
+    <div className="relative aspect-[4/3] w-full bg-gray-100">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, 33vw"
+        onError={() => setHasError(true)}
+      />
+    </div>
+  )
+}
 
 const differentiators = [
   {
@@ -62,15 +82,7 @@ export function Differentiators() {
               </div>
 
               {/* Image area */}
-              <div className="relative aspect-[4/3] w-full bg-gray-100">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
+              <CardImage src={item.image} alt={item.title} />
             </motion.div>
           ))}
         </div>
