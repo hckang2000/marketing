@@ -27,7 +27,7 @@ export function SocialProof() {
   const motionProps = useMotionAnimation()
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-gray-50">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
