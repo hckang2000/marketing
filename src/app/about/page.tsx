@@ -78,8 +78,8 @@ export default function AboutPage() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative">
-              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
+            <div className="relative flex justify-center">
+              <div className="relative w-1/2 aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
                 <Image
                   src="/images/ceo-image.png"
                   alt="이은석 대표"
