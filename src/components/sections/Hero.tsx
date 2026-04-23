@@ -90,7 +90,7 @@ export function Hero({ onContactClick }: HeroProps) {
             >
               <Button
                 onClick={onContactClick}
-                variant="outline"
+                variant="default"
                 size="lg"
                 className="w-full lg:w-96 lg:px-8"
               >
