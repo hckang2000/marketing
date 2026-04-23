@@ -32,11 +32,11 @@ export function Differentiators() {
   return (
     <section className="section-padding bg-white">
       <Container>
-        <motion.div {...motionProps} className="text-center mb-12">
+        <motion.div {...motionProps} className="text-left mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             클리닉브릿지가 특별한 이유
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl">
             일본 시장에서 검증된 방법으로 병원의 매출을 만들어 드립니다
           </p>
         </motion.div>
