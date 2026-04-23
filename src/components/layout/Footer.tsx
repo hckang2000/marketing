@@ -25,7 +25,7 @@ export function Footer() {
               <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>서울특별시 관악구 낙성대로 2 벤처창업센터</span>
+                  <span>서울 구로구 디지털로31길 12(넥스트데이) 39호</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
