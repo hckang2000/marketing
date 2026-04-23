@@ -29,7 +29,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
           >
             {/* Left: Text */}
             <div>
@@ -78,7 +78,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative flex justify-center">
+            <div className="flex items-center justify-center">
               <div className="relative w-1/2 aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
                 <Image
                   src="/images/ceo-image.png"
