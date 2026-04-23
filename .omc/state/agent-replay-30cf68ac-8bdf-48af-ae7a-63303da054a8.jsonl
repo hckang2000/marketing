@@ -1,0 +1,14 @@
+{"t":0,"agent":"a0d065c","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"a688f7c","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"superpowers:writing-plans"}
+{"t":0,"agent":"a679bb3","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"superpowers:subagent-driven-development"}
+{"t":0,"agent":"a91dfb2","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a91dfb2","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":21370}
+{"t":0,"agent":"a318a72","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a318a72","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":11256}
+{"t":0,"agent":"af5fdce","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"af5fdce","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":27144}
+{"t":0,"agent":"a81f9b4","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a81f9b4","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":43048}
+{"t":0,"agent":"a00b0ab","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}

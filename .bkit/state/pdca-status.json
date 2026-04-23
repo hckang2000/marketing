@@ -1,0 +1,109 @@
+{
+  "version": "3.0",
+  "lastUpdated": "2026-04-23T05:16:17.911Z",
+  "activeFeatures": [
+    "layout",
+    "marketing",
+    "sections"
+  ],
+  "primaryFeature": "layout",
+  "features": {
+    "layout": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-23T03:31:52.889Z",
+        "lastUpdated": "2026-04-23T03:31:52.889Z"
+      },
+      "lastFile": "/Users/jeontaejeong/Documents/Coding/CB/marketing/src/components/layout/Footer.tsx"
+    },
+    "marketing": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-23T05:13:38.908Z",
+        "lastUpdated": "2026-04-23T05:13:38.908Z"
+      },
+      "lastFile": "/Users/jeontaejeong/Documents/Coding/CB/marketing/src/components/common/Button.tsx"
+    },
+    "sections": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-23T05:14:21.732Z",
+        "lastUpdated": "2026-04-23T05:16:17.910Z"
+      },
+      "lastFile": "/Users/jeontaejeong/Documents/Coding/CB/marketing/src/components/sections/SocialProof.tsx"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-04-23T03:20:32.915Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-04-23T05:16:17.911Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-04-23T03:31:52.889Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-23T05:13:38.909Z",
+      "feature": "marketing",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-23T05:14:21.732Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-23T05:15:31.781Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-23T05:16:17.911Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    }
+  ],
+  "stateMachine": {
+    "defaultWorkflow": "default",
+    "activeWorkflows": {},
+    "totalTransitions": 0
+  },
+  "automation": {
+    "globalLevel": 2,
+    "trustScore": 40,
+    "pendingApprovals": 0,
+    "lastGateResult": null
+  },
+  "team": {
+    "enabled": true,
+    "stateFile": ".bkit/runtime/agent-state.json",
+    "eventsFile": ".bkit/runtime/agent-events.jsonl"
+  }
+}
