@@ -13,11 +13,11 @@ export default function DataPage() {
         transition={{ duration: 0.6 }}
         className="report-header"
         style={{
-          background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+          background: '#EF4444',
           color: 'white',
           padding: '60px 0',
           textAlign: 'center',
-          boxShadow: '0 4px 20px rgba(59, 130, 246, 0.3)',
+          boxShadow: '0 4px 20px rgba(239, 68, 68, 0.3)',
           marginBottom: '40px',
           width: '100%',
           position: 'relative'
@@ -382,13 +382,13 @@ export default function DataPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="conclusion"
               style={{
-                background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                background: '#1f2937',
                 color: 'white',
                 padding: '40px',
                 borderRadius: '15px',
                 textAlign: 'center',
                 margin: '40px 0',
-                boxShadow: '0 8px 25px rgba(59, 130, 246, 0.3)',
+                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
@@ -478,7 +478,7 @@ export default function DataPage() {
           margin: 40px 0;
           border-radius: 15px;
           box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-          border-left: 5px solid #3b82f6;
+          border-left: 5px solid #EF4444;
         }
 
         .meta-grid {
@@ -496,7 +496,7 @@ export default function DataPage() {
         }
 
         .meta-item strong {
-          color: #3b82f6;
+          color: #EF4444;
           font-size: 1.1rem;
         }
 
@@ -510,7 +510,7 @@ export default function DataPage() {
 
         .journey-stage {
           background: #f8fafc;
-          border: 2px solid #3b82f6;
+          border: 2px solid #EF4444;
           border-radius: 15px;
           padding: 30px;
           margin: 30px 0;
@@ -522,7 +522,7 @@ export default function DataPage() {
           position: absolute;
           top: -10px;
           left: 30px;
-          background: #3b82f6;
+          background: #EF4444;
           color: white;
           padding: 5px 15px;
           border-radius: 20px;
@@ -537,8 +537,8 @@ export default function DataPage() {
         .stage-5::before { content: '5단계'; }
 
         .insight-box {
-          background: #f0f9ff;
-          border-left: 5px solid #3b82f6;
+          background: #fef2f2;
+          border-left: 5px solid #EF4444;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
@@ -553,8 +553,8 @@ export default function DataPage() {
         }
 
         .persona-card {
-          background: #f0f9ff;
-          border: 2px solid #3b82f6;
+          background: #fef2f2;
+          border: 2px solid #EF4444;
           border-radius: 15px;
           padding: 30px;
           margin: 30px 0;
@@ -566,7 +566,7 @@ export default function DataPage() {
         }
 
         .persona-title {
-          background: #3b82f6;
+          background: #EF4444;
           color: white;
           font-size: 1.8rem;
           font-weight: bold;
@@ -603,7 +603,7 @@ export default function DataPage() {
           border-radius: 12px;
           text-align: center;
           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          border-top: 4px solid #3b82f6;
+          border-top: 4px solid #EF4444;
           transition: transform 0.3s ease;
         }
 
@@ -614,7 +614,7 @@ export default function DataPage() {
         .stat-number {
           font-size: 2.5rem;
           font-weight: bold;
-          color: #3b82f6;
+          color: #EF4444;
           margin-bottom: 10px;
         }
 
@@ -624,7 +624,7 @@ export default function DataPage() {
         }
 
         .highlight {
-          background: #3b82f6;
+          background: #EF4444;
           color: white;
           padding: 3px 8px;
           border-radius: 5px;
@@ -632,8 +632,8 @@ export default function DataPage() {
         }
 
         .key-point {
-          background: #f0f4ff;
-          border-left: 5px solid #3b82f6;
+          background: #fef2f2;
+          border-left: 5px solid #EF4444;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
@@ -649,7 +649,7 @@ export default function DataPage() {
         }
 
         .tier-table th {
-          background: #3b82f6;
+          background: #EF4444;
           color: white;
           padding: 15px;
           text-align: center;
@@ -680,7 +680,7 @@ export default function DataPage() {
         }
 
         strong {
-          color: #3b82f6;
+          color: #EF4444;
         }
 
         p, h1, h2, h3, h4, h5, h6, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl {
