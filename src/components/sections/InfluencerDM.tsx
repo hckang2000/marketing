@@ -37,7 +37,7 @@ export function InfluencerDM() {
     <section className="section-padding bg-gray-50">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
-          <SectionTitle title="일본 인플루언서와<br />진짜로 DM 주고받는 회사" titleClassName="text-3xl lg:text-3xl" />
+          <SectionTitle title="일본 인플루언서와<br />진짜로 DM 주고받는 회사" titleClassName="text-3xl lg:text-3xl" className="mb-3" />
           <ResponsiveText
             mobile="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
             desktop="중간 브로커 NO 직접 대화 YES<br />실제 소통 내역까지 공개합니다. 이 정도 투명성, 보신 적 있나요?"
