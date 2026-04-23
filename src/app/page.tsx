@@ -31,8 +31,8 @@ export default function HomePage() {
     <>
       <Hero onContactClick={openContact} />
       <Differentiators />
-      <Service />
       <InfluencerDM />
+      <Service />
       <SocialProof />
     </>
   )
