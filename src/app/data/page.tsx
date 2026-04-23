@@ -11,16 +11,18 @@ export default function DataPage() {
         category="설문 데이터"
         title="일본인 고객 심층 분석"
         subtitle="일본인 환자의 5단계 고객 여정을 기반으로 한 마케팅 전략 가이드"
+        image="/images/hero-data.png"
       />
 
       <div className="container">
         {/* Meta Info */}
+        <div className="section-wrapper">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="meta-info"
-        ><br/>
+        >
           <h2 className="text-3xl font-bold text-gray-900 mb-6">보고서 개요</h2>
           <div className="meta-grid">
             <div className="meta-item">
@@ -41,15 +43,16 @@ export default function DataPage() {
             </div>
           </div>
         </motion.section>
+        </div>
 
         {/* 핵심 요약 */}
-        
+        <div className="section-wrapper">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="section"
-        ><br/>
+        >
           <h2 className="text-3xl font-bold text-gray-900 mb-6">핵심 요약</h2>
 
           <div className="stats-grid">
@@ -79,14 +82,16 @@ export default function DataPage() {
             <span className="highlight">LINE 메신저</span>를 통한 예약을 선호하며, 높은 재방문 및 추천 의향을 보입니다.</p>
           </div>
         </motion.section>
+        </div>
 
         {/* 고객 여정 분석 */}
+        <div className="section-wrapper">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="section"
-        ><br/>
+        >
           <h2 className="text-3xl font-bold text-gray-900 mb-6">일본인 환자 5단계 고객 여정 분석</h2>
 
           <div className="journey-stage stage-1">
@@ -228,7 +233,7 @@ export default function DataPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="section"
-            ><br/>
+            >
               <h2 className="text-3xl font-bold text-gray-900 mb-6">가격 민감도 & 티어별 상품 전략</h2>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Q. 일본인 고객의 지불 금액대는?</h3>
@@ -286,7 +291,7 @@ export default function DataPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="section"
-            ><br/>
+            >
               <h2 className="text-3xl font-bold text-gray-900 mb-6">타겟 페르소나: &ldquo;뷰티 오타쿠 여행자&rdquo;</h2>
 
               <div className="persona-card">
@@ -351,11 +356,10 @@ export default function DataPage() {
                 borderRadius: '15px',
                 textAlign: 'center',
                 margin: '40px 0',
-                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
-            ><br/>
+            >
               <h2 style={{
                 fontSize: '2rem',
                 marginBottom: '20px',
@@ -415,12 +419,13 @@ export default function DataPage() {
             </motion.section>
           </ContentGate>
         </motion.section>
+        </div>
       </div>
 
       <style jsx>{`
         .data-page {
           min-height: 100vh;
-          background: #f8fafc;
+          background: #f3f4f6;
           font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
           line-height: 1.7;
           color: #0f172a;
@@ -435,13 +440,29 @@ export default function DataPage() {
           padding: 0 20px;
         }
 
+        .section-wrapper {
+          background: white;
+          padding: 40px;
+          margin: 40px 0;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+        }
+
+        .section-wrapper .meta-info,
+        .section-wrapper .section {
+          background: transparent;
+          box-shadow: none;
+          border: none;
+          padding: 0;
+          margin: 0;
+        }
+
         .meta-info {
           background: white;
           padding: 30px;
           margin: 40px 0;
-          border-radius: 15px;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-          border-left: 5px solid #EF4444;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
         }
 
         .meta-grid {
@@ -452,14 +473,15 @@ export default function DataPage() {
         }
 
         .meta-item {
-          background: #f8f9fa;
+          background: white;
           padding: 15px;
           border-radius: 8px;
           text-align: center;
+          border: 1px solid #e5e7eb;
         }
 
         .meta-item strong {
-          color: #EF4444;
+          color: #014A9F;
           font-size: 1.1rem;
         }
 
@@ -467,14 +489,14 @@ export default function DataPage() {
           background: white;
           margin: 40px 0;
           padding: 40px;
-          border-radius: 15px;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
         }
 
         .journey-stage {
-          background: #f8fafc;
-          border: 2px solid #EF4444;
-          border-radius: 15px;
+          background: white;
+          border: 2px solid #d1d5db;
+          border-radius: 8px;
           padding: 30px;
           margin: 30px 0;
           position: relative;
@@ -483,14 +505,15 @@ export default function DataPage() {
         .journey-stage::before {
           content: '';
           position: absolute;
-          top: -10px;
+          top: -16px;
           left: 30px;
-          background: #EF4444;
+          background: #014A9F;
           color: white;
-          padding: 5px 15px;
+          padding: 6px 16px;
           border-radius: 20px;
           font-size: 0.9rem;
           font-weight: bold;
+          line-height: 1;
         }
 
         .stage-1::before { content: '1단계'; }
@@ -500,25 +523,23 @@ export default function DataPage() {
         .stage-5::before { content: '5단계'; }
 
         .insight-box {
-          background: #fef2f2;
-          border-left: 5px solid #EF4444;
+          background: #f3f4f6;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
         }
 
         .strategy-box {
-          background: #fef3c7;
-          border-left: 5px solid #f59e0b;
+          background: #EFF6FF;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
         }
 
         .persona-card {
-          background: #fef2f2;
-          border: 2px solid #EF4444;
-          border-radius: 15px;
+          background: white;
+          border: 2px solid #d1d5db;
+          border-radius: 8px;
           padding: 30px;
           margin: 30px 0;
         }
@@ -529,7 +550,7 @@ export default function DataPage() {
         }
 
         .persona-title {
-          background: #EF4444;
+          background: #014A9F;
           color: white;
           font-size: 1.8rem;
           font-weight: bold;
@@ -549,8 +570,8 @@ export default function DataPage() {
         .persona-item {
           background: white;
           padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
         }
 
         .stats-grid {
@@ -563,10 +584,9 @@ export default function DataPage() {
         .stat-card {
           background: white;
           padding: 25px;
-          border-radius: 12px;
+          border-radius: 8px;
           text-align: center;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          border-top: 4px solid #EF4444;
+          border: 1px solid #e5e7eb;
           transition: transform 0.3s ease;
         }
 
@@ -577,7 +597,7 @@ export default function DataPage() {
         .stat-number {
           font-size: 2.5rem;
           font-weight: bold;
-          color: #EF4444;
+          color: #014A9F;
           margin-bottom: 10px;
         }
 
@@ -587,7 +607,7 @@ export default function DataPage() {
         }
 
         .highlight {
-          background: #EF4444;
+          background: #014A9F;
           color: white;
           padding: 3px 8px;
           border-radius: 5px;
@@ -595,8 +615,7 @@ export default function DataPage() {
         }
 
         .key-point {
-          background: #fef2f2;
-          border-left: 5px solid #EF4444;
+          background: #f3f4f6;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
@@ -606,13 +625,13 @@ export default function DataPage() {
           width: 100%;
           border-collapse: collapse;
           margin: 25px 0;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          border-radius: 10px;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
           overflow: hidden;
         }
 
         .tier-table th {
-          background: #EF4444;
+          background: #014A9F;
           color: white;
           padding: 15px;
           text-align: center;
@@ -643,7 +662,7 @@ export default function DataPage() {
         }
 
         strong {
-          color: #EF4444;
+          color: #014A9F;
         }
 
         p, h1, h2, h3, h4, h5, h6, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl {
