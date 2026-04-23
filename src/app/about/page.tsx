@@ -40,7 +40,7 @@ export default function AboutPage() {
           >
             <Card className="max-w-4xl mx-auto">
               <CardHeader className="text-center">
-                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 mb-6">
+                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 mb-6">
                   <Image
                     src="/images/profiles/ceo_profile.jpg"
                     alt="이은석 대표 프로필 사진"
@@ -79,7 +79,7 @@ export default function AboutPage() {
                     가볍게 문의해주세요.<br className="hidden sm:inline" />
                     15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
                   </p>
-                  <Button onClick={openContact} variant="gradient" className="mt-6">
+                  <Button onClick={openContact} variant="default" className="mt-6">
                     10초 문의하기
                   </Button>
                 </div>
