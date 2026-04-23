@@ -79,13 +79,13 @@ export default function AboutPage() {
 
             {/* Right: Image */}
             <div className="flex items-center justify-center">
-              <div className="relative w-1/2 aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
+              <div className="relative w-64 h-64 rounded-full overflow-hidden bg-gray-200">
                 <Image
                   src="/images/ceo-image.png"
                   alt="이은석 대표"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="256px"
                 />
               </div>
             </div>
