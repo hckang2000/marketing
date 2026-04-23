@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "클리닉브릿지",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image-v2.jpg",
         width: 1200,
         height: 630,
         alt: "클리닉브릿지 - 일본 병원 마케팅 전문",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "클리닉브릿지 - 일본 병원 마케팅 전문",
     description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사",
-    images: ["/og-image.jpg"],
+    images: ["/og-image-v2.jpg"],
   },
   robots: {
     index: true,
