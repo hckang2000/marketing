@@ -17,7 +17,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="col-span-1 md:col-span-2">
-              <Logo size="lg" className="text-white mb-4" />
+              <Logo size="lg" variant="light" className="text-white mb-4" />
               <p className="text-gray-300 mb-6 max-w-md">
                 클리닉브릿지는 일본 대상 병원 마케팅 전문 회사입니다. 
                 광고비의 10배 이상을 벌 수 있는 마케팅만 제안합니다.
