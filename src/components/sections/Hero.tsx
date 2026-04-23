@@ -52,7 +52,7 @@ export function Hero({ onContactClick }: HeroProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-4xl sm:text-5xl font-bold text-white mb-6"
-              style={{ fontSize: "clamp(42px, 6vw, 75px)", lineHeight: 1.5 }}
+              style={{ fontSize: "42px", lineHeight: 1.5 }}
             >
               일본 환자 유치로<br />
               광고비 10배 매출목표
