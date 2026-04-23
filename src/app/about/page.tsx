@@ -17,6 +17,7 @@ export default function AboutPage() {
         category="회사 소개"
         title="클리닉브릿지 소개"
         subtitle="일본 대상 병원 마케팅 전문 회사"
+        image="/images/hero-about.png"
       />
 
       {/* Team Introduction */}
@@ -29,13 +30,13 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            className="max-w-2xl mx-auto"
           >
-            {/* Left: Text */}
+            {/* Text */}
             <div>
               {/* Label */}
-              <p className="text-sm text-red-500 font-medium mb-6 flex items-center gap-2">
-                <span className="w-1 h-5 bg-red-500 rounded-full inline-block" />
+              <p className="text-sm text-[#014A9F] font-medium mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 bg-[#014A9F] rounded-full inline-block" />
                 클리닉브릿지. 이은석 대표
               </p>
 
@@ -47,10 +48,10 @@ export default function AboutPage() {
 
               {/* Quotes */}
               <p className="text-base font-semibold text-gray-800 mb-2" style={{ wordBreak: 'keep-all' }}>
-                "서울대 경영대 출신 마케터가 직접 전략을 설계합니다."
+                &ldquo;서울대 경영대 출신 마케터가 직접 전략을 설계합니다.&rdquo;
               </p>
               <p className="text-base font-semibold text-gray-800 mb-8" style={{ wordBreak: 'keep-all' }}>
-                "광고비의 10배 이상을 벌 수 있는 전략으로 성공을 보장합니다."
+                &ldquo;광고비의 10배 이상을 벌 수 있는 전략으로 성공을 보장합니다.&rdquo;
               </p>
 
               {/* Description */}
@@ -72,25 +73,26 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <Button onClick={openContact} variant="default" size="lg">
+              {/* <Button onClick={openContact} variant="default" size="lg">
                 10초 문의하기
-              </Button>
+              </Button> */}
             </div>
 
-            {/* Right: Image */}
+            {/* Image (commented out)
             <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-sm aspect-[4/5] bg-gray-50 rounded-2xl flex items-center justify-center">
-                <div className="relative w-64 h-64 rounded-full overflow-hidden bg-gray-200">
-                  <Image
-                    src="/images/ceo-image.png"
-                    alt="이은석 대표"
-                    fill
-                    className="object-cover object-top"
-                    sizes="256px"
-                  />
-                </div>
+              <div className="relative w-full max-w-[12.6rem] aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/profiles/ceo_profile.jpg"
+                  alt="이은석 대표"
+                  fill
+                  quality={95}
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 202px"
+                />
               </div>
             </div>
+            */}
           </motion.div>
         </Container>
       </section>
