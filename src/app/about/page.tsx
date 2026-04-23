@@ -79,14 +79,16 @@ export default function AboutPage() {
 
             {/* Right: Image */}
             <div className="flex items-center justify-center">
-              <div className="relative w-64 h-64 rounded-full overflow-hidden bg-gray-200">
-                <Image
-                  src="/images/ceo-image.png"
-                  alt="이은석 대표"
-                  fill
-                  className="object-cover object-top"
-                  sizes="256px"
-                />
+              <div className="relative w-full max-w-sm aspect-[4/5] bg-gray-50 rounded-2xl flex items-center justify-center">
+                <div className="relative w-64 h-64 rounded-full overflow-hidden bg-gray-200">
+                  <Image
+                    src="/images/ceo-image.png"
+                    alt="이은석 대표"
+                    fill
+                    className="object-cover object-top"
+                    sizes="256px"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
