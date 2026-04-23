@@ -64,7 +64,7 @@ export function Hero({ onContactClick }: HeroProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-200 mb-10 font-normal"
-              style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.5 }}
+              style={{ fontSize: "16px", lineHeight: 1.5 }}
             >
               지금 문의시 광고비 50% 할인
             </motion.h2>
