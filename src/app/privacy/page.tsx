@@ -41,7 +41,7 @@ export default function PrivacyPage() {
                   </p>
                   <ul className="list-disc pl-6 text-gray-700 space-y-2">
                     <li>필수항목: 이름, 연락처, 이메일 주소</li>
-                    <li>선택항목: 병원명, 문의내용</li>
+                    <li>선택항목: 소속·직책, 도입 검토 내용</li>
                     <li>자동수집항목: IP주소, 쿠키, 서비스 이용기록</li>
                   </ul>
                 </section>

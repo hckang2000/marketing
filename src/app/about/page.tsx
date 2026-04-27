@@ -11,7 +11,7 @@ export default function AboutPage() {
       <PageHero
         category="회사 소개"
         title="클리닉브릿지 소개"
-        subtitle="일본 대상 병원 마케팅 전문 회사"
+        subtitle="글로벌 의료 마케팅 에이전시"
         image="/images/hero-about.png"
       />
 
@@ -43,28 +43,27 @@ export default function AboutPage() {
 
               {/* Quotes */}
               <p className="text-base font-semibold text-gray-800 mb-2" style={{ wordBreak: 'keep-all' }}>
-                &ldquo;서울대 경영대 출신 마케터가 직접 전략을 설계합니다.&rdquo;
+                &ldquo;서울대 경영대 출신 컨설턴트가 전담 전략을 설계합니다.&rdquo;
               </p>
               <p className="text-base font-semibold text-gray-800 mb-8" style={{ wordBreak: 'keep-all' }}>
-                &ldquo;광고비의 10배 이상을 벌 수 있는 전략으로 성공을 보장합니다.&rdquo;
+                &ldquo;고성과 ROI를 검증된 데이터로 입증합니다.&rdquo;
               </p>
 
               {/* Description */}
               <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed mb-10" style={{ wordBreak: 'keep-all' }}>
                 <p>
-                  근거 기반 마케팅으로 매출을 올려드리는 클리닉브릿지 대표 이은석입니다.
-                  서울대학교 경영대학을 졸업하고 10년 이상의 마케팅 경험을 바탕으로
-                  병원들이 일본 시장에서 성공할 수 있도록 도와드리고 있습니다.
+                  데이터 기반 의사결정으로 글로벌 성장을 이끄는
+                  클리닉브릿지 대표 이은석입니다. 서울대학교 경영대학을 졸업하고
+                  10년 이상의 글로벌 마케팅 경험을 바탕으로,
+                  일본을 비롯한 글로벌 시장에서 지속 가능한 성과를 만들 수 있도록 함께하고 있습니다.
                 </p>
                 <p>
-                  항상 폭발적인 매출을 만들었던 실력을 바탕으로
-                  병원들의 해외 환자 마케팅을 책임지겠습니다.
-                  저희는 소개로 찾아주시는 분들이 많습니다.
-                  일을 맡겨보신 분들은 다르다는 것을 느끼시기 때문입니다.
+                  대규모 캠페인을 직접 설계·운영해 온 경험을 토대로
+                  글로벌 의료 마케팅을 책임지겠습니다.
                 </p>
                 <p>
-                  가볍게 문의해주세요.
-                  15분만 만나도 병원의 매출을 올리는 데 기여하겠습니다.
+                  도입 검토 단계에서 부담 없이 문의해 주세요.
+                  초기 진단만으로도 성장 기회를 구체화해드리겠습니다.
                 </p>
               </div>
 

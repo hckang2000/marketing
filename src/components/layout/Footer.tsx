@@ -19,13 +19,13 @@ export function Footer() {
             <div className="col-span-1 md:col-span-2">
               <Logo size="lg" variant="light" className="text-white mb-4" />
               <p className="text-gray-300 mb-6 max-w-md">
-                클리닉브릿지는 일본 대상 병원 마케팅 전문 회사입니다. 
-                광고비의 10배 이상을 벌 수 있는 마케팅만 제안합니다.
+                클리닉브릿지는 글로벌 의료 마케팅 파트너입니다.
+                데이터 기반 전략과 검증된 운영으로 의료 마케팅의 성과를 설계합니다.
               </p>
               <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>서울 구로구 디지털로31길 12(넥스트데이) 39호</span>
+                  <span>서울 구로구 디지털로31길 12(넥스트데이) 2층</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
@@ -49,7 +49,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">
-                    블로그
+                    인사이트
                   </Link>
                 </li>
               </ul>
@@ -57,9 +57,9 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <h3 className="font-semibold mb-4">문의</h3>
+              <h3 className="font-semibold mb-4">도입 문의</h3>
               <Button onClick={openContact} variant="gradient" className="w-full mb-4">
-                10초 문의하기
+                도입 상담 신청
               </Button>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">

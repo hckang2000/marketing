@@ -50,9 +50,9 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <PageHero
-        category="마케팅 칼럼"
-        title="마케팅 칼럼"
-        subtitle="병원 마케팅에 대한 생각을 공유합니다"
+        category="인사이트"
+        title="글로벌 의료 마케팅 인사이트"
+        subtitle="글로벌 시장에서 검증된 마케팅 인사이트와 전략 인사이트를 공유합니다"
         image="/images/hero-blog.png"
       />
       <Container>
@@ -111,31 +111,31 @@ export default function BlogPage() {
             <Card className="max-w-2xl mx-auto text-center">
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-gray-900">
-                  마케팅 정보 받아보기
+                  마케팅 인사이트 구독
                 </CardTitle>
                 <p className="text-base text-gray-600">
-                  매달 새로운 칼럼을 보내드립니다.
+                  매월 글로벌 의료 마케팅 인사이트를 정리해 보내드립니다.
                 </p>
               </CardHeader>
-                             <CardContent>
-                 <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                   <input
-                     type="email"
-                     value={email}
-                     onChange={(e) => setEmail(e.target.value)}
-                     placeholder="이메일 주소"
-                     className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                     required
-                   />
-                   <button 
-                     type="submit"
-                     disabled={isSubmitting}
-                     className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                   >
-                     {isSubmitting ? "구독 중..." : "구독하기"}
-                   </button>
-                 </form>
-               </CardContent>
+              <CardContent>
+                <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="이메일 주소"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "구독 중..." : "구독하기"}
+                  </button>
+                </form>
+              </CardContent>
             </Card>
           </motion.div>
         </div>

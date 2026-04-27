@@ -8,51 +8,51 @@ import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 const services = [
   {
     id: 1,
-    title: "X 리트윗 이벤트",
-    subtitle: "초반 예약 유도",
+    title: "바이럴 콘텐츠 마케팅",
+    subtitle: "낮은 CAC로 대규모 인지도 확보",
     logo: "/images/x.png",
     description:
-      "리트윗 할인 이벤트를 통해 일본 현지 사용자에게 빠르게 노출합니다. 팔로워 수가 많지 않아도 바이럴 효과가 높아 개원 준비 단계나 극초반 병원에 적합합니다.",
+      "X(구 Twitter) 등 현지 SNS 채널에서 바이럴 캠페인을 직접 설계·운영합니다.",
   },
   {
     id: 2,
-    title: "인플루언서 협찬",
-    subtitle: "인지도 확보",
+    title: "인플루언서 마케팅",
+    subtitle: "전환성과로 연결되는 콘텐츠 자산",
     logo: "/images/instagram.png",
     description:
-      "실사용자 기반의 소형 인플루언서를 통해 신뢰도 높은 후기를 확보합니다. 레이저 시술, 리프팅 등 증례 중심 콘텐츠에 효과적입니다.",
+      "검증된 일본 현지 인플루언서 풀을 활용해 통합 콘텐츠 캠페인을 운영합니다.",
   },
   {
     id: 3,
-    title: "DB 마케팅",
-    subtitle: "상담 유입",
+    title: "퍼포먼스 광고 (DB)",
+    subtitle: "리드 파이프라인 구축",
     logo: "/images/line.png",
     description:
-      "Meta·Google 광고로 일본 현지 잠재 고객의 상담 문의를 유도합니다. 개원 초반 빠른 환자 유입이 필요한 병원에 적합합니다.",
+      "Meta·Google 등 글로벌 광고 플랫폼을 통해 잠재 고객의 상담 리드를 확보합니다.",
   },
   {
     id: 4,
-    title: "검색최적화 (SEO)",
-    subtitle: "안정적 트래픽",
+    title: "글로벌 SEO",
+    subtitle: "장기 자산 확보",
     logo: "/images/google.png",
     description:
-      "일본 구글에서 병원명이 상위 노출되도록 웹사이트 내 후기 작성 및 백링크 작업을 진행합니다. 개원 중후반 장기적 트래픽 확보에 적합합니다.",
+      "글로벌 구글 검색 결과에서 시술 등 핵심 키워드 및 브랜드 키워드에서의 상위 노출을 확보합니다.",
   },
   {
     id: 5,
-    title: "현지 매거진 송출",
-    subtitle: "현지 언론 노출",
+    title: "현지 PR·매거진",
+    subtitle: "신뢰 자산 구축",
     logo: "/images/ameba.png",
     description:
-      "일본 현지 언론과 뷰티 매거진에 병원 기사를 송출합니다. 고가 시술 브랜딩과 신뢰도 구축에 적합한 중고가 맞춤형 병원에 효과적입니다.",
+      "일본 주요 언론과 뷰티·헬스케어 매거진에 PR 기사를 송출합니다. 프리미엄 브랜딩과 신뢰도 구축에 효과적입니다.",
   },
   {
     id: 6,
-    title: "자체 유튜브 운영",
-    subtitle: "영상 콘텐츠",
+    title: "브랜드 채널 운영",
+    subtitle: "Owned Media",
     logo: "/images/youtube.png",
     description:
-      "시술 과정과 결과를 영상으로 소개하는 유튜브 채널을 운영합니다. 중고가 특화 시술의 신뢰도를 높이고 장기적 브랜드 자산을 만들어 갑니다.",
+      "유튜브 등 영상 채널에서 진료 과정, 임상 결과 등을 체계적으로 콘텐츠화하여 업로드합니다.",
   },
 ]
 
@@ -67,16 +67,14 @@ export function Service() {
             className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4"
             style={{ wordBreak: "keep-all" }}
           >
-            클리닉브릿지가 제공하는 가치
+            클리닉브릿지의 통합 마케팅 서비스
           </h2>
           <p
             className="text-base text-gray-500 leading-relaxed"
             style={{ wordBreak: "keep-all" }}
           >
-            병원의 위치, 주력 시술, 규모에 맞는<br className="sm:hidden" />{" "}
-            채널을 선택해 집중합니다.
-            <br />
-            클리닉브릿지의 업무 분야입니다.
+            클라이언트사의 규모, 브랜드 포지션에 맞춰<br className="sm:hidden" />{" "}
+            통합 채널 전략을 설계합니다.
           </p>
         </motion.div>
 

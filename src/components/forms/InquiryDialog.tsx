@@ -38,7 +38,7 @@ export function InquiryDialog() {
       })
 
       if (response.ok) {
-        toast.success("문의가 성공적으로 전송되었습니다!")
+        toast.success("도입 상담 신청이 정상적으로 접수되었습니다.")
         reset()
         // inquiry-success 이벤트 디스패치
         window.dispatchEvent(new CustomEvent("inquiry-success"))
@@ -71,7 +71,7 @@ export function InquiryDialog() {
            <div className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[90vh] overflow-hidden">
              {/* Header */}
              <div className="flex items-center justify-between p-4 border-b">
-               <Dialog.Title className="text-lg font-semibold">10초 문의하기</Dialog.Title>
+               <Dialog.Title className="text-lg font-semibold">도입 상담 신청</Dialog.Title>
                <Dialog.Close asChild>
                  <button className="p-1 text-gray-500 hover:text-gray-700 transition-colors">
                    <X className="h-4 w-4" />
@@ -127,14 +127,14 @@ export function InquiryDialog() {
             {/* Hospital */}
             <div>
               <label htmlFor="hospital" className="block text-sm font-medium text-gray-700 mb-1">
-                병원명/직책 *
+                소속/직책 *
               </label>
               <input
                 id="hospital"
                 type="text"
                 {...register("hospital")}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="예: XXX병원 / 원장"
+                placeholder="예: OOO / 마케팅 담당"
               />
               {errors.hospital && (
                 <p className="mt-1 text-sm text-red-600">{errors.hospital.message}</p>
@@ -161,14 +161,14 @@ export function InquiryDialog() {
             {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                문의내용 *
+                도입 검토 내용 *
               </label>
               <textarea
                 id="message"
                 {...register("message")}
                 rows={3}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                placeholder="해외 마케팅에 대해 궁금한 점을 자유롭게 작성해주세요"
+                placeholder="검토 중인 글로벌 마케팅 과제나 도입 일정을 간단히 적어 주세요"
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -188,7 +188,7 @@ export function InquiryDialog() {
                   전송 중...
                 </>
               ) : (
-                "문의하기"
+                "도입 상담 신청"
               )}
             </Button>
 

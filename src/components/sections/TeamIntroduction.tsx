@@ -15,14 +15,14 @@ export function TeamIntroduction() {
       <Container>
         <motion.div {...motionProps} className="text-left mb-16 max-w-2xl mx-auto">
           <SectionTitle
-            title="신뢰할 수 있는<br class=&quot;sm:hidden&quot; />진짜 '서울대 출신' 마케팅 팀"
+            title="메디컬 마케팅 전문 팀"
             centered={false}
             className="mb-8"
             titleClassName="mb-8"
           />
           <ResponsiveText
-            mobile="10년 이상의 마케팅 경력을 가진<br />서울대 경영대학 출신 대표가<br />현직 의사와 함께 만든 마케팅 대행사입니다."
-            desktop="10년 이상의 마케팅 경력을 가진 서울대 경영대학 출신 대표가<br />현직 의사와 함께 만든 마케팅 대행사입니다."
+            mobile="10년 이상의 글로벌 마케팅 경력을 가진<br />서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는<br />메디컬 마케팅 전문 컨설팅 조직입니다."
+            desktop="10년 이상의 글로벌 마케팅 경력을 가진 서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는 메디컬 마케팅 전문 컨설팅 조직입니다."
             className="text-base text-gray-600"
           />
         </motion.div>

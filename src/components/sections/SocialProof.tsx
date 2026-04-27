@@ -5,22 +5,13 @@ import Image from "next/image"
 import { Container } from "@/components/common/Container"
 import { useMotionAnimation } from "@/lib/hooks/useMotionAnimation"
 
-const testimonials = [
-  {
-    id: 1,
-    image: "/images/testimonials/testimonial-1.jpg",
-    caption: "홍대 OOO의원 원장님 — 일본 인플루언서 마케팅 시작하고 월 매출 2억에서 6개월만에 3.5억으로 올랐습니다.",
-  },
-  {
-    id: 2,
-    image: "/images/testimonials/testimonial-2.jpg",
-    caption: "강남 XXX의원 원장님 — 광고비 대비 15배 매출이 나옵니다.",
-  },
-  {
-    id: 3,
-    image: "/images/testimonials/testimonial-3.jpg",
-    caption: "신논현 YYY의원 원장님 — 주말에 일본 환자가 40명까지 오네요.",
-  },
+const clientLogos: { id: number; name: string; logo: string; bg?: string }[] = [
+  { id: 1, name: "강남언니", logo: "/images/강남언니_logo.png" },
+  { id: 2, name: "블리비", logo: "/images/logo_블리비.jpeg", bg: "#F8D2DD" },
+  { id: 3, name: "셀린클리닉", logo: "/images/cellinclinic_logo.png", bg: "#0000CC" },
+  { id: 4, name: "여신티켓", logo: "/images/여신티켓_logo.png", bg: "linear-gradient(135deg, #FF5495 0%, #F11675 100%)" },
+  { id: 5, name: "손유나", logo: "/images/sonyouna_logo.jpg", bg: "linear-gradient(180deg, #1A1C43 0%, #463898 100%)" },
+  { id: 6, name: "미앤미", logo: "/images/미앤미_logo.jpg" },
 ]
 
 export function SocialProof() {
@@ -31,36 +22,33 @@ export function SocialProof() {
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            원장님들 실제 후기
+            주요 고객사 및 파트너사
           </h2>
-          <p className="text-base text-gray-600 max-w-lg mx-auto">
-            클리닉브릿지와 함께한 원장님들의 실제 후기를 확인해보세요
-          </p>
+          {/* <p className="text-base text-gray-600 max-w-lg mx-auto">
+            클리닉브릿지와 함께 성장한 글로벌 마케팅 사례를 확인해보세요.
+          </p> */}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 max-w-5xl mx-auto">
+          {clientLogos.map((client, index) => (
             <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
+              key={client.id}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.08 }}
               viewport={{ once: true }}
-              className="flex flex-col"
+              style={client.bg ? { background: client.bg } : undefined}
+              className="flex items-center justify-center bg-white rounded-2xl border border-gray-100 shadow-sm h-24 sm:h-28 lg:h-32 px-6 py-4"
             >
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl mb-4">
+              <div className="relative w-full h-full">
                 <Image
-                  src={testimonial.image}
-                  alt={`후기 이미지 ${index + 1}`}
+                  src={client.logo}
+                  alt={client.name}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
+                  className="object-contain"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 320px"
                 />
               </div>
-              <p className="text-gray-700 text-sm leading-relaxed text-center">
-                {testimonial.caption}
-              </p>
             </motion.div>
           ))}
         </div>

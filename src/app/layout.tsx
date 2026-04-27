@@ -7,9 +7,9 @@ import { GAProvider } from "@/components/providers/GAProvider"
 import { GA_ID } from "@/lib/gtag"
 
 export const metadata: Metadata = {
-  title: "클리닉브릿지 - 일본 대상 병원 마케팅 전문",
-  description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사. 서울대 출신 마케터가 업계 최저 단가로 진행합니다.",
-  keywords: "병원 마케팅, 일본 마케팅, 인플루언서 마케팅, 해외 환자 유치, 클리닉브릿지",
+  title: "클리닉브릿지 - 글로벌 의료 마케팅",
+  description: "데이터 기반 전략과 검증된 운영으로 글로벌 의료 마케팅의 성과를 설계합니다.",
+  keywords: "글로벌 의료 마케팅, 인바운드 의료 관광, 글로벌 환자 유치, 메디컬 마케팅, 클리닉브릿지",
   authors: [{ name: "클리닉브릿지" }],
   creator: "클리닉브릿지",
   publisher: "클리닉브릿지",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "클리닉브릿지 - 일본 병원 마케팅 전문",
-    description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사",
+    title: "클리닉브릿지 - 글로벌 의료 마케팅",
+    description: "데이터 기반 전략과 검증된 운영으로 글로벌 의료 마케팅의 성과를 설계합니다.",
     url: "https://clinicbridge.co.kr",
     siteName: "클리닉브릿지",
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "/og-image-v2.jpg",
         width: 1200,
         height: 630,
-        alt: "클리닉브릿지 - 일본 병원 마케팅 전문",
+        alt: "클리닉브릿지 - 글로벌 의료 마케팅",
       },
     ],
     locale: "ko_KR",
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "클리닉브릿지 - 일본 병원 마케팅 전문",
-    description: "일본 대상 마케팅만으로 광고비의 10배를 더 벌어준 병원 전문 마케팅 회사",
+    title: "클리닉브릿지 - 글로벌 의료 마케팅",
+    description: "데이터 기반 전략과 검증된 운영으로 글로벌 의료 마케팅의 성과를 설계합니다.",
     images: ["/og-image-v2.jpg"],
   },
   robots: {

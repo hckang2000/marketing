@@ -16,17 +16,17 @@ const dmConversations = [
   {
     id: 2,
     image: "/images/dm/dm-2.jpg",
-    caption: "협찬 제안부터 계약까지 모든 과정을 투명하게 공개",
+    caption: "협찬 제안부터 계약까지 모든 과정을 투명하게 보고",
   },
   {
     id: 3,
     image: "/images/dm/dm-3.jpg",
-    caption: "중간 브로커 없이 직접 소통하는 진짜 마케팅",
+    caption: "중간 에이전시 없이 직접 소통",
   },
   {
     id: 4,
     image: "/images/dm/dm-4.jpg",
-    caption: "이렇게 모집한 인플루언서 500명 이상 보유",
+    caption: "검증 완료된 일본 현지 인플루언서 1,000명 이상 보유",
   },
 ]
 
@@ -37,10 +37,10 @@ export function InfluencerDM() {
     <section className="section-padding bg-[#EFF6FF]">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
-          <SectionTitle title="일본 인플루언서와<br />진짜로 DM 주고받는 회사" titleClassName="text-3xl lg:text-3xl" className="mb-3" />
+          <SectionTitle title="현지 인플루언서 네트워크를<br />직접 운영하는 자체 조직" titleClassName="text-3xl lg:text-3xl" className="mb-3" />
           <ResponsiveText
-            mobile="중간 브로커 NO 직접대화 YES<br />실제 소통내역까지 공개합니다.<br />이정도 투명성, 보신 적 있나요?"
-            desktop="중간 브로커 NO 직접대화 YES<br />실제 소통내역까지 공개합니다. 이정도 투명성, 보신 적 있나요?"
+            mobile="중간 에이전시 없는 직접 운영 구조<br />실제 협업 프로세스까지 투명하게 공개합니다."
+            desktop="중간 에이전시 없는 직접 운영 구조.<br />실제 협업 프로세스까지 투명하게 공개합니다."
             className="text-base text-gray-600"
           />
         </motion.div>

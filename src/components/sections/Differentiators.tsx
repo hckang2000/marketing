@@ -9,20 +9,20 @@ const differentiators = [
   {
     id: 1,
     icon: Users,
-    title: "일본 고객 직접 소통",
-    description: "MCN 없이 일본 마이크로 인플루언서와 직접 계약. 1,000명 이상의 일본 고객과 직접 소통한 현지 데이터를 보유하고 있습니다.",
+    title: "현지 네트워크 직접 운영",
+    description: "중간 에이전시 없이 일본 현지 인플루언서·언론·매체와 직접 계약하고 운영합니다. 1,000명 이상의 검증된 인플루언서 풀을 제공합니다.",
   },
   {
     id: 2,
     icon: TrendingUp,
-    title: "광고비 10배 매출",
-    description: "실제 집행한 캠페인에서 광고비 대비 평균 10배 이상의 매출을 기록했습니다. 성과 없는 마케팅은 제안하지 않습니다.",
+    title: "ROI 기반 성과 보장",
+    description: "캠페인에서 광고비 대비 평균 10배 이상의 매출을 기록했습니다. KPI 기반 운영으로 측정 가능한 성과만 약속합니다.",
   },
   {
     id: 3,
     icon: Search,
-    title: "데이터 기반 전략",
-    description: "서울대 경영 출신 마케터가 설문 데이터와 고객 여정 분석을 바탕으로 병원에 맞는 최적 채널과 예산을 설계합니다.",
+    title: "데이터 기반 전략 컨설팅",
+    description: "서울대 경영 출신 컨설턴트가 글로벌 시장 분석과 환자 여정 데이터를 바탕으로 클라이언트사의 규모와 브랜드 포지션에 맞는 통합 전략을 설계합니다.",
   },
 ]
 
@@ -43,8 +43,8 @@ export function Differentiators() {
             className="text-base text-gray-600"
             style={{ wordBreak: "keep-all" }}
           >
-            일본 시장에서 검증된 방법으로<br className="sm:hidden" />{" "}
-            병원의 매출을 만들어 드립니다.
+            글로벌 시장에서 검증된 방법론으로<br className="sm:hidden" />{" "}
+            의료 마케팅의 지속 가능한 성장 구조를 설계합니다.
           </p>
         </motion.div>
 

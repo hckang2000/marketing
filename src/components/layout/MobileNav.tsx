@@ -87,7 +87,7 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
             variant="gradient"
             className="w-full"
           >
-            10초 문의하기
+            도입 상담 신청
           </Button>
         </div>
       </div>

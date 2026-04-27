@@ -9,7 +9,7 @@ export default function TermsPage() {
             <h1 className="text-4xl font-bold text-gray-900 mb-8">
               이용약관
             </h1>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 mb-6">
@@ -21,8 +21,8 @@ export default function TermsPage() {
                     제1조 (목적)
                   </h2>
                   <p className="text-gray-700">
-                    이 약관은 클리닉브릿지(이하 &ldquo;회사&rdquo;)가 제공하는 일본 대상 병원 마케팅 서비스의 
-                    이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 
+                    이 약관은 클리닉브릿지(이하 &ldquo;회사&rdquo;)가 제공하는 글로벌 마케팅 서비스의
+                    이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을
                     규정함을 목적으로 합니다.
                   </p>
                 </section>
@@ -35,13 +35,13 @@ export default function TermsPage() {
                     <div>
                       <p className="text-gray-700 font-medium mb-2">1. &ldquo;서비스&rdquo;란</p>
                       <p className="text-gray-700">
-                        회사가 제공하는 일본 대상 병원 마케팅 서비스를 의미합니다.
+                        회사가 제공하는 글로벌 마케팅 서비스를 의미합니다.
                       </p>
                     </div>
                     <div>
                       <p className="text-gray-700 font-medium mb-2">2. &ldquo;이용자&rdquo;란</p>
                       <p className="text-gray-700">
-                        이 약관에 따라 회사와 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는 
+                        이 약관에 따라 회사와 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는
                         고객을 의미합니다.
                       </p>
                     </div>
@@ -54,14 +54,14 @@ export default function TermsPage() {
                   </h2>
                   <div className="space-y-4">
                     <p className="text-gray-700">
-                      1. 이 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 
+                      1. 이 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써
                       효력이 발생합니다.
                     </p>
                     <p className="text-gray-700">
                       2. 회사는 필요한 경우 관련법령을 위배하지 않는 범위에서 이 약관을 변경할 수 있습니다.
                     </p>
                     <p className="text-gray-700">
-                      3. 약관이 변경되는 경우 회사는 변경사항을 시행일자 7일 전부터 공지사항을 통해 
+                      3. 약관이 변경되는 경우 회사는 변경사항을 시행일자 7일 전부터 공지사항을 통해
                       공지합니다.
                     </p>
                   </div>
@@ -76,10 +76,10 @@ export default function TermsPage() {
                       1. 회사는 다음과 같은 서비스를 제공합니다:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                      <li>일본 대상 병원 마케팅 컨설팅</li>
-                      <li>인플루언서 마케팅 서비스</li>
-                      <li>SNS 마케팅 전략 수립</li>
-                      <li>해외 환자 유치 지원</li>
+                      <li>글로벌 마케팅 컨설팅</li>
+                      <li>인플루언서·콘텐츠 통합 마케팅 운영</li>
+                      <li>글로벌 디지털 마케팅 전략 수립 및 운영</li>
+                      <li>통합 환자 유치 캠페인 관리</li>
                     </ul>
                     <p className="text-gray-700">
                       2. 서비스의 구체적인 내용은 회사가 제공하는 서비스 내용에 따라 달라질 수 있습니다.
@@ -99,7 +99,7 @@ export default function TermsPage() {
                       2. 이용자는 서비스 이용 중 회사의 지적재산권을 침해하지 않아야 합니다.
                     </p>
                     <p className="text-gray-700">
-                      3. 이용자는 서비스를 통해 얻은 정보를 회사의 사전 동의 없이 복제, 전송, 출판, 
+                      3. 이용자는 서비스를 통해 얻은 정보를 회사의 사전 동의 없이 복제, 전송, 출판,
                       배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안 됩니다.
                     </p>
                   </div>
@@ -111,12 +111,12 @@ export default function TermsPage() {
                   </h2>
                   <div className="space-y-4">
                     <p className="text-gray-700">
-                      1. 회사는 관련법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 
-                      이 약관이 정하는 바에 따라 지속적이고, 안정적으로 서비스를 제공하기 위하여 
+                      1. 회사는 관련법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며
+                      이 약관이 정하는 바에 따라 지속적이고, 안정적으로 서비스를 제공하기 위하여
                       노력합니다.
                     </p>
                     <p className="text-gray-700">
-                      2. 회사는 이용자가 안전하게 서비스를 이용할 수 있도록 개인정보보호를 위한 
+                      2. 회사는 이용자가 안전하게 서비스를 이용할 수 있도록 개인정보보호를 위한
                       보안 시스템을 구축하고 개인정보처리방침을 공시하고 준수합니다.
                     </p>
                   </div>
@@ -144,7 +144,7 @@ export default function TermsPage() {
                     제8조 (책임제한)
                   </h2>
                   <p className="text-gray-700">
-                    회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 
+                    회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는
                     경우에는 서비스 제공에 관한 책임이 면제됩니다.
                   </p>
                 </section>
@@ -155,11 +155,11 @@ export default function TermsPage() {
                   </h2>
                   <div className="space-y-4">
                     <p className="text-gray-700">
-                      1. 회사는 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를 
+                      1. 회사는 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를
                       보상처리하기 위하여 피해보상처리기구를 설치·운영합니다.
                     </p>
                     <p className="text-gray-700">
-                      2. 회사와 이용자 간에 발생한 전자상거래 분쟁에 관하여는 소비자분쟁조정위원회의 
+                      2. 회사와 이용자 간에 발생한 전자상거래 분쟁에 관하여는 소비자분쟁조정위원회의
                       조정에 따를 수 있습니다.
                     </p>
                   </div>

@@ -25,15 +25,15 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
       <Container>
         <motion.div {...motionProps} className="text-center max-w-4xl mx-auto">
           <ResponsiveText
-            mobile="지금 바로 문의주세요"
-            desktop="지금 바로 문의주세요"
+            mobile="도입 상담 신청"
+            desktop="도입 상담 신청"
             as="h2"
             className="text-3xl font-bold text-white mb-6"
           />
 
           <ResponsiveText
-            mobile="직접 찾아뵙고 무료로<br />병원 해외마케팅을 진단해드립니다."
-            desktop="직접 찾아뵙고 무료로 병원 해외마케팅을 진단해드립니다."
+            mobile="전담 컨설턴트가 직접 방문하여<br />글로벌 환자 유치 전략을 진단해드립니다."
+            desktop="전담 컨설턴트가 직접 방문하여 글로벌 환자 유치 전략을 진단해드립니다."
             className="text-base text-white/90 mb-8 leading-relaxed"
           />
 
@@ -43,11 +43,11 @@ export function FinalCTA({ onContactClick }: FinalCTAProps) {
             size="lg"
             className="w-full lg:w-96 lg:px-8 bg-white text-[#014A9F] hover:bg-gray-100 text-lg py-4 font-semibold shadow-lg"
           >
-            10초 문의하기
+            도입 상담 신청
           </Button>
 
           <p className="text-white/70 text-sm mt-4">
-            * 상담은 무료이며, 별도 비용이 발생하지 않습니다.
+            * 도입 진단 및 초기 컨설팅은 무료로 제공됩니다.
           </p>
         </motion.div>
       </Container>

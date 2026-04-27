@@ -12,10 +12,10 @@ import { useContact } from "@/components/providers/ContactProvider"
 import { trackButtonClick } from "@/lib/gtag"
 
 const navigation = [
-  { name: "처음으로", href: "/" },
+  { name: "홈", href: "/" },
   { name: "회사 소개", href: "/about" },
-  { name: "마케팅 칼럼", href: "/blog" },
-  { name: "설문 데이터", href: "/data" },
+  { name: "인사이트", href: "/blog" },
+  { name: "리포트", href: "/data" },
 ]
 
 interface HeaderProps {
@@ -94,13 +94,13 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
 
           <div className="hidden md:flex items-center">
             <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
-              10초 문의
+              도입 상담
             </Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
             <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
-              문의
+              상담
             </Button>
             <button
               type="button"

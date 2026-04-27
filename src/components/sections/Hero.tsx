@@ -54,8 +54,8 @@ export function Hero({ onContactClick }: HeroProps) {
               className="font-bold text-white mb-6 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.35] lg:leading-[1.5]"
               style={{ wordBreak: "keep-all" }}
             >
-              일본 환자 유치로<br />
-              광고비 10배 매출목표
+              의료 글로벌 마케팅,<br />
+              데이터 기반 성과를 설계합니다
             </motion.h1>
 
             {/* H2 */}
@@ -66,7 +66,7 @@ export function Hero({ onContactClick }: HeroProps) {
               className="text-gray-200 mb-10 font-normal text-base sm:text-lg lg:text-2xl leading-relaxed"
               style={{ wordBreak: "keep-all" }}
             >
-              지금 문의시 광고비 50% 할인
+              인바운드 의료관광 고객수요를 성과로 연결합니다
             </motion.h2>
 
             {/* CTA */}
@@ -82,7 +82,7 @@ export function Hero({ onContactClick }: HeroProps) {
                 size="lg"
                 className="px-10 bg-[#0664D3] hover:bg-[#0557b5]"
               >
-                10초 문의하기
+                도입 상담 신청
               </Button>
             </motion.div>
           </div>

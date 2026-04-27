@@ -118,7 +118,7 @@ export async function POST(req: Request) {
     }
 
     const slackMessage = {
-      text: `새로운 10초 문의가 접수되었습니다: ${name} (${hospital})`,
+      text: `새로운 도입 상담 신청이 접수되었습니다: ${name} (${hospital})`,
       blocks: [
         {
           type: "header",
@@ -141,7 +141,7 @@ export async function POST(req: Request) {
             },
             {
               type: "mrkdwn",
-              text: `*병원명/직책*\n${hospital}`,
+              text: `*소속/직책*\n${hospital}`,
             },
             {
               type: "mrkdwn",
@@ -153,7 +153,7 @@ export async function POST(req: Request) {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: `*문의내용*\n${message}`,
+            text: `*도입 검토 내용*\n${message}`,
           },
         },
         {
@@ -198,7 +198,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
        from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
        to: process.env.TO_EMAIL || "clinicbridge.kr@gmail.com",
-      subject: "클리닉브릿지 10초 문의 도착",
+      subject: "클리닉브릿지 도입 상담 신청 도착",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px;">
@@ -209,12 +209,12 @@ export async function POST(req: Request) {
             <h3 style="color: #667eea; margin-top: 0;">문의자 정보</h3>
             <p><strong>이름:</strong> ${name}</p>
             <p><strong>연락처:</strong> ${phone}</p>
-            <p><strong>병원명/직책:</strong> ${hospital}</p>
+            <p><strong>소속/직책:</strong> ${hospital}</p>
             <p><strong>이메일:</strong> ${email}</p>
           </div>
           
           <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px;">
-            <h3 style="color: #667eea; margin-top: 0;">문의내용</h3>
+            <h3 style="color: #667eea; margin-top: 0;">도입 검토 내용</h3>
             <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
           </div>
           
