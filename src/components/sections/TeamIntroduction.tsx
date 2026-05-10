@@ -63,22 +63,22 @@ export function TeamIntroduction() {
               className="text-left"
             >
               <div className="w-[11rem] mx-auto">
-                <div className="relative w-full aspect-[4/5] mb-6 rounded-2xl overflow-hidden">
+                <div className="relative w-full aspect-[4/5] mb-6 rounded-2xl overflow-hidden bg-white flex items-center justify-center p-6">
                   <Image
-                    src="/images/profiles/doctor_profile.jpg"
-                    alt="강OO 자문의"
+                    src="/images/snu_ui_download.png"
+                    alt="서울대학교"
                     fill
                     quality={95}
-                    className="object-cover object-center"
+                    className="object-contain p-4"
                     sizes="176px"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  자문의 강OO
+                  서울대학교 팀
                 </h3>
                 <p className="text-gray-600 whitespace-nowrap">
-                  서울대학교 의학전문대학원 14<br />
-                  서울대병원 수련
+                  서울대 의대 의학 자문 및<br />
+                  서울대 출신 마케터
                 </p>
               </div>
             </motion.div>
