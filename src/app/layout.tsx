@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import "./globals.css"
 import { ClientProviders } from "@/components/providers/ClientProviders"
 import { GAProvider } from "@/components/providers/GAProvider"
-import { GA_ID } from "@/lib/gtag"
+import { GA_ID, GOOGLE_ADS_ID } from "@/lib/gtag"
 
 export const metadata: Metadata = {
   title: "클리닉브릿지 - 글로벌 의료 마케팅",
@@ -73,11 +73,11 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
-        {GA_ID && (
+        {(GA_ID || GOOGLE_ADS_ID) && (
           <>
             <Script
               strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GOOGLE_ADS_ID}`}
             />
             <Script
               id="gtag-init"
@@ -87,7 +87,8 @@ export default function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${GA_ID}');
+                  ${GA_ID ? `gtag('config', '${GA_ID}');` : ""}
+                  ${GOOGLE_ADS_ID ? `gtag('config', '${GOOGLE_ADS_ID}');` : ""}
                 `,
               }}
             />
