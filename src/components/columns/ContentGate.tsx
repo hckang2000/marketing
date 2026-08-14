@@ -62,7 +62,7 @@ export function ContentGate({ articleSlug, children }: ContentGateProps) {
       {/* CTA 버튼 */}
       <div className="text-center py-8">
         <Button
-          onClick={openContact}
+          onClick={() => openContact("unlock")}
           variant="gradient"
           size="lg"
           className="shadow-lg hover:shadow-xl transition-all duration-300"

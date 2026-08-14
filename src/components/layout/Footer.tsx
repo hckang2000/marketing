@@ -58,7 +58,7 @@ export function Footer() {
             {/* Contact */}
             <div>
               <h3 className="font-semibold mb-4">도입 문의</h3>
-              <Button onClick={openContact} variant="gradient" className="w-full mb-4">
+              <Button onClick={() => openContact()} variant="gradient" className="w-full mb-4">
                 도입 상담 신청
               </Button>
               <div className="flex space-x-4">

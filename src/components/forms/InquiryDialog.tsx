@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { X, Loader2 } from "lucide-react"
@@ -9,9 +10,11 @@ import toast from "react-hot-toast"
 import { Button } from "@/components/common/Button"
 import { contactFormSchema, type ContactFormData } from "@/lib/validators"
 import { useContact } from "@/components/providers/ContactProvider"
+import { trackConversion } from "@/lib/gtag"
 
 export function InquiryDialog() {
-  const { isContactOpen, closeContact } = useContact()
+  const { isContactOpen, closeContact, intent } = useContact()
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
@@ -38,13 +41,23 @@ export function InquiryDialog() {
       })
 
       if (response.ok) {
-        toast.success("도입 상담 신청이 정상적으로 접수되었습니다.")
         reset()
-        // inquiry-success 이벤트 디스패치
+        // inquiry-success 이벤트 디스패치 (ContentGate 콘텐츠 잠금 해제용, 경로 무관 항상 발사)
         window.dispatchEvent(new CustomEvent("inquiry-success"))
-        setTimeout(() => {
+        // 폼 제출 완료 = 실제 리드. 이 시점에 Google Ads 전환을 발사한다.
+        trackConversion()
+
+        if (intent === "unlock") {
+          // 콘텐츠 게이트 경로: 현재 페이지에 머물러 잠금 해제된 콘텐츠를 노출.
+          toast.success("도입 상담 신청이 정상적으로 접수되었습니다.")
+          setTimeout(() => {
+            closeContact()
+          }, 1000)
+        } else {
+          // 일반 문의 경로: 완료 페이지로 이동.
           closeContact()
-        }, 1000)
+          router.push("/inquiry/complete")
+        }
       } else {
         toast.error("전송 중 오류가 발생했습니다. 다시 시도해주세요.")
       }
