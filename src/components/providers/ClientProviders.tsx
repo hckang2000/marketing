@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 import { ContactProvider } from "./ContactProvider"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { InquiryDialog } from "@/components/forms/InquiryDialog"
+import { TopBanner, TOP_BANNER_HEIGHT, isTopBannerDismissed } from "@/components/layout/TopBanner"
 
 interface ClientProvidersProps {
   children: React.ReactNode
@@ -13,18 +14,27 @@ interface ClientProvidersProps {
 
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const [isBannerVisible, setIsBannerVisible] = useState(false)
+
+  // 세션 중 배너를 닫았으면 다시 띄우지 않는다 (SSR 시엔 항상 숨김 → mount 후 판단)
+  useEffect(() => {
+    setIsBannerVisible(!isTopBannerDismissed())
+  }, [])
 
   // MobileNav 상태를 감지하는 함수
   const handleMobileNavStateChange = (open: boolean) => {
     setIsMobileNavOpen(open)
   }
 
+  const headerOffset = isBannerVisible ? TOP_BANNER_HEIGHT : 0
+
   return (
     <ContactProvider>
-      <Header onMobileNavStateChange={handleMobileNavStateChange} />
-      <main className={`pt-16 transition-all duration-300 ${
-        isMobileNavOpen ? 'blur-sm bg-black/20' : ''
-      }`}>
+      {isBannerVisible && <TopBanner onDismiss={() => setIsBannerVisible(false)} />}
+      <Header onMobileNavStateChange={handleMobileNavStateChange} topOffset={headerOffset} />
+      <main className={`transition-all duration-300 ${
+        isBannerVisible ? 'pt-[104px]' : 'pt-16'
+      } ${isMobileNavOpen ? 'blur-sm bg-black/20' : ''}`}>
         {children}
       </main>
       <Footer />

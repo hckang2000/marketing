@@ -60,8 +60,8 @@ export function Differentiators() {
                 viewport={{ once: true }}
                 className="flex flex-col items-center text-center p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 rounded-full bg-[#EFF6FF] flex items-center justify-center mb-6">
-                  <Icon className="h-7 w-7 text-[#014A9F]" />
+                <div className="w-14 h-14 rounded-full bg-[#FBEEE8] flex items-center justify-center mb-6">
+                  <Icon className="h-7 w-7 text-[#C1452D]" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {item.title}

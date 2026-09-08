@@ -2,38 +2,35 @@
 
 import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/Hero"
-import { useContact } from "@/components/providers/ContactProvider"
+import { LogoWall } from "@/components/sections/LogoWall"
+import { TeamGrid } from "@/components/sections/TeamGrid"
+import { MissedOpportunity } from "@/components/sections/MissedOpportunity"
+import { WhyClinicBridge } from "@/components/sections/WhyClinicBridge"
+import { TrustPillars } from "@/components/sections/TrustPillars"
+import { PlanCompare } from "@/components/sections/PlanCompare"
 
-const Differentiators = dynamic(
-  () => import("@/components/sections/Differentiators").then(mod => ({ default: mod.Differentiators })),
+const ProofResults = dynamic(
+  () => import("@/components/sections/ProofResults").then(mod => ({ default: mod.ProofResults })),
   { loading: () => <div className="h-96 bg-white animate-pulse" /> }
 )
 
-const Service = dynamic(
-  () => import("@/components/sections/Service").then(mod => ({ default: mod.Service })),
-  { loading: () => <div className="h-96 bg-gray-50 animate-pulse" /> }
-)
-
-const InfluencerDM = dynamic(
-  () => import("@/components/sections/InfluencerDM").then(mod => ({ default: mod.InfluencerDM })),
-  { loading: () => <div className="h-96 bg-white animate-pulse" /> }
-)
-
-const SocialProof = dynamic(
-  () => import("@/components/sections/SocialProof").then(mod => ({ default: mod.SocialProof })),
+const FAQInsights = dynamic(
+  () => import("@/components/sections/FAQInsights").then(mod => ({ default: mod.FAQInsights })),
   { loading: () => <div className="h-96 bg-white animate-pulse" /> }
 )
 
 export default function HomePage() {
-  const { openContact } = useContact()
-
   return (
     <>
-      <Hero onContactClick={openContact} />
-      <Differentiators />
-      <InfluencerDM />
-      <Service />
-      <SocialProof />
+      <Hero />
+      <LogoWall />
+      <MissedOpportunity />
+      <WhyClinicBridge />
+      <TrustPillars />
+      <TeamGrid />
+      <ProofResults />
+      <PlanCompare />
+      <FAQInsights />
     </>
   )
 }

@@ -30,8 +30,8 @@ export default function AboutPage() {
             {/* Text */}
             <div>
               {/* Label */}
-              <p className="text-sm text-[#014A9F] font-medium mb-6 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#014A9F] rounded-full inline-block" />
+              <p className="text-sm text-[#C1452D] font-medium mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 bg-[#C1452D] rounded-full inline-block" />
                 클리닉브릿지. 이은석 대표
               </p>
 

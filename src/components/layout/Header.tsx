@@ -1,63 +1,31 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import Image from "next/image"
+import { useState } from "react"
 import { Menu } from "lucide-react"
 import { Logo } from "@/components/common/Logo"
 import { Button } from "@/components/common/Button"
 import { Container } from "@/components/common/Container"
 import { MobileNav } from "./MobileNav"
-import { useContact } from "@/components/providers/ContactProvider"
 import { trackButtonClick } from "@/lib/gtag"
 
 const navigation = [
   { name: "홈", href: "/" },
-  { name: "회사 소개", href: "/about" },
+  { name: "가격", href: "/pricing" },
   { name: "인사이트", href: "/blog" },
-  { name: "리포트", href: "/data" },
 ]
 
 interface HeaderProps {
   onMobileNavStateChange?: (open: boolean) => void
+  topOffset?: number
 }
 
-const HOME_SCROLL_THRESHOLD = 500
-const PAGE_HERO_SCROLL_THRESHOLD = 416
-
-const PAGE_HERO_ROUTES = ["/about", "/blog", "/data"]
-
-export function Header({ onMobileNavStateChange }: HeaderProps) {
+export function Header({ onMobileNavStateChange, topOffset = 0 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { openContact } = useContact()
-  const pathname = usePathname()
-  const isHome = pathname === "/"
-  const hasHero = isHome || PAGE_HERO_ROUTES.some((route) =>
-    pathname === route || pathname.startsWith(`${route}/`)
-  )
-  const scrollThreshold = isHome ? HOME_SCROLL_THRESHOLD : PAGE_HERO_SCROLL_THRESHOLD
-
-  useEffect(() => {
-    if (!hasHero) {
-      setIsScrolled(true)
-      return
-    }
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > scrollThreshold)
-    }
-
-    handleScroll()
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [hasHero, scrollThreshold])
-
-  const isTransparent = hasHero && !isScrolled
 
   const handleContactClick = () => {
     trackButtonClick("contact", "header")
-    openContact()
   }
 
   const handleMobileMenuToggle = (open: boolean) => {
@@ -65,46 +33,51 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
     onMobileNavStateChange?.(open)
   }
 
-  const headerClass = isTransparent
-    ? "bg-transparent backdrop-blur-sm border-b border-white/15"
-    : "bg-white/95 backdrop-blur-sm border-b border-gray-200"
-
-  const navLinkClass = isTransparent
-    ? "text-white/90 hover:text-white transition-colors font-medium"
-    : "text-gray-900 hover:text-[#014A9F] transition-colors font-medium"
-
-  const mobileMenuIconClass = isTransparent ? "text-white" : "text-gray-900"
-  const ctaButtonClass = isTransparent ? "bg-[#0664D3] hover:bg-[#0557b5]" : ""
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerClass}`}
+      className="fixed left-0 right-0 z-50 bg-white border-b border-gray-200"
+      style={{ top: topOffset }}
     >
       <Container>
         <div className="flex items-center justify-between h-16">
-          <Logo size="md" variant={isTransparent ? "light" : "dark"} />
+          <div className="flex items-center gap-3">
+            <div className="relative h-7 w-7 shrink-0">
+              <Image
+                src="/images/snu_ui_download.png"
+                alt="서울대학교"
+                fill
+                className="object-contain"
+                style={{ filter: "brightness(0)" }}
+              />
+            </div>
+            <Logo size="md" variant="dark" />
+          </div>
 
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href} className={navLinkClass}>
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-900 hover:text-[#C1452D] transition-colors font-medium"
+              >
                 {item.name}
               </Link>
             ))}
           </nav>
 
           <div className="hidden md:flex items-center">
-            <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
-              도입 상담
+            <Button asChild onClick={handleContactClick} variant="default" size="sm">
+              <Link href="/inquiry">도입 상담</Link>
             </Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
-            <Button onClick={handleContactClick} variant="default" size="sm" className={ctaButtonClass}>
-              상담
+            <Button asChild onClick={handleContactClick} variant="default" size="sm">
+              <Link href="/inquiry">상담</Link>
             </Button>
             <button
               type="button"
-              className={`p-2 ${mobileMenuIconClass}`}
+              className="p-2 text-gray-900"
               onClick={() => handleMobileMenuToggle(true)}
             >
               <Menu className="h-6 w-6" />
@@ -117,7 +90,6 @@ export function Header({ onMobileNavStateChange }: HeaderProps) {
         open={mobileMenuOpen}
         onClose={() => handleMobileMenuToggle(false)}
         navigation={navigation}
-        onContactClick={handleContactClick}
       />
     </header>
   )

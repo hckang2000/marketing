@@ -14,10 +14,9 @@ interface MobileNavProps {
   open: boolean
   onClose: () => void
   navigation: NavigationItem[]
-  onContactClick: () => void
 }
 
-export function MobileNav({ open, onClose, navigation, onContactClick }: MobileNavProps) {
+export function MobileNav({ open, onClose, navigation }: MobileNavProps) {
   // Prevent background scrolling when sidebar is open
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -79,15 +78,10 @@ export function MobileNav({ open, onClose, navigation, onContactClick }: MobileN
 
         {/* CTA */}
         <div className="p-6 pb-8 border-t">
-          <Button
-            onClick={() => {
-              onContactClick()
-              onClose()
-            }}
-            variant="gradient"
-            className="w-full"
-          >
-            도입 상담 신청
+          <Button asChild variant="gradient" className="w-full">
+            <Link href="/inquiry" onClick={onClose}>
+              도입 상담 신청
+            </Link>
           </Button>
         </div>
       </div>

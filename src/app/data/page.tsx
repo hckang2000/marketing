@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ContentGate } from "@/components/columns/ContentGate"
 import { PageHero } from "@/components/common/PageHero"
 
 export default function DataPage() {
@@ -147,8 +146,7 @@ export default function DataPage() {
               </div>
             </div>
 
-            <ContentGate articleSlug="data">
-              <div className="journey-stage stage-3">
+            <div className="journey-stage stage-3">
                 <h4 className="text-xl font-semibold text-gray-900 mb-4">예약 및 방문 경험 단계 (Conversion & Experience)</h4>
                 <p className="text-base text-gray-700 mb-4"><strong>Q. 불편했던 점은 무엇일까?</strong></p>
 
@@ -417,7 +415,6 @@ export default function DataPage() {
                   }}>티어별 상품 포트폴리오</strong>를 결합하면 높은 LTV의 일본인 환자를 안정적으로 확보할 수 있습니다.
                 </p>
               </motion.section>
-            </ContentGate>
           </motion.section>
         </div>
       </div>
@@ -481,7 +478,7 @@ export default function DataPage() {
         }
 
         .meta-item strong {
-          color: #014A9F;
+          color: #C1452D;
           font-size: 1.1rem;
         }
 
@@ -507,7 +504,7 @@ export default function DataPage() {
           position: absolute;
           top: -16px;
           left: 30px;
-          background: #014A9F;
+          background: #C1452D;
           color: white;
           padding: 6px 16px;
           border-radius: 20px;
@@ -530,7 +527,7 @@ export default function DataPage() {
         }
 
         .strategy-box {
-          background: #EFF6FF;
+          background: #FBEEE8;
           padding: 20px;
           margin: 20px 0;
           border-radius: 8px;
@@ -550,7 +547,7 @@ export default function DataPage() {
         }
 
         .persona-title {
-          background: #014A9F;
+          background: #C1452D;
           color: white;
           font-size: 1.8rem;
           font-weight: bold;
@@ -597,7 +594,7 @@ export default function DataPage() {
         .stat-number {
           font-size: 2.5rem;
           font-weight: bold;
-          color: #014A9F;
+          color: #C1452D;
           margin-bottom: 10px;
         }
 
@@ -607,7 +604,7 @@ export default function DataPage() {
         }
 
         .highlight {
-          background: #014A9F;
+          background: #C1452D;
           color: white;
           padding: 3px 8px;
           border-radius: 5px;
@@ -631,7 +628,7 @@ export default function DataPage() {
         }
 
         .tier-table th {
-          background: #014A9F;
+          background: #C1452D;
           color: white;
           padding: 15px;
           text-align: center;
@@ -662,7 +659,7 @@ export default function DataPage() {
         }
 
         strong {
-          color: #014A9F;
+          color: #C1452D;
         }
 
         p, h1, h2, h3, h4, h5, h6, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl {

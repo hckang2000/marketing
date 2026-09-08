@@ -2,89 +2,66 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 import { Button } from "@/components/common/Button"
 import { Container } from "@/components/common/Container"
 
-interface HeroProps {
-  onContactClick: () => void
-}
-
-export function Hero({ onContactClick }: HeroProps) {
+export function Hero() {
   return (
-    <section className="relative overflow-hidden -mt-16">
-      {/* Background Image - Mobile */}
-      <div className="absolute inset-0 lg:hidden">
-        <Image
-          src="/images/hero-skyscraper.png"
-          alt="Hero background mobile"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        />
-      </div>
-
-      {/* Background Image - Desktop */}
-      <div className="absolute inset-0 hidden lg:block">
-        <Image
-          src="/images/hero-skyscraper.png"
-          alt="Hero background desktop"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        />
-      </div>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
-
+    <section className="bg-white py-6 lg:py-8">
       <Container>
-        <div className="relative z-10 min-h-[560px] lg:min-h-[700px] flex items-center justify-center pt-16 pb-16">
-          <div className="max-w-3xl mx-auto text-center">
-            {/* H1 */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="font-bold text-white mb-6 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.35] lg:leading-[1.5]"
+        <div className="relative overflow-hidden rounded-2xl shadow-lg">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/hero-bg-1.webp"
+              alt="Hero background"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+          </div>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60" />
+
+          <div className="relative z-10 flex items-center min-h-[330px] lg:min-h-[390px] py-8 lg:py-10 px-6 lg:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-2xl mx-auto"
+          >
+            <h1
+              className="font-bold text-white mb-2 text-[26px] sm:text-[30px] lg:text-[36px] leading-[1.4]"
               style={{ wordBreak: "keep-all" }}
             >
-              의료 글로벌 마케팅,<br />
-              데이터 기반 성과를 설계합니다
-            </motion.h1>
+              실패하지 않는 일본 환자 마케팅을 시작하세요
+            </h1>
 
-            {/* H2 */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-gray-200 mb-10 font-normal text-base sm:text-lg lg:text-2xl leading-relaxed"
+            <p
+              className="text-white/80 mb-4 font-normal text-sm sm:text-base leading-relaxed"
               style={{ wordBreak: "keep-all" }}
             >
-              인바운드 의료관광 고객수요를 성과로 연결합니다
-            </motion.h2>
+              수많은 대행사 중, 우리 병원에 맞는 전략만
+            </p>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex justify-center"
-            >
+            <div className="flex justify-center">
               <Button
-                onClick={onContactClick}
+                asChild
                 variant="default"
-                size="lg"
-                className="px-10 bg-[#0664D3] hover:bg-[#0557b5]"
+                size="sm"
+                className="rounded-full px-6 text-sm bg-[#D65A3B] hover:bg-[#B84A2E]"
               >
-                도입 상담 신청
+                <Link href="/inquiry" className="flex items-center gap-1.5">
+                  도입 상담 신청
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
               </Button>
-            </motion.div>
+            </div>
+          </motion.div>
           </div>
         </div>
       </Container>

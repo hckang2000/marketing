@@ -1,0 +1,165 @@
+import { NextResponse } from "next/server"
+import { Resend } from "resend"
+import { sendSlackNotification } from "@/lib/slack"
+
+const resendApiKey = process.env.RESEND_API_KEY
+const resend = resendApiKey ? new Resend(resendApiKey) : null
+
+export async function POST(req: Request) {
+  try {
+    const {
+      referrer,
+      interests,
+      budget,
+      businessIntro,
+      challenges,
+      expectedOutcome,
+      hospitalName,
+      name,
+      region,
+      website,
+      phone,
+      email,
+      privacyConsent,
+      hp,
+    } = await req.json()
+
+    if (hp) {
+      return NextResponse.json({ ok: true })
+    }
+
+    if (
+      !referrer ||
+      !Array.isArray(interests) ||
+      interests.length === 0 ||
+      !budget ||
+      !businessIntro ||
+      !challenges ||
+      !expectedOutcome ||
+      !hospitalName ||
+      !name ||
+      !region ||
+      !website ||
+      !phone ||
+      !email ||
+      !privacyConsent
+    ) {
+      return NextResponse.json({ error: "모든 필드를 입력해주세요" }, { status: 400 })
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "올바른 이메일을 입력해주세요" }, { status: 400 })
+    }
+
+    const interestsLine = interests.join(", ")
+
+    const slackResult = await sendSlackNotification({
+      text: `도입 상담 신청이 접수되었습니다: ${name} (${hospitalName})`,
+      blocks: [
+        {
+          type: "header",
+          text: { type: "plain_text", text: "📬 도입 상담 신청", emoji: true },
+        },
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*병원명/회사명*\n${hospitalName}` },
+            { type: "mrkdwn", text: `*직책/성함*\n${name}` },
+            { type: "mrkdwn", text: `*지역*\n${region}` },
+            { type: "mrkdwn", text: `*홈페이지*\n${website}` },
+            { type: "mrkdwn", text: `*연락처*\n${phone}` },
+            { type: "mrkdwn", text: `*이메일*\n${email}` },
+            { type: "mrkdwn", text: `*유입 경로*\n${referrer}` },
+            { type: "mrkdwn", text: `*관심 서비스*\n${interestsLine}` },
+            { type: "mrkdwn", text: `*월 예산*\n${budget}` },
+          ],
+        },
+        {
+          type: "section",
+          text: { type: "mrkdwn", text: `*병원/사업 소개*\n${businessIntro}` },
+        },
+        {
+          type: "section",
+          text: { type: "mrkdwn", text: `*현재 겪고 있는 어려움*\n${challenges}` },
+        },
+        {
+          type: "section",
+          text: { type: "mrkdwn", text: `*기대하는 결과*\n${expectedOutcome}` },
+        },
+        {
+          type: "context",
+          elements: [{ type: "mrkdwn", text: `접수 시간: ${new Date().toLocaleString("ko-KR")}` }],
+        },
+      ],
+    })
+
+    if (!slackResult.ok && !slackResult.skipped) {
+      console.error("❌ Slack 알림 전송 실패:", slackResult)
+    }
+
+    if (!resend) {
+      console.log("Resend API key not configured. Skipping email send.")
+      console.log("Inquiry form data:", {
+        referrer,
+        interests,
+        budget,
+        businessIntro,
+        challenges,
+        expectedOutcome,
+        hospitalName,
+        name,
+        region,
+        website,
+        phone,
+        email,
+      })
+      return NextResponse.json({ ok: true, slackNotified: slackResult.ok || slackResult.skipped || false })
+    }
+
+    await resend.emails.send({
+      from: process.env.FROM_EMAIL || "no-reply@clinicbridge.co.kr",
+      to: process.env.TO_EMAIL || "clinicbridge.kr@gmail.com",
+      subject: `[도입 상담] ${hospitalName} 신청 도착`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333; border-bottom: 2px solid #C1452D; padding-bottom: 10px;">
+            도입 상담 신청
+          </h2>
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p><strong>병원명/회사명:</strong> ${hospitalName}</p>
+            <p><strong>직책/성함:</strong> ${name}</p>
+            <p><strong>지역:</strong> ${region}</p>
+            <p><strong>홈페이지:</strong> ${website}</p>
+            <p><strong>연락처:</strong> ${phone}</p>
+            <p><strong>이메일:</strong> ${email}</p>
+            <p><strong>유입 경로:</strong> ${referrer}</p>
+            <p><strong>관심 서비스:</strong> ${interestsLine}</p>
+            <p><strong>월 예산:</strong> ${budget}</p>
+          </div>
+          <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 12px;">
+            <h3 style="color: #C1452D; margin-top: 0;">병원/사업 소개</h3>
+            <p style="white-space: pre-wrap; line-height: 1.6;">${businessIntro}</p>
+          </div>
+          <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 12px;">
+            <h3 style="color: #C1452D; margin-top: 0;">현재 겪고 있는 어려움</h3>
+            <p style="white-space: pre-wrap; line-height: 1.6;">${challenges}</p>
+          </div>
+          <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #C1452D; margin-top: 0;">기대하는 결과</h3>
+            <p style="white-space: pre-wrap; line-height: 1.6;">${expectedOutcome}</p>
+          </div>
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px;">
+            <p>이 이메일은 클리닉브릿지 웹사이트(/inquiry)를 통해 자동으로 발송되었습니다.</p>
+            <p>발송 시간: ${new Date().toLocaleString("ko-KR")}</p>
+          </div>
+        </div>
+      `,
+    })
+
+    return NextResponse.json({ ok: true, slackNotified: slackResult.ok || slackResult.skipped || false })
+  } catch (error) {
+    console.error("Inquiry form error:", error)
+    return NextResponse.json({ error: "서버 오류가 발생했습니다. 다시 시도해주세요." }, { status: 500 })
+  }
+}

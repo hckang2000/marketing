@@ -5,13 +5,10 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
 import { Logo } from "@/components/common/Logo"
 import { Button } from "@/components/common/Button"
 import { Container } from "@/components/common/Container"
-import { useContact } from "@/components/providers/ContactProvider"
 
 export function Footer() {
-  const { openContact } = useContact()
-
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-black text-white">
       <Container>
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -58,8 +55,8 @@ export function Footer() {
             {/* Contact */}
             <div>
               <h3 className="font-semibold mb-4">도입 문의</h3>
-              <Button onClick={() => openContact()} variant="gradient" className="w-full mb-4">
-                도입 상담 신청
+              <Button asChild variant="gradient" className="w-full mb-4">
+                <Link href="/inquiry">도입 상담 신청</Link>
               </Button>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">

@@ -19,9 +19,9 @@ export default function InquiryCompletePage() {
     <div className="min-h-[70vh] flex items-center bg-gray-50">
       <Container>
         <div className="max-w-xl mx-auto text-center py-16">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#014A9F]/10">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#C1452D]/10">
             <svg
-              className="h-9 w-9 text-[#014A9F]"
+              className="h-9 w-9 text-[#C1452D]"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

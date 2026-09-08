@@ -34,7 +34,7 @@ export function InfluencerDM() {
   const motionProps = useMotionAnimation()
 
   return (
-    <section className="section-padding bg-[#EFF6FF]">
+    <section className="section-padding bg-gray-100">
       <Container>
         <motion.div {...motionProps} className="text-center mb-12">
           <SectionTitle title="현지 인플루언서 네트워크를<br />직접 운영하는 자체 조직" titleClassName="text-3xl lg:text-3xl" className="mb-3" />

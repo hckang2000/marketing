@@ -11,7 +11,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 212 99% 31%;
+    --primary: 10 62% 47%;
     --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
@@ -23,7 +23,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 212 99% 31%;
+    --ring: 10 62% 47%;
     --radius: 0.5rem;
   }
 
@@ -78,10 +78,55 @@
   }
   
   .gradient-bg {
-    background: #014A9F;
+    background: #C1452D;
   }
 
   .text-gradient {
-    color: #014A9F;
+    color: #C1452D;
   }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 70s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 70s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee-left 90s linear infinite;
+}
+
+.marquee-row:hover .animate-marquee-left,
+.marquee-row:hover .animate-marquee-right,
+.marquee-row:hover .animate-marquee-slow {
+  animation-play-state: paused;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
