@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils"
 import { inquiryPageFormSchema, type InquiryPageFormData } from "@/lib/validators"
 import { trackConversion } from "@/lib/gtag"
 
+const COUNTRY_OPTIONS = ["일본", "영미/영어권"]
 const INTEREST_OPTIONS = ["LINE 계정 세팅", "바이럴 콘텐츠 마케팅 패키지", "월 정기 운영 플랜", "애드온 서비스", "기타 문의"]
 
 interface FieldLabelProps {
@@ -50,12 +51,20 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
     formState: { errors },
   } = useForm<InquiryPageFormData>({
     resolver: zodResolver(inquiryPageFormSchema),
-    defaultValues: { interests: [] },
+    defaultValues: { targetCountries: [], interests: [] },
   })
 
   const businessIntro = watch("businessIntro") ?? ""
   const challenges = watch("challenges") ?? ""
+  const selectedCountries = watch("targetCountries") ?? []
   const selectedInterests = watch("interests") ?? []
+
+  const toggleCountry = (option: string) => {
+    const next = selectedCountries.includes(option)
+      ? selectedCountries.filter((i) => i !== option)
+      : [...selectedCountries, option]
+    setValue("targetCountries", next, { shouldValidate: true })
+  }
 
   const toggleInterest = (option: string) => {
     const next = selectedInterests.includes(option)
@@ -99,6 +108,31 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
         <h2 className="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
           귀사에 대해 알려주세요
         </h2>
+
+        <div>
+          <FieldLabel htmlFor="targetCountries">해외 마케팅 희망 국가 * (복수 선택 가능)</FieldLabel>
+          <div className="flex flex-wrap gap-2">
+            {COUNTRY_OPTIONS.map((option) => {
+              const active = selectedCountries.includes(option)
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => toggleCountry(option)}
+                  className={cn(
+                    "px-4 py-2 text-sm rounded-full border transition-colors",
+                    active
+                      ? "bg-primary text-white border-primary"
+                      : "bg-white text-gray-700 border-gray-300 hover:border-primary/50"
+                  )}
+                >
+                  {option}
+                </button>
+              )
+            })}
+          </div>
+          <ErrorText message={errors.targetCountries?.message} />
+        </div>
 
         <div>
           <FieldLabel htmlFor="interests">관심 있는 서비스 * (복수 선택 가능)</FieldLabel>

@@ -8,6 +8,7 @@ const resend = resendApiKey ? new Resend(resendApiKey) : null
 export async function POST(req: Request) {
   try {
     const {
+      targetCountries,
       interests,
       expectedRevenue,
       budget,
@@ -29,6 +30,8 @@ export async function POST(req: Request) {
     }
 
     if (
+      !Array.isArray(targetCountries) ||
+      targetCountries.length === 0 ||
       !Array.isArray(interests) ||
       interests.length === 0 ||
       !expectedRevenue ||
@@ -52,6 +55,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "올바른 이메일을 입력해주세요" }, { status: 400 })
     }
 
+    const countriesLine = targetCountries.join(", ")
     const interestsLine = interests.join(", ")
 
     const slackResult = await sendSlackNotification({
@@ -70,6 +74,7 @@ export async function POST(req: Request) {
             { type: "mrkdwn", text: `*홈페이지*\n${website}` },
             { type: "mrkdwn", text: `*연락처*\n${phone}` },
             { type: "mrkdwn", text: `*이메일*\n${email}` },
+            { type: "mrkdwn", text: `*희망 국가*\n${countriesLine}` },
             { type: "mrkdwn", text: `*관심 서비스*\n${interestsLine}` },
             { type: "mrkdwn", text: `*기대 해외 환자 월 매출*\n${expectedRevenue}` },
             { type: "mrkdwn", text: `*월 예산*\n${budget}` },
@@ -98,6 +103,7 @@ export async function POST(req: Request) {
     if (!resend) {
       console.log("Resend API key not configured. Skipping email send.")
       console.log("Inquiry form data:", {
+        targetCountries,
         interests,
         expectedRevenue,
         budget,
@@ -130,6 +136,7 @@ export async function POST(req: Request) {
             <p><strong>홈페이지:</strong> ${website}</p>
             <p><strong>연락처:</strong> ${phone}</p>
             <p><strong>이메일:</strong> ${email}</p>
+            <p><strong>희망 국가:</strong> ${countriesLine}</p>
             <p><strong>관심 서비스:</strong> ${interestsLine}</p>
             <p><strong>기대 해외 환자 월 매출:</strong> ${expectedRevenue}</p>
             <p><strong>월 예산:</strong> ${budget}</p>
