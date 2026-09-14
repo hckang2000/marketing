@@ -8,12 +8,12 @@ const resend = resendApiKey ? new Resend(resendApiKey) : null
 export async function POST(req: Request) {
   try {
     const {
-      referrer,
       interests,
+      expectedRevenue,
       budget,
       businessIntro,
       challenges,
-      expectedOutcome,
+      implementationTiming,
       hospitalName,
       name,
       region,
@@ -29,13 +29,13 @@ export async function POST(req: Request) {
     }
 
     if (
-      !referrer ||
       !Array.isArray(interests) ||
       interests.length === 0 ||
+      !expectedRevenue ||
       !budget ||
       !businessIntro ||
       !challenges ||
-      !expectedOutcome ||
+      !implementationTiming ||
       !hospitalName ||
       !name ||
       !region ||
@@ -70,9 +70,10 @@ export async function POST(req: Request) {
             { type: "mrkdwn", text: `*홈페이지*\n${website}` },
             { type: "mrkdwn", text: `*연락처*\n${phone}` },
             { type: "mrkdwn", text: `*이메일*\n${email}` },
-            { type: "mrkdwn", text: `*유입 경로*\n${referrer}` },
             { type: "mrkdwn", text: `*관심 서비스*\n${interestsLine}` },
+            { type: "mrkdwn", text: `*기대 해외 환자 월 매출*\n${expectedRevenue}` },
             { type: "mrkdwn", text: `*월 예산*\n${budget}` },
+            { type: "mrkdwn", text: `*도입 희망 시기*\n${implementationTiming}` },
           ],
         },
         {
@@ -82,10 +83,6 @@ export async function POST(req: Request) {
         {
           type: "section",
           text: { type: "mrkdwn", text: `*현재 겪고 있는 어려움*\n${challenges}` },
-        },
-        {
-          type: "section",
-          text: { type: "mrkdwn", text: `*기대하는 결과*\n${expectedOutcome}` },
         },
         {
           type: "context",
@@ -101,12 +98,12 @@ export async function POST(req: Request) {
     if (!resend) {
       console.log("Resend API key not configured. Skipping email send.")
       console.log("Inquiry form data:", {
-        referrer,
         interests,
+        expectedRevenue,
         budget,
         businessIntro,
         challenges,
-        expectedOutcome,
+        implementationTiming,
         hospitalName,
         name,
         region,
@@ -133,9 +130,10 @@ export async function POST(req: Request) {
             <p><strong>홈페이지:</strong> ${website}</p>
             <p><strong>연락처:</strong> ${phone}</p>
             <p><strong>이메일:</strong> ${email}</p>
-            <p><strong>유입 경로:</strong> ${referrer}</p>
             <p><strong>관심 서비스:</strong> ${interestsLine}</p>
+            <p><strong>기대 해외 환자 월 매출:</strong> ${expectedRevenue}</p>
             <p><strong>월 예산:</strong> ${budget}</p>
+            <p><strong>도입 희망 시기:</strong> ${implementationTiming}</p>
           </div>
           <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 12px;">
             <h3 style="color: #C1452D; margin-top: 0;">병원/사업 소개</h3>
@@ -144,10 +142,6 @@ export async function POST(req: Request) {
           <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 12px;">
             <h3 style="color: #C1452D; margin-top: 0;">현재 겪고 있는 어려움</h3>
             <p style="white-space: pre-wrap; line-height: 1.6;">${challenges}</p>
-          </div>
-          <div style="background: #fff; border: 1px solid #e9ecef; padding: 20px; border-radius: 8px;">
-            <h3 style="color: #C1452D; margin-top: 0;">기대하는 결과</h3>
-            <p style="white-space: pre-wrap; line-height: 1.6;">${expectedOutcome}</p>
           </div>
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; color: #6c757d; font-size: 14px;">
             <p>이 이메일은 클리닉브릿지 웹사이트(/inquiry)를 통해 자동으로 발송되었습니다.</p>

@@ -13,7 +13,7 @@ import { trackButtonClick } from "@/lib/gtag"
 const navigation = [
   { name: "홈", href: "/" },
   { name: "가격", href: "/pricing" },
-  { name: "인사이트", href: "/blog" },
+  { name: "블로그", href: "/blog" },
 ]
 
 interface HeaderProps {
@@ -67,13 +67,13 @@ export function Header({ onMobileNavStateChange, topOffset = 0 }: HeaderProps) {
 
           <div className="hidden md:flex items-center">
             <Button asChild onClick={handleContactClick} variant="default" size="sm">
-              <Link href="/inquiry">도입 상담</Link>
+              <Link href="/inquiry">문의하기</Link>
             </Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
             <Button asChild onClick={handleContactClick} variant="default" size="sm">
-              <Link href="/inquiry">상담</Link>
+              <Link href="/inquiry">문의하기</Link>
             </Button>
             <button
               type="button"

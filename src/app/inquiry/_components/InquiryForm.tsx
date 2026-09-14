@@ -11,9 +11,7 @@ import { cn } from "@/lib/utils"
 import { inquiryPageFormSchema, type InquiryPageFormData } from "@/lib/validators"
 import { trackConversion } from "@/lib/gtag"
 
-const REFERRER_OPTIONS = ["네이버 검색", "인스타그램", "블로그/콘텐츠", "지인 추천", "기존 고객사", "기타"]
-const INTEREST_OPTIONS = ["일본 인바운드 마케팅 대행", "벤치마크/진단 리포트", "전략 컨설팅·자문", "기타"]
-const BUDGET_OPTIONS = ["300만원 미만", "300~1,000만원", "1,000~3,000만원", "3,000만원 이상", "협의 필요"]
+const INTEREST_OPTIONS = ["LINE 계정 세팅", "바이럴 콘텐츠 마케팅 패키지", "월 정기 운영 플랜", "애드온 서비스", "기타 문의"]
 
 interface FieldLabelProps {
   htmlFor: string
@@ -57,7 +55,6 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
 
   const businessIntro = watch("businessIntro") ?? ""
   const challenges = watch("challenges") ?? ""
-  const expectedOutcome = watch("expectedOutcome") ?? ""
   const selectedInterests = watch("interests") ?? []
 
   const toggleInterest = (option: string) => {
@@ -104,21 +101,6 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
         </h2>
 
         <div>
-          <FieldLabel htmlFor="referrer">클리닉브릿지를 어떻게 알게 되셨나요? *</FieldLabel>
-          <select id="referrer" {...register("referrer")} className={cn(inputClass)} defaultValue="">
-            <option value="" disabled>
-              선택해주세요
-            </option>
-            {REFERRER_OPTIONS.map((o) => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
-          <ErrorText message={errors.referrer?.message} />
-        </div>
-
-        <div>
           <FieldLabel htmlFor="interests">관심 있는 서비스 * (복수 선택 가능)</FieldLabel>
           <div className="flex flex-wrap gap-2">
             {INTEREST_OPTIONS.map((option) => {
@@ -144,17 +126,24 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
         </div>
 
         <div>
+          <FieldLabel htmlFor="expectedRevenue">기대 해외 환자 월 매출 *</FieldLabel>
+          <input
+            id="expectedRevenue"
+            {...register("expectedRevenue")}
+            className={inputClass}
+            placeholder="예: 월 1,000만원"
+          />
+          <ErrorText message={errors.expectedRevenue?.message} />
+        </div>
+
+        <div>
           <FieldLabel htmlFor="budget">월 예산 범위 *</FieldLabel>
-          <select id="budget" {...register("budget")} className={cn(inputClass)} defaultValue="">
-            <option value="" disabled>
-              선택해주세요
-            </option>
-            {BUDGET_OPTIONS.map((o) => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
+          <input
+            id="budget"
+            {...register("budget")}
+            className={inputClass}
+            placeholder="예: 월 300~500만원"
+          />
           <ErrorText message={errors.budget?.message} />
         </div>
 
@@ -187,17 +176,14 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
         </div>
 
         <div>
-          <FieldLabel htmlFor="expectedOutcome">기대하는 결과 *</FieldLabel>
-          <textarea
-            id="expectedOutcome"
-            {...register("expectedOutcome")}
-            rows={4}
-            maxLength={800}
-            className={cn(inputClass, "resize-none")}
-            placeholder="이번 상담을 통해 기대하시는 결과를 적어주세요"
+          <FieldLabel htmlFor="implementationTiming">도입 희망 시기 *</FieldLabel>
+          <input
+            id="implementationTiming"
+            {...register("implementationTiming")}
+            className={inputClass}
+            placeholder="예: 1개월 이내"
           />
-          <div className="flex justify-end text-xs text-gray-400 mt-1">{expectedOutcome.length}/800</div>
-          <ErrorText message={errors.expectedOutcome?.message} />
+          <ErrorText message={errors.implementationTiming?.message} />
         </div>
       </section>
 
@@ -274,7 +260,7 @@ export function InquiryForm({ onSuccess }: InquiryFormProps) {
             전송 중...
           </>
         ) : (
-          "상담 신청하기"
+          "문의하기"
         )}
       </Button>
     </form>

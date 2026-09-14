@@ -10,26 +10,38 @@ interface LogoItem {
   name: string
   logo: string
   bg?: string
+  width?: number
+  height?: number
 }
 
 const logos: LogoItem[] = [
-  { id: 1, name: "종근당", logo: "/images/logo_ckd.png" },
-  { id: 2, name: "파미셀", logo: "/images/logo_pharmicell.png" },
-  { id: 3, name: "Thome", logo: "/images/logo_Thome.jpg" },
-  { id: 4, name: "강남언니", logo: "/images/강남언니_logo.png" },
-  { id: 5, name: "여신티켓", logo: "/images/여신티켓_logo.png" },
-  { id: 6, name: "손유나", logo: "/images/sonyouna_logo.jpg" },
-  { id: 7, name: "오픈닥터", logo: "/images/오픈닥터_logo.png" },
-  { id: 8, name: "플랫팜", logo: "/images/플랫팜_logo.png" },
-  { id: 9, name: "블리비", logo: "/images/블리비_logo.jpg", bg: "#fee1d9" },
-  { id: 10, name: "셀린클리닉", logo: "/images/cellinclinic_logo.png", bg: "#0000cc" },
+  { id: 1, name: "종근당", logo: "/images/logo_ckd_trim.png", width: 138, height: 34 },
+  { id: 2, name: "온누리약국", logo: "/images/logo_onnuri_pharmacy_trim.png", width: 154, height: 43 },
+  { id: 3, name: "파미셀", logo: "/images/logo_pharmicell_trim.png", width: 140, height: 44 },
+  { id: 4, name: "강남언니", logo: "/images/강남언니_logo_trim.png", width: 161, height: 30 },
+  { id: 6, name: "블리비", logo: "/images/블리비_logo_trim.png", width: 112, height: 45 },
+  { id: 7, name: "손유나", logo: "/images/sonyouna_logo_trim.png", width: 92, height: 87 },
+  { id: 8, name: "더스퀘어치과", logo: "/images/logo_thesquare_dental_trim.png", width: 210, height: 49 },
+  { id: 9, name: "오픈닥터", logo: "/images/오픈닥터_logo_trim.png", width: 97, height: 27 },
+  { id: 10, name: "플랫팜", logo: "/images/플랫팜_logo_trim.png", width: 136, height: 46 },
+  { id: 11, name: "셀린클리닉", logo: "/images/cellin_logo_trim.png", width: 136, height: 52 },
+  { id: 12, name: "Thome", logo: "/images/logo_Thome_trim.png", width: 140, height: 26 },
+  { id: 13, name: "셀올로지", logo: "/images/logo_cellology_trim.png", width: 140, height: 37 },
+  { id: 14, name: "김현수클리닉", logo: "/images/logo_kimhyunsoo_clinic.svg", width: 220, height: 22 },
 ]
 
 function LogoTile({ item, ariaHidden = false }: { item: LogoItem; ariaHidden?: boolean }) {
+  const width = item.width ?? 140
+  const height = item.height ?? 56
+
   return (
-    <div aria-hidden={ariaHidden} className="flex items-center justify-center w-[140px] h-[56px] shrink-0">
+    <div
+      aria-hidden={ariaHidden}
+      className="flex items-center justify-center shrink-0"
+      style={{ width, height }}
+    >
       <div className="relative w-full h-full">
-        <Image src={item.logo} alt={item.name} fill className="object-contain" sizes="140px" />
+        <Image src={item.logo} alt={item.name} fill className="object-contain" sizes={`${width}px`} />
       </div>
     </div>
   )
@@ -42,7 +54,7 @@ function MarqueeRow({ items, direction }: { items: LogoItem[]; direction: "left"
     <div className="marquee-row overflow-hidden">
       <div
         className={cn(
-          "flex w-max gap-3 sm:gap-4",
+          "flex items-center w-max gap-10 sm:gap-12",
           direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
         )}
       >
@@ -56,10 +68,18 @@ function MarqueeRow({ items, direction }: { items: LogoItem[]; direction: "left"
 
 export function LogoWall() {
   return (
-    <section className="pt-2 lg:pt-3 pb-10 lg:pb-14 bg-white">
+    <section className="py-20 lg:py-28 bg-white">
       <Container>
-        <MarqueeRow items={[...logos, ...logos, ...logos]} direction="left" />
+        <p
+          className="text-center text-xl sm:text-2xl font-bold text-gray-900 leading-[1.5] mb-14 lg:mb-20"
+          style={{ wordBreak: "keep-all" }}
+        >
+          코스피 상장사부터 네트워크 병원 본사까지.
+          <br />
+          메디컬 리더들의 해외 마케팅을 전담합니다.
+        </p>
       </Container>
+      <MarqueeRow items={[...logos, ...logos, ...logos]} direction="left" />
     </section>
   )
 }

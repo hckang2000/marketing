@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { Plus, ChevronRight, Newspaper } from "lucide-react"
 import { Container } from "@/components/common/Container"
 import { getAllBlogPosts } from "@/data/blogPosts"
@@ -22,7 +23,7 @@ const FAQ_ITEMS = [
   {
     question: "성과는 보통 언제부터 나타나나요?",
     answer:
-      "채널·상품에 따라 다르지만, 콘텐츠·채널 세팅 이후 통상 1~2개월 차부터 문의 유입이 발생하기 시작합니다. 매출 전환까지는 상담·예약 프로세스 정비 여부에 따라 차이가 있어, 초기 진단 단계에서 함께 점검합니다.",
+      "채널·상품에 따라 다르지만, 콘텐츠·채널 세팅 이후 통상 3개월차부터 문의 유입이 발생하기 시작합니다. 매출 전환까지는 상담·예약 프로세스 정비 여부에 따라 차이가 있어, 초기 진단 단계에서 함께 점검합니다.",
   },
   {
     question: "우리 병원에 맞는 전략인지 어떻게 알 수 있나요?",
@@ -43,15 +44,16 @@ const featuredReport = {
   category: "마케팅 리포트",
   title: "일본인 고객 심층 분석",
   readTime: "10분",
+  featuredImage: "/images/blog/customer-journey-report-cover.png",
 }
 
 export function FAQInsights() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const posts = getAllBlogPosts()
-  const insightItems = [featuredReport, ...posts]
+  const insightItems = [featuredReport, ...posts.slice(0, 2)]
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding pb-32 lg:pb-40 bg-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
           {/* 자주 묻는 질문 */}
@@ -68,7 +70,7 @@ export function FAQInsights() {
                     key={item.question}
                     className={cn(
                       "rounded-2xl border bg-white transition-colors",
-                      isOpen ? "border-[#C1452D]" : "border-gray-200"
+                      isOpen ? "border-gray-300" : "border-gray-200"
                     )}
                   >
                     <button
@@ -78,12 +80,12 @@ export function FAQInsights() {
                       aria-expanded={isOpen}
                     >
                       <span className="flex items-start gap-2 font-medium text-gray-900 text-sm">
-                        <span className="text-[#C1452D] font-semibold">Q.</span>
+                        <span className="text-gray-900 font-semibold">Q.</span>
                         <span style={{ wordBreak: "keep-all" }}>{item.question}</span>
                       </span>
                       <Plus
                         className={cn(
-                          "h-5 w-5 shrink-0 text-[#C1452D] transition-transform duration-200",
+                          "h-5 w-5 shrink-0 text-gray-700 transition-transform duration-200",
                           isOpen && "rotate-45"
                         )}
                       />
@@ -116,7 +118,7 @@ export function FAQInsights() {
           {/* 인사이트 */}
           <div>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">꼭 알아야 하는 인사이트!</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">해외마케팅 필수지식</h2>
               <Link
                 href="/blog"
                 className="flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-[#C1452D] transition-colors"
@@ -129,24 +131,32 @@ export function FAQInsights() {
             <div className="space-y-3">
               {insightItems.map((item) => {
                 const href = "slug" in item ? `/blog/${item.slug}` : item.href
-                const isReport = !("slug" in item)
                 return (
                   <Link
                     key={item.id}
                     href={href}
-                    className={cn(
-                      "flex items-center gap-4 p-4 rounded-2xl border bg-white hover:shadow-sm transition-shadow group",
-                      isReport ? "border-[#C1452D]/30" : "border-gray-200"
-                    )}
+                    className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 bg-white hover:shadow-sm transition-shadow group"
                   >
-                    <div
-                      className="relative w-16 h-16 shrink-0 rounded-xl flex items-center justify-center"
-                      style={{ background: "#FBEEE8" }}
-                    >
-                      <Newspaper className="h-6 w-6 text-[#C1452D]/60" />
+                    <div className="relative w-32 sm:w-40 aspect-video shrink-0 rounded-xl overflow-hidden">
+                      {item.featuredImage ? (
+                        <Image
+                          src={item.featuredImage}
+                          alt=""
+                          fill
+                          className="object-contain"
+                          sizes="(min-width: 640px) 160px, 128px"
+                        />
+                      ) : (
+                        <div
+                          className="w-full h-full flex items-center justify-center"
+                          style={{ background: "#FBEEE8" }}
+                        >
+                          <Newspaper className="h-6 w-6 text-[#C1452D]/60" />
+                        </div>
+                      )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-[#C1452D] mb-1">{item.category}</p>
+                      <p className="text-xs font-semibold text-gray-500 mb-1">{item.category}</p>
                       <h3
                         className="font-semibold text-gray-900 text-sm line-clamp-2 group-hover:text-[#C1452D] transition-colors"
                         style={{ wordBreak: "keep-all" }}

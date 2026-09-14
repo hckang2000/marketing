@@ -21,8 +21,8 @@ export function TeamIntroduction() {
             titleClassName="mb-8"
           />
           <ResponsiveText
-            mobile="10년 이상의 글로벌 마케팅 경력을 가진<br />서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는<br />메디컬 마케팅 전문 컨설팅 조직입니다."
-            desktop="10년 이상의 글로벌 마케팅 경력을 가진 서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는 메디컬 마케팅 전문 컨설팅 조직입니다."
+            mobile="10년 이상의 글로벌 마케팅 경력을 가진<br />서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는<br />메디컬 마케팅 전문 조직입니다."
+            desktop="10년 이상의 글로벌 마케팅 경력을 가진 서울대 경영대학 출신 대표와<br />현직 의료 자문진이 함께 운영하는 메디컬 마케팅 전문 조직입니다."
             className="text-base text-gray-600"
           />
         </motion.div>

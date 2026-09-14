@@ -105,10 +105,10 @@ export default function PrivacyPage() {
                     <p className="text-gray-700 mb-2">
                       <strong>개인정보 보호책임자</strong>
                     </p>
-                    <p className="text-gray-700 mb-1">성명: 김OO</p>
+                    <p className="text-gray-700 mb-1">성명: 이은석</p>
                     <p className="text-gray-700 mb-1">직책: 대표</p>
-                    <p className="text-gray-700 mb-1">연락처: 02-1234-5678</p>
-                    <p className="text-gray-700">이메일: privacy@clinicbridge.co.kr</p>
+                    <p className="text-gray-700 mb-1">연락처: 010-2082-3825</p>
+                    <p className="text-gray-700">이메일: cb@clinicbridge.co.kr</p>
                   </div>
                 </section>
 

@@ -2,37 +2,30 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Layers, Puzzle, Check } from "lucide-react"
+import Image from "next/image"
+import { Check } from "lucide-react"
 import { Container } from "@/components/common/Container"
-import { SectionTitle } from "@/components/common/SectionTitle"
 import { useStaggeredAnimation } from "@/lib/hooks/useMotionAnimation"
 
 const PLANS = [
   {
-    icon: Layers,
+    icon: "/images/line.png",
     name: "최소 스타터 플랜",
-    tagline: "일본 마케팅 꼭 필요한 항목들을 단계별로, 원하는 만큼만 선택",
     price: "15만원",
-    priceNote: "VAT 별도 · 최소 계약기간 3개월",
     featuresTitle: "일본 마케팅 셀프로 시작하는 마케팅",
     features: [
-      "일본 LINE 계정 세팅 등",
-      "일본 신환 발생을 위한 최소 세팅",
+      "일본 LINE 계정 생성 및 현지화 세팅",
     ],
   },
-  {
-    icon: Puzzle,
-    name: "월 구독 마케팅 패키지",
-    tagline: "우리병원에 맞춰진 마케팅 요소를, 더 큰 할인으로.",
-    price: "월 500만원",
-    priceNote: "채널별 개별 계약 가능",
-    featuresTitle: "필요한 것만 시작하는 형",
-    features: [
-      "매출 발생에 필요한 필수 요소를 한번에",
-      "패키지 할인으로 진행되어 할인된 가격",
-      "인플루언서 협찬 원가 진행",
-    ],
-  },
+]
+
+const SCATTERED_LOGOS = [
+  { src: "/images/instagram.png", side: "left", x: -120, y: 10, rotate: -15, size: 44 },
+  { src: "/images/ameba.png", side: "left", x: -230, y: 140, rotate: 10, size: 40 },
+  { src: "/images/google.png", side: "left", x: -80, y: 250, rotate: 18, size: 36 },
+  { src: "/images/강남언니_logo.png", side: "right", x: -120, y: 0, rotate: 12, size: 44 },
+  { src: "/images/x.png", side: "right", x: -230, y: 130, rotate: -14, size: 40 },
+  { src: "/images/youtube.png", side: "right", x: -80, y: 250, rotate: -8, size: 40 },
 ]
 
 export function PlanCompare() {
@@ -41,11 +34,53 @@ export function PlanCompare() {
   return (
     <section className="section-padding bg-white">
       <Container>
-        <SectionTitle title="우리 병원에 맞는 플랜을 선택하세요" subtitle="통합 운영과 개별 선택, 두 가지 방식 중 고를 수 있습니다" />
+        <div className="text-center mb-8">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"
+            style={{ wordBreak: "keep-all" }}
+          >
+            해외 환자 마케팅 처음이신가요?
+          </h2>
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-900"
+            style={{ wordBreak: "keep-all" }}
+          >
+            부담없이 바로 시작해보세요!
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="mx-auto w-px h-20 bg-gradient-to-b from-gray-300 via-gray-200 to-transparent mb-8" />
+
+        <p
+          className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-center mb-12"
+          style={{ wordBreak: "keep-all" }}
+        >
+          시작하면 무조건 도움되는 마케팅만 제안합니다.
+        </p>
+
+        <div className="relative grid grid-cols-1 gap-6 max-w-sm mx-auto">
+          {SCATTERED_LOGOS.map((logo, i) => (
+            <div
+              key={i}
+              className="hidden lg:block absolute rounded-xl bg-white border border-gray-100 shadow-md p-2.5"
+              style={{
+                top: logo.y,
+                [logo.side]: logo.x,
+                transform: `rotate(${logo.rotate}deg)`,
+              }}
+            >
+              <Image
+                src={logo.src}
+                alt=""
+                width={logo.size}
+                height={logo.size}
+                className="object-contain"
+                style={{ width: logo.size, height: logo.size }}
+              />
+            </div>
+          ))}
+
           {PLANS.map((plan, index) => {
-            const Icon = plan.icon
             return (
               <motion.div
                 key={plan.name}
@@ -57,16 +92,13 @@ export function PlanCompare() {
                 </div>
 
                 <div className="p-6 flex flex-col items-center text-center flex-1 bg-white">
-                  <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-5">
-                    <Icon className="h-8 w-8 text-gray-700" />
+                  <div className="mb-5">
+                    <Image src={plan.icon} alt="" width={56} height={56} className="object-contain" />
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-4">{plan.tagline}</p>
-
-                  <p className="text-2xl sm:text-3xl font-bold mb-1 text-gray-900">
+                  <p className="text-2xl sm:text-3xl font-bold mb-6 text-gray-900">
                     {plan.price}
                   </p>
-                  <p className="text-xs text-gray-500 mb-6">{plan.priceNote}</p>
 
                   <div className="w-full border-t border-dashed border-gray-300 mb-6" />
 
@@ -83,9 +115,9 @@ export function PlanCompare() {
 
                   <Link
                     href="/pricing"
-                    className="mt-auto w-full py-3 rounded-lg text-white font-semibold text-sm text-center bg-gray-900 hover:bg-gray-800 transition-colors"
+                    className="mt-auto w-full py-3 rounded-lg text-white font-semibold text-sm text-center bg-[#06C755] hover:bg-[#05a848] transition-colors"
                   >
-                    플랜 자세히 보기 →
+                    플랜 더 알아보기 →
                   </Link>
                 </div>
               </motion.div>

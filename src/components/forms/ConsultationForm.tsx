@@ -14,7 +14,7 @@ interface ConsultationFormProps {
   submitLabel?: string
 }
 
-export function ConsultationForm({ onSuccess, submitLabel = "도입 상담 신청" }: ConsultationFormProps) {
+export function ConsultationForm({ onSuccess, submitLabel = "문의하기" }: ConsultationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
