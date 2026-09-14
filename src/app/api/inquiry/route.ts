@@ -1,12 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { sendSlackNotification } from "@/lib/slack"
-import {
-  createTrelloCard,
-  getTrelloConfig,
-  testTrelloAuth,
-  type TrelloCardResponse,
-} from "@/lib/trello"
+import { createTrelloCard, testTrelloAuth, type TrelloCardResponse } from "@/lib/trello"
 
 const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
@@ -65,8 +60,17 @@ export async function POST(req: Request) {
     const interestsLine = interests.join(", ")
 
     let trelloCard: TrelloCardResponse | null = null
-    const trelloConfig = getTrelloConfig()
-    if (trelloConfig) {
+    const trelloApiKey = process.env.TRELLO_API_KEY
+    const trelloToken = process.env.TRELLO_API_TOKEN
+    const trelloBoardId = process.env.TRELLO_BOARD_ID
+    const trelloListId = process.env.TRELLO_LIST_ID
+    if (trelloApiKey && trelloToken && trelloBoardId && trelloListId) {
+      const trelloConfig = {
+        apiKey: trelloApiKey.trim(),
+        token: trelloToken.trim(),
+        boardId: trelloBoardId.trim(),
+        listId: trelloListId.trim(),
+      }
       try {
         const authSuccess = await testTrelloAuth(trelloConfig)
         if (authSuccess) {
