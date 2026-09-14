@@ -74,6 +74,11 @@ export async function POST(req: Request) {
             { type: "mrkdwn", text: `*홈페이지*\n${website}` },
             { type: "mrkdwn", text: `*연락처*\n${phone}` },
             { type: "mrkdwn", text: `*이메일*\n${email}` },
+          ],
+        },
+        {
+          type: "section",
+          fields: [
             { type: "mrkdwn", text: `*희망 국가*\n${countriesLine}` },
             { type: "mrkdwn", text: `*관심 서비스*\n${interestsLine}` },
             { type: "mrkdwn", text: `*기대 해외 환자 월 매출*\n${expectedRevenue}` },
