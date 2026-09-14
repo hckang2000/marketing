@@ -89,12 +89,21 @@ export async function POST(req: Request) {
         
         if (authSuccess) {
           console.log("✅ Trello API 인증 성공, 카드 생성 시작...")
+          const cardDescription = `**📋 문의자 정보**
+• **이름:** ${name}
+• **연락처:** ${phone}
+• **병원명/직책:** ${hospital}
+• **이메일:** ${email}
+
+**💬 문의내용**
+${message}
+
+---
+📅 문의 시간: ${new Date().toLocaleString('ko-KR')}
+🤖 자동 생성된 카드`
           trelloCard = await createTrelloCard(trelloConfig, {
-            name,
-            phone,
-            hospital,
-            email,
-            message,
+            name: `[문의] ${name} - ${hospital}`,
+            description: cardDescription,
           })
           console.log(`✅ Trello 카드 생성 성공: ${trelloCard.shortUrl}`)
         } else {

@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { sendSlackNotification } from "@/lib/slack"
+import {
+  createTrelloCard,
+  getTrelloConfig,
+  testTrelloAuth,
+  type TrelloCardResponse,
+} from "@/lib/trello"
 
 const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
@@ -58,6 +64,50 @@ export async function POST(req: Request) {
     const countriesLine = targetCountries.join(", ")
     const interestsLine = interests.join(", ")
 
+    let trelloCard: TrelloCardResponse | null = null
+    const trelloConfig = getTrelloConfig()
+    if (trelloConfig) {
+      try {
+        const authSuccess = await testTrelloAuth(trelloConfig)
+        if (authSuccess) {
+          const cardDescription = `**📋 문의자 정보**
+• **이름:** ${name}
+• **병원명/회사명:** ${hospitalName}
+• **연락처:** ${phone}
+• **이메일:** ${email}
+• **지역:** ${region}
+• **홈페이지:** ${website}
+
+**🌍 마케팅 정보**
+• **희망 국가:** ${countriesLine}
+• **관심 서비스:** ${interestsLine}
+• **기대 해외 환자 월 매출:** ${expectedRevenue}
+• **월 예산:** ${budget}
+• **도입 희망 시기:** ${implementationTiming}
+
+**💬 병원/사업 소개**
+${businessIntro}
+
+**⚠️ 현재 겪고 있는 어려움**
+${challenges}
+
+---
+📅 문의 시간: ${new Date().toLocaleString("ko-KR")}
+🤖 자동 생성된 카드`
+          trelloCard = await createTrelloCard(trelloConfig, {
+            name: `[문의] ${name} - ${hospitalName}`,
+            description: cardDescription,
+          })
+        } else {
+          console.error("❌ Trello API 인증 실패")
+        }
+      } catch (error) {
+        console.error("❌ Trello 카드 생성 실패:", error)
+      }
+    } else {
+      console.warn("⚠️ Trello 환경변수가 설정되지 않아 카드 생성을 건너뜁니다.")
+    }
+
     const slackResult = await sendSlackNotification({
       text: `도입 상담 신청이 접수되었습니다: ${name} (${hospitalName})`,
       blocks: [
@@ -96,7 +146,12 @@ export async function POST(req: Request) {
         },
         {
           type: "context",
-          elements: [{ type: "mrkdwn", text: `접수 시간: ${new Date().toLocaleString("ko-KR")}` }],
+          elements: [
+            { type: "mrkdwn", text: `접수 시간: ${new Date().toLocaleString("ko-KR")}` },
+            ...(trelloCard?.shortUrl
+              ? [{ type: "mrkdwn" as const, text: `<${trelloCard.shortUrl}|Trello 카드 바로가기>` }]
+              : []),
+          ],
         },
       ],
     })
@@ -122,7 +177,12 @@ export async function POST(req: Request) {
         phone,
         email,
       })
-      return NextResponse.json({ ok: true, slackNotified: slackResult.ok || slackResult.skipped || false })
+      return NextResponse.json({
+        ok: true,
+        trelloCardId: trelloCard?.id ?? null,
+        trelloCardShortUrl: trelloCard?.shortUrl ?? null,
+        slackNotified: slackResult.ok || slackResult.skipped || false,
+      })
     }
 
     await resend.emails.send({
@@ -163,7 +223,12 @@ export async function POST(req: Request) {
       `,
     })
 
-    return NextResponse.json({ ok: true, slackNotified: slackResult.ok || slackResult.skipped || false })
+    return NextResponse.json({
+      ok: true,
+      trelloCardId: trelloCard?.id ?? null,
+      trelloCardShortUrl: trelloCard?.shortUrl ?? null,
+      slackNotified: slackResult.ok || slackResult.skipped || false,
+    })
   } catch (error) {
     console.error("Inquiry form error:", error)
     return NextResponse.json({ error: "서버 오류가 발생했습니다. 다시 시도해주세요." }, { status: 500 })

@@ -43,32 +43,21 @@ export interface ContactFormData {
   message: string
 }
 
+export interface TrelloCardInput {
+  name: string
+  description: string
+}
+
 /**
  * Trello API를 사용하여 카드를 생성하는 함수
  */
 export async function createTrelloCard(
   config: TrelloConfig,
-  contactData: ContactFormData
+  card: TrelloCardInput
 ): Promise<TrelloCardResponse> {
   const { apiKey, token, listId } = config
-  const { name, phone, hospital, email, message } = contactData
-
-  // 카드 제목 생성
-  const cardName = `[문의] ${name} - ${hospital}`
-
-  // 카드 설명 생성 (Trello 마크다운 형식)
-  const cardDescription = `**📋 문의자 정보**
-• **이름:** ${name}
-• **연락처:** ${phone}
-• **병원명/직책:** ${hospital}
-• **이메일:** ${email}
-
-**💬 문의내용**
-${message}
-
----
-📅 문의 시간: ${new Date().toLocaleString('ko-KR')}
-🤖 자동 생성된 카드`
+  const cardName = card.name
+  const cardDescription = card.description
 
   const url = `https://api.trello.com/1/cards`
   
